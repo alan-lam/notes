@@ -1,0 +1,40 @@
+body {
+  padding-top: 56px;
+}
+
+.toc {
+  height: 100%;
+  width: 300px;
+  background-color: lightgray;
+  position: fixed;
+  overflow: scroll;
+}
+
+.toc ul {
+  height: 106%;
+  padding-left: 0;
+}
+
+.toc li {
+  padding: 10px 0 10px 30px;
+  border: 1px solid black;
+  border-bottom-width: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.toc_link {
+  color: black;
+}
+
+.container {
+  width: 70vw;
+  margin-left: 300px;
+  padding-top: 20px;
+}
+
+.content {
+  padding-top: 70px;
+}
