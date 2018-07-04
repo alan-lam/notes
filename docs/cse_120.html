@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#" target="_blank">Home</a>
+            <a class="nav-link" href="index.html" target="_blank">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown link</a>
@@ -54,6 +54,44 @@
           <h1>Operating Systems</h1>
           <div class="content" id="processes">
             <h3>Processes</h3>
+            <ul>
+              <li><p>Most basic function of kernel is to run programs</p></li>
+              <li><p>Question: How do we achieve that with just 1 (or small number) cpu and memory?</p></li>
+              <li><p>Want to create illusion that there are many cpus; 1 for every program</p></li>
+              <li><p><b>A process is a program in execution</b></p></li>
+              <li style="list-style-type: none";><p>- A program is static; a process is the activity of executing that program</p></li>
+              <li><p>Processes have states that change over time</p></li>
+              <li><p>Processes need resources (CPU, memory, I/O, ...) to actually execute</p></li>
+              <li><p>Processes have contexts - all of the machine and kernel-related states</p></li>
+              <li><p>A context is comprised of CPU context (values of registers, stack pointer, program counter, ...) and memory context (code, variables, things in memory, ...)</p></li>
+              <li><p><b>A process has 3 memory areas: stack, text, data</b></p></li>
+              <li><p><b>Text contains all of the code</b></p></li>
+              <li><p><b>Data contains global variables, heap</b></p></li>
+              <li><p><b>Stack contains activation records</b></p></li>
+              <img src="./pictures/text-data-stack.jpg">
+              <li><p>An activation record is information pertaining to a procedure call</p></li>
+              <li style="list-style-type: none";><p>- If a procedure calls itself 3 times, there will be 3 activation records</p></li>
+              <li><p>Activation records store:</p></li>
+              <li style="list-style-type: none";><p>- pointer where to return to</p></li>
+              <li style="list-style-type: none";><p>- link to previous record (so we know where the new top of the stack is after this is popped off the stack)</p></li>
+              <li style="list-style-type: none";><p>- local variables</p></li>
+              <li><p>Stack pointer register contains the location of the top of the stack</p></li>
+              <li><p>Return address keeps track of where to return to after procedure</p></li>
+              <li><p>All this is for 1 process; but we want to run many processes</p></li>
+              <li><p>In reality, if only 1 cpu, only 1 process could be running</p></li>
+              <li><p><b>Multiprogramming: voluntarily giving up CPU to another process</b></p></li>
+              <li><p>A process running may need a resource (keystroke, anything needed to get work done). If it doesn't get that resource, the process is just sitting there doing nothing. <b>It can't make any progress, so let's give CPU to another process that can</b></p></li>
+              <li><p>yield(p) - give CPU to process p</p></li>
+              <li><p><b>Context switching: allocating of CPU from one process to another</b></p></li>
+              <li style="list-style-type: none";><p>- Save the context of one process, restore context of process we want to run</p></li>
+              <li><p>Switch text, data, and stack because each process has its own text, data, and stack</p></li>
+              <li><p>Yield is so important, we don't want it written by programmers. We want it written by OS implementer and put in the kernel</p></li>
+              <li><p>Kernel is code that executes. Is it a process then? No it is not!</p></li>
+              <li style="list-style-type: none";><p>- Kernel supports processes; can be thought of as an extension of all processes. Processes run inside the kernel.</p></li>
+              <li><p><b>Kernel has its own text and data. It has 1 stack per process</b></p></li>
+              <li><p><b>Yield is in the kernel, so calling yield causes a jump into the kernel</b></p></li>
+              <li><p>Yield is a <b>system call - a function in the kernel that is callable by a process</b></p></li>
+            </ul>
           </div>
           <div class="content" id="timesharing">
             <h3>Timesharing</h3>
