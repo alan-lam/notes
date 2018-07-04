@@ -56,7 +56,7 @@
             <h3>Processes</h3>
             <ul>
               <li><p>Most basic function of kernel is to run programs</p></li>
-              <li><p>Question: How do we achieve that with just 1 (or small number) cpu and memory?</p></li>
+              <li><p>How do we achieve that with just 1 (or small number) cpu and memory?</p></li>
               <li><p>Want to create illusion that there are many cpus; 1 for every program</p></li>
               <li><p><b>A process is a program in execution</b></p></li>
               <li style="list-style-type: none";><p>- A program is static; a process is the activity of executing that program</p></li>
@@ -84,7 +84,7 @@
               <li><p>yield(p) - give CPU to process p</p></li>
               <li><p><b>Context switching: allocating of CPU from one process to another</b></p></li>
               <li style="list-style-type: none";><p>- Save the context of one process, restore context of process we want to run</p></li>
-              <li><p>Switch text, data, and stack because each process has its own text, data, and stack</p></li>
+              <li><p><b>Switch text, data, and stack because each process has its own text, data, and stack</b></p></li>
               <li><p>Yield is so important, we don't want it written by programmers. We want it written by OS implementer and put in the kernel</p></li>
               <li><p>Kernel is code that executes. Is it a process then? No it is not!</p></li>
               <li style="list-style-type: none";><p>- Kernel supports processes; can be thought of as an extension of all processes. Processes run inside the kernel.</p></li>
@@ -95,6 +95,81 @@
           </div>
           <div class="content" id="timesharing">
             <h3>Timesharing</h3>
+            <ul>
+              <li><p>If a process doesn't give up CPU, how does the system keep working?</p></li>
+              <li><p>Quantum: amount of time a process runs</p></li>
+              <li><p><b>Each process is getting a quantum of CPU time. This creates the illusion of parallel progress by rapidly switching CPU</b></p></li>
+            </ul>
+            <h5>How Timesharing Is Implemented</h5>
+            <ul>
+              <li><p>Kernel keeps track of progress of each process and characterizes their states</p></li>
+              <li style="list-style-type: none";><p>- <b>Running: actually using CPU</b></p></li>
+              <li style="list-style-type: none";><p>- <b>Ready: able to use CPU, but not using</b></p></li>
+              <li style="list-style-type: none";><p>- <b>Blocked: does not have CPU, not able to run</b></p></li>
+              <li><p>Running -> Blocked (sleep): when process tries to access a resource, but the resource is being used by another process</p></li>
+              <li><p>Blocked -> Ready (wake up): when resource it was waiting for becomes available</p></li>
+              <li><p>Ready -> Running (dispatch): when CPU is given to process by kernel</p></li>
+              <li><p>Running -> Ready (preempt): if process never asks for a resource</p></li>
+            </ul>
+            <h5>Process vs. Kernel</h5>
+            <ul>
+              <li><p>Kernel includes functionality for system calls</p></li>
+              <li><p><b>Kernel runs when process makes a system call or a hardware interrupt occurs</b></p></li>
+              <li><p><b>When process is running its own code, it runs in user space. When it makes a system call, it jumps into kernel space</b></p></li>
+              <li><p>While running in kernel space, variables are accessible via the kernel's data area and stack</p></li>
+              <li><p>Within the kernel, stuff in kernel space and user space is accessible. In user space, only the user space stuff is accessible</p></li>
+            </ul>
+            <h5>Kernel Maintains List of Processes</h5>
+            <ul>
+              <li><p>Kernel has a process table of unique process ID's and their states</p></li>
+              <li>The table also has contents of all CPU contexts, areas of memory being used, reasons for being blocked</li>
+            </ul>
+            <h5>How Kernel Gets Control</h5>
+            <ul>
+              <li><p><b>Kernel can get control when process voluntarily gives up control by making a system call that blocks</b></p></li>
+              <li><p><b>Kernel can take away CPU from currently running process - preemption</b></p></li>
+              <li><p><b>There is a hardware clock that is programmed to go off at a certain time. When it goes off - that's a hardware interrupt - and the kernel gets control</b></p></li>
+              <li style="list-style-type: none";><p>- When kernel gives control to a new process, it resets timer</p></li>
+            </ul>
+            <h5>How a Context Switch Occurs</h5>
+            <ul>
+              <li><p>Process makes system call or hardware interrupt occurs to get into kernel</p></li>
+              <li><p>Kernel expects hardware to do some things on its behalf:</p></li>
+              <li style="list-style-type: none";><p>- hardware switches from user mode to kernel mode (characteristics of hardware)</p></li>
+              <li style="list-style-type: none";><p>- in user mode, process has less power because it can't execute all instructions</p></li>
+              <li style="list-style-type: none";><p>- by going into kernel mode, its power is amplified</p></li>
+              <li style="list-style-type: none";><p>- hardware arranges for control to go to a fixed location, which is the handler: the code that runs to handle the trap (system call) or interrupt</p></li>
+              <li><p>Kernel now saves context of currently running process, selects a ready process, restores its context, and returns from interrupt/trap</p></li>
+              <li><p>rti instruction: return from interrupt; need a special return because going from kernel space to user space; rti turns kernel mode off</p></li>
+              <li><p>Kernel has access to all processes, but only 1 process is running at a time</p></li>
+            </ul>
+            <h5>How To Get Parallelism Within a Process</h5>
+            <ul>
+              <li><p>What if we want multiple things going on within the same process?</p></li>
+              <li><p><b>Want a single text and data, but multiple stacks for every path of execution</b></p></li>
+              <li><p><b>Thread: single sequential path of execution</b></p></li>
+              <li style="list-style-type: none";><p>- <b>like a process, but no memory; lives in a process</b></p></li>
+              <li><p>Can have multiple threads in a process</p></li>
+              <li><p>To the user: a thread is a unit of parallelism; more threads -> more parallelism</p></li>
+              <li><p>To the kernel: a thread is a unit of schedulability; it is an object that the kernel assigns to a CPU</p></li>
+              <li><p><b>User level thread: support for threads is part of the program; implemented by programmer or by including a thread library; kernel thinks it is a single process</b></p></li>
+              <li><p><b>Kernel level thread: support for threads is provided by kernel; kernel can put threads on separate CPU's</b></p></li>
+              <li><p>User level picture: each process has 1 stack for each thread; each <em>process</em> has code for context switching, scheduling; kernel has 1 stack for each <em>process</em></p></li>
+              <li><p>Kernel level picture: each process has 1 stack for each thread; <em>kernel</em> has code for context switching, scheduling; kernel has 1 stack for each <em>thread</em></p></li>
+            </ul>
+            <h5>Pros And Cons</h5>
+            <ul>
+              <li><p>Pros of user level threads:</p></li>
+              <li style="list-style-type: none";><p>- Programmers should write programs independent of OS; portability - works on any kernel</p></li>
+              <li style="list-style-type: none";><p>- Context switching in user space is efficient; going into kernel takes time</p></li>
+              <li style="list-style-type: none";><p>- Programmer can control scheduling policy</p></li>
+              <li><p>Cons of user level threads:</p></li>
+              <li style="list-style-type: none";><p>- No true parallelism</p></li>
+              <li><p>Pros of kernel level threads:</p></li>
+              <li style="list-style-type: none";><p>- true parallelism - different thread on each CPU</p></li>
+              <li><p>Cons of kernel level threads:</p></li>
+              <li style="list-style-type: none";><p>- overhead - jumping into kernel is expensive</p></li>
+            </ul>
           </div>
           <div class="content" id="scheduling">
             <h3>Scheduling</h3>
