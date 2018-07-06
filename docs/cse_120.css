@@ -35,3 +35,22 @@ body {
 .content {
   padding-top: 70px;
 }
+
+td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+#axis td {
+  text-align: right;
+  border-width: 0;
+}
+
+#active {
+  background-color: rgb(17, 233, 17);
+}
+
+#waiting {
+  background-color: yellow;
+}

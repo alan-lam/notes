@@ -23,9 +23,9 @@
               <a class="dropdown-item" href="#" target="_blank">Action</a>
             </div>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#" target="_blank">Cheat Sheets</a>
-          </li>
+          </li> -->
         </ul>
       </div>
     </nav>
@@ -173,6 +173,174 @@
           </div>
           <div class="content" id="scheduling">
             <h3>Scheduling</h3>
+            <ul>
+              <li><p>CPU scheduling problem: if there are multiple processes and only 1 CPU, how much time should each process get?</p></li>
+              <li><p>No single best policy; depends on goals of the system</p></li>
+              <li style="list-style-type: none";><p>- personal computer: active window gets most CPU</p></li>
+              <li style="list-style-type: none";><p>- large time-shared computer: everyone gets equal amount</p></li>
+              <li><p>Arrival time: when process is created</p></li>
+              <li><p>Service time: amount of CPU time for a process</p></li>
+              <li><p>Turnaround time: time between arriving and departing</p></li>
+              <li style="list-style-type: none";><p>- want to be as small as possible</p></li>
+            </ul>
+            <h5>Processes Arrive at the Same Time</h5>
+            <ul>
+              <li><p>Longest First: order processes by amount of CPU time needed from greatest to least</p></li>
+              <li><p>Shortest First: order from least time needed to greatest time needed</p></li>
+              <li style="list-style-type: none";><p>- provably optimal</p></li>
+              <li style="list-style-type: none";><p>Longest First</p></li>
+              <table>
+                <tr id="axis">
+                  <td></td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>T T</td>
+                </tr>
+                <tr>
+                  <td>P<sub>1</sub></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>P<sub>2</sub></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="active">S<sub>2</sub></td>
+                  <td id="active">S<sub>2</sub></td>
+                  <td id="active">S<sub>2</sub></td>
+                  <td></td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <td>P<sub>3</sub></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="active">S<sub>3</sub></td>
+                  <td>9</td>
+                </tr>
+              </table>
+              <p>T T: turnaround time</p>
+              <p>Average Turnaround Time: 22/3</p>
+              <p>Process 1, Process 2, Process 3 all arrive at the same time. P<sub>1</sub> is scheduled first and it has service time S<sub>1</sub>. P<sub>2</sub> and P<sub>3</sub> are waiting for P<sub>1</sub> to finish. Once P<sub>1</sub> is done, P<sub>2</sub>, which is the next longest process, is scheduled. Once P<sub>2</sub> is done, P<sub>3</sub> runs.</p>
+              <p>P<sub>2</sub>, P<sub>3</sub>, ..., P<sub>n</sub> all have to wait S<sub>1</sub> time. So it is best to make it as small as possible. Hence, shortest first.</p>
+              <li style="list-style-type: none";><p>Shortest First</p></li>
+              <table>
+                <tr id="axis">
+                  <td></td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                  <td>T T</td>
+                </tr>
+                <tr>
+                  <td>P<sub>1</sub></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="waiting"></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td id="active">S<sub>1</sub></td>
+                  <td>9</td>
+                </tr>
+                <tr>
+                  <td>P<sub>2</sub></td>
+                  <td id="waiting"></td>
+                  <td id="active">S<sub>2</sub></td>
+                  <td id="active">S<sub>2</sub></td>
+                  <td id="active">S<sub>2</sub></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <td>P<sub>3</sub></td>
+                  <td id="active">S<sub>3</sub></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>1</td>
+                </tr>
+              </table>
+              <p>T T: turnaround time</p>
+              <p>Average Turnaround Time: 14/3</p>
+              <li><p>Math proof of shortest first being optimal:</p></li>
+              <li style="list-style-type: none";><p>Average T T = [S<sub>1</sub> + (S<sub>1</sub> + S<sub>2</sub>) + ... + (S<sub>1</sub> + ... + S<sub>n</sub>)] / n</p></li>
+              <li style="list-style-type: none";><p>= [nS<sub>1</sub> + (n-1)S<sub>2</sub> + ... + S<sub>n</sub>] / n</p></li>
+              <li style="list-style-type: none";><p>S<sub>1</sub> has the most weight (n) so it should be as small as possible to minimize average turnaround time.</p></li>
+            </ul>
+            <h5>Processes Arrive at Different Times</h5>
+            <ul>
+              <li><p>Non-preemptive: CPU is not taken away from a process once its given</p></li>
+              <li><p>Starvation: when a process wants a resource but can't get it</p></li>
+              <li><p>First Come First Served: first process created gets all the CPU, then the next process created gets the CPU when the previous process is done</p></li>
+              <li style="list-style-type: none";><p>- non-preemptive</p></li>
+              <li style="list-style-type: none";><p>- no starvation (all processes eventually get CPU time)</p></li>
+              <li style="list-style-type: none";><p>- bad for short processes (have to wait for long processes to finish if they (long processes) are created first)</p></li>
+              <li><p>Round Robin: every process gets a time-slice (quantum) of CPU</p></li>
+              <li style="list-style-type: none";><p>- generally does better than FCFS; a process waits at most (n-1)*quantum units of time</p></li>
+              <li style="list-style-type: none";><p>- preemptive</p></li>
+              <li style="list-style-type: none";><p>- no starvation</p></li>
+              <li><p>Shortest Process Next: select the shortest process to run next</p></li>
+              <li style="list-style-type: none";><p>- theoretical; have to know how long processes will run ahead of time</p></li>
+              <li style="list-style-type: none";><p>- most optimal non-preemptive policy</p></li>
+              <li style="list-style-type: none";><p>- allows for starvation; long process is waiting, but shorter processes keep coming in</p></li>
+              <li><p>Shortest Remaining Time: select process with shortest remaining time to run next</p></li>
+              <li style="list-style-type: none";><p>- theoretical</p></li>
+              <li style="list-style-type: none";><p>- most optimal preemptive policy</p></li>
+              <li style="list-style-type: none";><p>- allows for starvation</p></li>
+              <li><p>Multi-Level Feedback Queues</p></li>
+              <li style="list-style-type: none";><p>- levels represent priority; processes in queue 0 have the highest priority and processes in queue n have the lowest priority</p></li>
+              <li style="list-style-type: none";><p>- new processes enter queue 0</p></li>
+              <li style="list-style-type: none";><p>- select process with highest priority</p></li>
+              <li style="list-style-type: none";><p>- process runs for 2<sup>k</sup> quantums, where k is the level of the queue</p></li>
+              <li style="list-style-type: none";><p>- higher priority processes get the CPU more often, but have shorter running times; lower priority processes don't get the CPU as often, but have longer running times</p></li>
+              <li style="list-style-type: none";><p>- if a process ran for less than 2<sup>k</sup> quantums (CPU gets taken away before it could use all the time it was given), it gets put back in queue k</p></li>
+              <li style="list-style-type: none";><p>- if a process ran for 2<sup>k</sup> quantums (able to use all the time it was given), it gets put in queue k+1</p></li>
+              <li style="list-style-type: none";><p>- potential starvation; fix by periodically raising everyone's priority</p></li>
+              <li style="list-style-type: none";><p>- favors short processes, so it does well</p></li>
+              <li style="list-style-type: none";><p>- learns over time; sorts processes</p></li>
+            </ul>
           </div>
           <div class="content" id="synchronization">
             <h3>Synchronization</h3>
