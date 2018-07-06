@@ -340,6 +340,39 @@
               <li style="list-style-type: none";><p>- potential starvation; fix by periodically raising everyone's priority</p></li>
               <li style="list-style-type: none";><p>- favors short processes, so it does well</p></li>
               <li style="list-style-type: none";><p>- learns over time; sorts processes</p></li>
+              <li><p>Priority Scheduling: label each process with a priority and select the highest one</p></li>
+              <li style="list-style-type: none";><p>- tie priorities to something external (1/CPU time used)</p></li>
+              <li><p>Fair Share (Proportional Share): every process gets a proportion of what they ask for</p></li>
+              <li style="list-style-type: none";><p>- select process with minimum actual/request ratio</p></li>
+              <li style="list-style-type: none";><p>- inefficient because have to compute fractions and minimum at every quantum</p></li>
+            </ul>
+            <h5>Real Time Scheduling</h5>
+            <ul>
+              <li><p>Real time system is correct if computations are correct and done within a certain amount of time</p></li>
+              <li><p>Non-real time system only needs to make correct computations</p></li>
+              <li><p>Hard real time system must meet all deadlines (e.g. nuclear reactor)</p></li>
+              <li><p>Soft real time system - ok to miss a few deadlines</p></li>
+              <li><p>Why not use hard real time for everything?</p></li>
+              <li style="list-style-type: none";><p>- requires a lot of resources; might not be able to run anything else</p></li>
+            </ul>
+            <h5>Periodic Tasks</h5>
+            <ul>
+              <li><p>Periodic: schedule repeats every period</p></li>
+              <li><p>Can processes be ordered to meet all deadlines?</p></li>
+              <li><p>Earliest Deadline First: schedule process with earliest deadline first</p></li>
+              <li style="list-style-type: none";><p>- works for periodic and aperiodic processes</p></li>
+              <li style="list-style-type: none";><p>- expensive - sort deadlines</p></li>
+              <li><p>C: CPU burst - how long process runs for each period</p></li>
+              <li><p>T: period - deadline (e.g. every 30 seconds)</p></li>
+              <li><p>U: utilization = C/T</p></li>
+              <li><p>Rate Monotonic Scheduling: select process with highest rate (1/period)</p></li>
+              <li style="list-style-type: none";><p>- only works for periodic processes</p></li>
+              <li style="list-style-type: none";><p>- if sum of utilizations &le; n(2<sup>1/n</sup>-1) then all deadlines will be met</p></li>
+              <li style="list-style-type: none";><p>- preempt if new period starts and there is a higher priority process</p></li>
+              <li style="list-style-type: none";><p>- if process completes burst, it goes to sleep until next period</p></li>
+              <li style="list-style-type: none";><p>- static: priorities of processes don't change over time</p></li>
+              <li style="list-style-type: none";><p>- RMS is optimal for static priority scheduling</p></li>
+              <li style="list-style-type: none";><p>- no matter how many processes there are, if they're not asking for &gt; 69% of CPU, RMS will work</p></li>
             </ul>
           </div>
           <div class="content" id="synchronization">
