@@ -377,6 +377,34 @@
           </div>
           <div class="content" id="synchronization">
             <h3>Synchronization</h3>
+            <ul>
+              <li><p>Synchronize: when events happen at the same time</p></li>
+              <li><p>Process synchronization: when events in processes occur at the same time</p></li>
+              <li style="list-style-type: none";><p>- every instruction, function call is an event</p></li>
+              <li><p><b>Use synchronization to prevent race conditions and wait for resources</b></p></li>
+              <li><p><b>Critical section: code that may be executing by different processes, but needs to be atomic: cannot be divided; cannot interleave critical sections that are related to each other</b></p></li>
+              <li><p><b>Mutual exclusion: only 1 process active in a critical section</b></p></li>
+              <li><p>Programmer must identify critical sections and surround them with entry/exit code, which makes processes atomic</p></li>
+              <li><p>Entry code should allow processes to enter critical section if there are no other processes inside</p></li>
+              <li style="list-style-type: none";><p>- none inside -> open; process enters -> close; process leaves -> open</p></li>
+              <li><p>Requirements for a good solution for entry/exit code (mutual exclusion):</p></li>
+              <li style="list-style-type: none";><p>- at most 1 process in critical section</p></li>
+              <li style="list-style-type: none";><p>- can't block entry if no process inside critical section</p></li>
+              <li style="list-style-type: none";><p>- a process that is waiting should be able to enter critical section</p></li>
+              <li style="list-style-type: none";><p>- no assumptions about CPU speed or number</p></li>
+            </ul>
+            <h5>Software Lock</h5>
+            <ul>
+              <code>shared int lock = OPEN;</code>
+              <div class="display_flex">
+                <p>P<sub>1</sub></p>
+                <code>while (lock == CLOSED);<br>lock = CLOSED;<br>&lt; critical section &gt;<br>lock = OPEN;</code>
+                <p>P<sub>2</sub></p>
+                <code>while (lock == CLOSED);<br>lock = CLOSED;<br>&lt; critical section &gt;<br>lock = OPEN;</code>
+              </div>
+              <li style="list-style-type: none";><p>At first, lock is open, so while loop will be skipped. Then lock will be closed. Then process will enter critical section. Since lock is closed, the other process will be stuck in the while loop, and thus, be unable to enter critical section. Once the process exits the critical section, the lock is open, and the other process will be able to enter the critical section.</p></li>
+              <li style="list-style-type: none";><p>Problem: P<sub>1</sub> checks lock, lock is open so skip while loop, but just before it closes the lock, there is a context switch to P<sub>2</sub>. The lock is still open, so P<sub>2</sub> also skips the while loop and enters the critical section. There is a context switch back to P<sub>1</sub> and it also enters the critical section.</p></li>
+            </ul>
           </div>
           <div class="content" id="ipc">
             <h3>InterProcess Communication</h3>
