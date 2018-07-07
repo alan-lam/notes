@@ -471,6 +471,74 @@
           </div>
           <div class="content" id="ipc">
             <h3>InterProcess Communication</h3>
+            <ul>
+              <li><p>Used when want to build multiprocess program</p></li>
+              <li><p>Want to support cooperating processes for speed and modularity</p></li>
+              <li style="list-style-type: none";><p>- speed: exploit parallelism; one process waits for resources and other ones can proceed</p></li>
+              <li style="list-style-type: none";><p>- modularity: reusable, self-contained programs</p></li>
+            </ul>
+            <h5>Examples of Cooperating Processes</h5>
+            <ul>
+              <li><p>Pipeline: P<sub>1</sub> -> P<sub>2</sub> -> P<sub>3</sub> output of P<sub>1</sub> is input of P<sub>2</sub> ...</p></li>
+              <li><p>Client/Server: client needs a service (result of a function), sends message to server, server computes answer and sends it back to client</p></li>
+              <li style="list-style-type: none";><p>- good for cooperating processes built by different people (e.g. web browser and web server)</p></li>
+              <li><p>Parent/Child: parent generates numerous children who computer subresults and parent combines results</p></li>
+              <li><p>Cooperate: processes need to talk to each other to organize their activity</p></li>
+              <li><p><b>IPC requires data transfer mechanism and synchronization mechanism</b></p></li>
+              <li style="list-style-type: none";><p>- semaphores are not an IPC mechanism because no data transfer</p></li>
+              <li><p>There are three abstractions for IPC: shared memory + semaphores, monitors, and message passing</p></li>
+            </ul>
+            <h5>Producer/Consumer Problem</h5>
+            <ul>
+              <li><p>Producer produces data; consumer consumes what was produced (both are processes)</p></li>
+              <li><p>Work on a shared buffer (array)</p></li>
+            </ul>
+            <h5>Shared Memory + Semaphores</h5>
+            <ul>
+              <li><p>Shared variables to tell where things are in buffer</p></li>
+              <li><p>Won't work if consumer goes first (nothing in buffer)</p></li>
+              <li><p>Consumer has semaphore for waiting until there are filled slots</p></li>
+              <li><p>Producer has semaphore for waiting until slots are empty before inputting</p></li>
+              <li><p>Won't work for multiple producers; producers might overwrite values</p></li>
+              <li style="list-style-type: none";><p>- inputting into array is a critical section; surround with additional semaphores</p></li>
+              <li><p>One semaphore solves synchronization and the other solves mutual exclusion</p></li>
+            </ul>
+            <h5>Monitors</h5>
+            <ul>
+              <li><p>Programming language constructs; if programming langauge doesn't support monitors, can't use</p></li>
+              <li><p>Consists of shared variables, accessed via procedures that make up the monitor</p></li>
+              <li><p>Have condition variables for blocking and unblocking processes</p></li>
+              <li style="list-style-type: none";><p>- wait: block; signal: unblock</p></li>
+              <li><p>Only 1 process can be active inside a monitor</p></li>
+              <li><p>Producer produces n times then blocks; consumer consumes n times then blocks</p></li>
+              <li><p>No race condition because only 1 process active inside monitor</p></li>
+              <li style="list-style-type: none";><p>- since monitors are a programming language construct, compiler adds code to make them atomic</p></li>
+              <li style="list-style-type: none";><p>- semaphores are not a programming language construct</p></li>
+              <li><p>Think of monitor as an apartment with 2 rooms (active area and waiting area) and 1 door (between active area and outside the apartment)</p></li>
+              <li><p>When process calls monitor function, it is entering the monitor</p></li>
+              <li style="list-style-type: none";><p>- door is open by default; closed when process enters</p></li>
+              <li><p>If process is done, it exits and the door opens</p></li>
+              <li><p>If process is inside monitor and calls wait, it moves from active area to waiting area; then door opens and another process can come in to the active area</p></li>
+              <li><p>Condition variables have no memory; can't "remember" that wait/signal was called previously</p></li>
+              <li><p>Monitors bring additional structure to IPC</p></li>
+            </ul>
+            <h5>Message Passing</h5>
+            <ul>
+              <li><p>Two functions: send and receive</p></li>
+              <li style="list-style-type: none";><p>- send: give name of process and pointer to buffer</p></li>
+              <li><p>Kernel copies data into kernel; records that it was from P<sub>1</sub> and supposed to go to P<sub>2</sub></p></li>
+              <li style="list-style-type: none";><p>- happens when P<sub>1</sub> calls send, which is a system call</p></li>
+              <li><p>If P<sub>2</sub> calls receive, kernel copies data into buffer</p></li>
+              <li><p>How data transfer is implemented: kernel transfers data from one place to another</p></li>
+              <li><p>How synchronization is achieved: process waits until message is sent before receiving</p></li>
+              <li><p>No shared memory - good for multiprocess program over a network, multiple computers have no shared memory</p></li>
+              <li><p>Kernel is in control, so it can block producer or not schedule it to run if producing too much</p></li>
+              <li><p>Who should messages be sent to? Since the client and server may be two programs written by different people, how does client know process ID of server?</p></li>
+              <li style="list-style-type: none";><p>- port: like a mailbox; has a number everyone recognizes</p></li>
+              <li><p>Kernel buffering: messages haven't been sent yet, pile up in kernel</p></li>
+              <li style="list-style-type: none";><p>- kernel could block/not allow to run process producing messages</p></li>
+              <li><p>Safer than shared memory paradigms because shared memory can lead to programmer abuse/error</p></li>
+            </ul>
           </div>
           <div class="content" id="deadlock">
             <h3>Deadlock</h3>
