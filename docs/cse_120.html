@@ -402,8 +402,71 @@
                 <p>P<sub>2</sub></p>
                 <code>while (lock == CLOSED);<br>lock = CLOSED;<br>&lt; critical section &gt;<br>lock = OPEN;</code>
               </div>
-              <li style="list-style-type: none";><p>At first, lock is open, so while loop will be skipped. Then lock will be closed. Then process will enter critical section. Since lock is closed, the other process will be stuck in the while loop, and thus, be unable to enter critical section. Once the process exits the critical section, the lock is open, and the other process will be able to enter the critical section.</p></li>
-              <li style="list-style-type: none";><p>Problem: P<sub>1</sub> checks lock, lock is open so skip while loop, but just before it closes the lock, there is a context switch to P<sub>2</sub>. The lock is still open, so P<sub>2</sub> also skips the while loop and enters the critical section. There is a context switch back to P<sub>1</sub> and it also enters the critical section.</p></li>
+              <li><p>At first, lock is open, so while loop will be skipped. Then lock will be closed. Then process will enter critical section. Since lock is closed, the other process will be stuck in the while loop, and thus, be unable to enter critical section. Once the process exits the critical section, the lock is open, and the other process will be able to enter the critical section.</p></li>
+              <li><p>Problem: P<sub>1</sub> checks lock, lock is open so skip while loop, but just before it closes the lock, there is a context switch to P<sub>2</sub>. The lock is still open, so P<sub>2</sub> also skips the while loop and enters the critical section. There is a context switch back to P<sub>1</sub> and it also enters the critical section. Broke rule: at most 1 process in critical section</p></li>
+            </ul>
+            <h5>Take Turns</h5>
+            <ul>
+              <code>shared int turn = 0;</code>
+              <div class="display_flex">
+                <p>P<sub>1</sub></p>
+                <code>while (turn != 0);<br>&lt; critical section &gt;<br>turn = 1;</code>
+                <p>P<sub>2</sub></p>
+                <code>while (turn != 1);<br>&lt; critical section &gt;<br>turn = 0;</code>
+              </div>
+              <li><p>At first, turn is 0, so P1 gets to go inside the critical section first. By doing this, P2 won't go inside the critical section since it is not P2's turn.</p></li>
+              <li><p>Problem: if P2 is scheduled to go before P1, it will be stuck in the while loop and won't enter the critical section. Broke rule: can't block entry if no process inside critical section</p></li>
+            </ul>
+            <h5>State Intention</h5>
+            <ul>
+              <code>shared boolean intent[2] = {FALSE, FALSE};</code>
+              <div class="display_flex">
+                <p>P<sub>1</sub></p>
+                <code>intent[0] = TRUE;<br>while (intent[1]);<br>&lt; critical section &gt;<br>intent[0] = FALSE;</code>
+                <p>P<sub>2</sub></p>
+                <code>intent[1] = TRUE;<br>while (intent[0]);<br>&lt; critical section &gt;<br>intent[1] = FALSE;</code>
+              </div>
+              <li><p>When a process starts, it will declare its intention to go into the critical section. But before it goes in, it checks if the other process was intending to go inside the critical section. If it was, it will let the other process go first.</p></li>
+              <li><p>Problem: P<sub>1</sub> sets intent = TRUE, there is a context switch to P<sub>2</sub>, P<sub>2</sub> sets intent = TRUE, now both are stuck in the while loop (busy-waiting). Broke rule: a process that is waiting should be able to enter critical section</p></li>
+            </ul>
+            <h5>Peterson's Solution</h5>
+            <ul>
+              <code>shared int turn;<br>shared boolean intent[2] = {FALSE, FALSE};</code>
+              <div class="display_flex">
+                <p>P<sub>1</sub></p>
+                <code>intent[0] = TRUE;<br>turn = 1;<br>while (intent[1] && turn == 1);<br>&lt; critical section &gt;<br>intent[0] = FALSE;</code>
+                <p>P<sub>2</sub></p>
+                <code>intent[1] = TRUE;<br>turn = 0;<br>while (intent[0] && turn == 0);<br>&lt; critical section &gt;<br>intent[1] = FALSE;</code>
+              </div>
+              <li><p>Combines take turns and state intention</p></li>
+              <li><p>Problem: none!</p></li>
+              <li><p>An all-software solution</p></li>
+            </ul>
+            <h5>Disable Interrupts</h5>
+            <ul>
+              <li><p>Context switching causes problems; interrupts cause context switching; so disable interrupts before entering critical sections and enable when leaving</p></li>
+              <li><p>Problem: interrupts are turned off on a per-CPU basis. Broke rule: no assumptions about CPU speed or number</p></li>
+            </ul>
+            <h5>Test-and-Set Lock</h5>
+            <ul>
+              <li><p>Takes a memory location, tests whether its contents == 0 and sets contents = 1 atomically (virtually, at the same time)</p></li>
+              <li><p>Typical hardware solution</p></li>
+            </ul>
+            <h5>Semaphores</h5>
+            <ul>
+              <li><p>Variable that helps us achieve synchronization</p></li>
+              <li><p>Can declare and initialize it to some integer value</p></li>
+              <li><p>Can call wait or call signal on it</p></li>
+              <li style="list-style-type: none";><p>- wait will decrement value of semaphore and check if value < 0; if yes, block the currently running process, else, return</p></li>
+              <li style="list-style-type: none";><p>- signal will increment value of semaphore and unblock 1 process, if any are blocked</p></li>
+              <li><p>synchronization is more than mutual exclusion</p></li>
+              <li><p>Can use semaphores to control order of process execution (want P<sub>1</sub> before P<sub>2</sub>)</p></li>
+              <li style="list-style-type: none";><p>- conditional synchronization or general synchronization</p></li>
+              <li><p>Semaphores only provide synchronization; they don't allow any information to be transferred from one process to another</p></li>
+              <li style="list-style-type: none";><p>- A and B use semaphores; B can never learn anything about behavior of A (e.g. whether A is blocked)</p></li>
+              <li><p>Can't check value of semaphore; only initialize, wait, signal</p></li>
+              <li><p>Wait and signal must be atomic, so need TSL or Peterson's solution</p></li>
+              <li><p>Synchronization: one process waiting for another one</p></li>
             </ul>
           </div>
           <div class="content" id="ipc">
