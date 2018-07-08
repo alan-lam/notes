@@ -542,6 +542,71 @@
           </div>
           <div class="content" id="deadlock">
             <h3>Deadlock</h3>
+            <ul>
+              <li><p><b>Set of processes that are permanently blocked; not able to run because of logical reason</b></p></li>
+              <li style="list-style-type: none";><p>- <b>unblocking one process requires another to run, but no others can run</b></p></li>
+              <li><p>Processes ask for resources and kernel gives them out; sometimes process holds on to resource and sometimes ask for resource</p></li>
+              <li><p>Ex: memory = 200; P<sub>1</sub> asks for 80, memory = 120; P<sub>2</sub> asks for 70, memory = 50; P<sub>1</sub> asks for 60, P<sub>1</sub> gets blocked; P<sub>2</sub> asks for 80, P<sub>2</sub> gets blocked</p></li>
+            </ul>
+            <h5>Four Conditions For Deadlock</h5>
+            <ul>
+              <li><p><b>Deadlock is possible only if all four conditions are present:</b></p></li>
+              <li style="list-style-type: none";><p>- mutual exclusion: only 1 process may use a resource at a time</p></li>
+              <li style="list-style-type: none";><p>- hold-and-wait: process holds 1 resource and is waiting for another</p></li>
+              <li style="list-style-type: none";><p>- no preemption: resources can't be taken away from a process</p></li>
+              <li style="list-style-type: none";><p>- circular wait: hold-and-wait pattern is circular/cyclic</p></li>
+            </ul>
+            <h5>Attack the Deadlock Problem</h5>
+            <ul>
+              <li><p>Deadlock prevention: make deadlock impossible by removing 1 condition</p></li>
+              <li><p>Deadlock avoidance: temporarily get rid of 1 condition, look at every situation and see if it's possible for a deadlock</p></li>
+              <li><p>Deadlock detection: let them happen, maybe can recover</p></li>
+            </ul>
+            <h5>Deadlock Prevention</h5>
+            <ul>
+              <li><p>Remove mutual exclusion: why not allow all resources to be shared?</p></li>
+              <li style="list-style-type: none";><p>- some resources can't be shared (e.g. printer, critical section)</p></li>
+              <li><p>Remove hold-and-wait: what if we make processes ask for resources all at once? (e.g. if need resources A and B, need to ask for both at the same time, not A then later B)</p></li>
+              <li style="list-style-type: none";><p>- processes don't know what they will want; may realize need more later</p></li>
+              <li><p>Remove no preemption: what if we allow resources to be taken away?</p></li>
+              <li style="list-style-type: none";><p>- bad for some things like printing; jobs need to be completed</p></li>
+              <li><p>Remove circular wait: what if we numbered all resources and processes have to ask for them in order? (e.g. if process wants resources 3, 5, and 9, it has to get 3, then 5, then, 9; not 9, then 3, then 5</p></li>
+              <li style="list-style-type: none";><p>- there are an unknown number of resources; some are created on demand</p></li>
+            </ul>
+            <h5>Deadlock Avoidance</h5>
+            <ul>
+              <li><p>Avoid getting into situations that lead to deadlock; remove condition only when deadlock is possible</p></li>
+              <li><p>Works when resources are given out in increments (e.g. memory, CPU)</p></li>
+              <li><p>Processes would have to declare upfront the max amount they need, but they often don't know how much they need</p></li>
+              <li><p>If they did know, could use Banker's Algorithm</p></li>
+            </ul>
+            <h5>Banker's Algorithm</h5>
+            <ul>
+              <li><p>Works for fixed number of processes and resources</p></li>
+              <li><p>Characterize system as either in a safe state or unsafe state</p></li>
+              <li><p>Safe state: deadlock is avoidable</p></li>
+              <li><p>Unsafe state: deadlock is possible; not certain</p></li>
+              <li><p><b>System always begins in a safe state, everytime there is a request, kernel asks if giving resource makes system go from safe to unsafe; if so, won't grant request</b></p></li>
+              <li><p>Would need 3 data structures:</p></li>
+              <li style="list-style-type: none";><p>- process/resource claim matrix: what is the max amount a process may ask for</p></li>
+              <li style="list-style-type: none";><p>- process/resource allocation matrix: what did they actually ask for and what do they currently own</p></li>
+              <li style="list-style-type: none";><p>- resource availability vector: how many resources are available/free</p></li>
+              <li><p>Can look at contents of these data structures and classify system as safe or unsafe</p></li>
+              <li><p>Safe state means at least 1 process can run to completion</p></li>
+              <li><p>If process may need more resources but none are available, don't run that process</p></li>
+            </ul>
+            <h5>Detection and Recovery</h5>
+            <ul>
+              <li><p>Do nothing to prevent/avoid deadlocks; if they happen, they happen</p></li>
+              <li><p>Periodically try to see if deadlock did occur and try to do something about it</p></li>
+              <li><p>Deadlocks rarely happen; why put all this complexity (of prevention and avoidance) into kernel for something unusual?</p></li>
+              <li><p>Cost of putting them in may be very high</p></li>
+              <li><p>Most general purpose operating systems (e.g. laptops) take this approach</p></li>
+              <li><p>Detect deadlock by constructing resource allocation graph and see if there's a cycle</p></li>
+              <li><p>Can kill all processes that are deadlocked</p></li>
+              <li><p>Can terminate them one at a time and see if that solves it</p></li>
+              <li style="list-style-type: none";><p>- process can be left in inconsistent state (writing/sending message may contain garbage)</p></li>
+            </ul>
           </div>
           <div class="content" id="memory_management">
             <h3>Memory Management</h3>
