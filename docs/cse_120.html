@@ -625,6 +625,87 @@
           </div>
           <div class="content" id="protection">
             <h3>Protection</h3>
+            <ul>
+              <li><p>Processes need to access resources</p></li>
+              <li><p>Resources are shared; want all processes to be able to access them</p></li>
+              <li><p><b>Resources need to be protected</b></p></li>
+              <li style="list-style-type: none";><p>- <b>don't want process to take it and use it forever</b></p></li>
+              <li style="list-style-type: none";><p>- <b>don't want to use without permission</b></p></li>
+              <li><p>The kernel enforces protection</p></li>
+              <li><p>At the beginning, the kernel owns all the resources; then processes ask the kernel for resources</p></li>
+              <li><p>Once a process is given access, the kernel can prevent others from gaining access; the kernel may or may not be able to take the resource away</p></li>
+              <li><p>The kernel itself needs to be protected</p></li>
+              <li><p>Typically, the kernel is protected by the hardware</p></li>
+              <li><p><b>Protection: how to limit access to a resource</b></p></li>
+              <li><p>Resource: anything that requires protection</p></li>
+              <li><p>Domain: set of resource, permission pairs; where a process lives; defines what a process is allowed to do</p></li>
+              <li><p>Process: the ones accessing resources</p></li>
+            </ul>
+            <h5>Protection Matrix</h5>
+            <ul>
+              <table>
+                <tr>
+                  <td class="no_border"></td>
+                  <td class="no_border">A</td>
+                  <td class="no_border">B</td>
+                  <td class="no_border">C</td>
+                  <td class="no_border">D</td>
+                </tr>
+                <tr>
+                  <td class="no_border">X</td>
+                  <td>r, w</td>
+                  <td>r, w</td>
+                  <td></td>
+                  <td>w</td>
+                </tr>
+                <tr>
+                  <td class="no_border">Y</td>
+                  <td>w</td>
+                  <td>r</td>
+                  <td>r, w</td>
+                  <td></td>
+                </tr>
+              </table>
+              <li><p>Rows are domains</p></li>
+              <li><p>Columns are resources</p></li>
+              <li><p>Matrix entry contains permissions/rights (read, write)</p></li>
+              <li><p>Inefficient because most of entries would be empty (since there are a lot of processes and resources)</p></li>
+            </ul>
+            <h5>Access Control Lists</h5>
+            <ul>
+              <li><p>Associated with resources; for every resource there is an access control list</p></li>
+              <table>
+                <tr>
+                  <td class="no_border">ACL for B</td>
+                </tr>
+                <tr>
+                  <td>X: r, w<br>Y: r</td>
+                </tr>
+              </table>
+              <li><p>Checks if domain of process is on list; like a registry: if name is on list, then ok to access</p></li>
+              <li><p>Inefficient because have to lookup on each resource access and have to check which domain</p></li>
+              <li><p>However, easy to revoke access; just take name off list</p></li>
+            </ul>
+            <h5>Capability Lists</h5>
+            <ul>
+              <li><p>Associated with each domain</p></li>
+              <table>
+                <tr>
+                  <td class="no_border">CL for X</td>
+                </tr>
+                <tr>
+                  <td>A: r, w<br>B: r, w<br>D: w</td>
+                </tr>
+              </table>
+              <li><p>Like key or ticket: if you have it, you get access</p></li>
+              <li><p>Efficient because you just present list on each access</p></li>
+              <li><p>However, it is hard to revoke access</p></li>
+            </ul>
+            <h5>Protection in UNIX</h5>
+            <ul>
+              <li><p>UNIX uses both access control lists and capability lists for resource protection</p></li>
+              <li><p>The first time a process accesses a file, the kernel checks the process against the access control list. If the process has permission to open the file, the kernel gives the process a file descriptor. That file descriptor then acts like a capability list for future file accesses</p></li>
+            </ul>
           </div>
           <div class="content" id="security">
             <h3>Security</h3>
