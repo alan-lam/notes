@@ -68,7 +68,7 @@
               <li><p><b>Text contains all of the code</b></p></li>
               <li><p><b>Data contains global variables, heap</b></p></li>
               <li><p><b>Stack contains activation records</b></p></li>
-              <img src="./pictures/text-data-stack.jpg">
+              <img class="img-fluid" src="./pictures/text-data-stack (processes).jpg">
               <li><p>An activation record is information pertaining to a procedure call</p></li>
               <li style="list-style-type: none";><p>- If a procedure calls itself 3 times, there will be 3 activation records</p></li>
               <li><p>Activation records store:</p></li>
@@ -610,6 +610,62 @@
           </div>
           <div class="content" id="memory_management">
             <h3>Memory Management</h3>
+            <ul>
+              <li><p>Process has to store code (text), static variables (heap), activation records (stack)</p></li>
+              <li><p>Text is fixed; stack and data grow/shrink</p></li>
+              <li><p>What it would look like if process owns whole memory:</p></li>
+              <img class="img-fluid" src="./pictures/text-data-stack (memory).jpg">
+              <li style="list-style-type: none";><p>- process thinks it does own whole memory</p></li>
+              <li><p>Address space: set of addresses needed to access memory</p></li>
+              <li><p>Compiler has this view of memory as well</p></li>
+              <li><p>Compiler generates all of the memory addresses for variables</p></li>
+              <li><p><b>The problem is the compiler works with incomplete information; it doesn't know where the program will run in physical memory</b></p></li>
+              <li><p>Typically there are many processes in physical memory; only 1 can live at location 0</p></li>
+              <li><p>Compiler doesn't know that; <b>pretends that the process's memory goes from 0 to some max value and allocate addresses based on that</b></p></li>
+              <li><p><b>The operating system figures out how to map those addresses into real physical addresses</b></p></li>
+              <li><p>Abstract - each process needs its own CPU and memory</p></li>
+              <li><p>Reality - single CPU whose time is divided up; single memory whose space is divided up</p></li>
+              <li><p>Why do all processes have to live in memory?</p></li>
+              <li><p>Consider an alternative - have all the processes live in a disk (secondary storage); when we want to run a process, we have to move its memory into physical memory</p></li>
+              <li style="list-style-type: none";><p>- takes too long to load from/to disk <em>and</em> to perform a context switch</p></li>
+              <li><p>The solution is to keep all processes inside memory so we just have to change context of CPU and move pointers around</p></li>
+              <li><p><b>We have a number of processes and want to fit them into memory</b></p></li>
+              <li><p>Memory starts empty; one big hole</p></li>
+              <li><p>Over time, memory gets allocated into blocks (put process into block and put block into hole)</p></li>
+              <img class="img-fluid" src="./pictures/memory_management.gif">
+              <li><p><b>Every allocation requires finding a hole large enough to fit the process</b></p></li>
+              <li><p>Usually, an allocation leaves a smaller hole</p></li>
+              <li><p>When memory is not needed, it is released and holes next to each other combine</p></li>
+            </ul>
+            <h5>Selecting the Best Hole</h5>
+            <ul>
+              <li><p>First Fit: find the first hole that fits</p></li>
+              <li style="list-style-type: none";><p>- simple, fast</p></li>
+              <img class="img-fluid" src="./pictures/first_fit.gif">
+              <li><p>Best Fit: find the hole that fits as perfectly as possible</p></li>
+              <li style="list-style-type: none";><p>- have to look at every hole</p></li>
+              <li style="list-style-type: none";><p>- leaves very small holes - fragments - that are likely unusable</p></li>
+              <img class="img-fluid" src="./pictures/best_fit.gif">
+              <li><p>Worst Fit: find the hole that leaves the largest resulting hole</p></li>
+              <li style="list-style-type: none";><p>- have to check every hole</p></li>
+              <img class="img-fluid" src="./pictures/worst_fit.gif">
+              <li><p>Which one is the best?</p></li>
+              <li style="list-style-type: none";><p>- consider tradeoff: how well blocks fit vs search time</p></li>
+              <li><p><b>Prefer to waste memory space than waste CPU time</b></p></li>
+              <li style="list-style-type: none";><p>- <b>memory is cheap; time is precious</b></p></li>
+              <li><p>First Fit is typically used because it is fast</p></li>
+              <li><p>Eventually, memory becomes fragmented - has unused holes</p></li>
+              <li><p>Internal fragmentation: memory not being used inside block (room between process's stack and data)</p></li>
+              <li style="list-style-type: none";><p>- unused memory inside process</p></li>
+              <li><p>External fragmentation: outside of allocated regions; usable for new requests (processes)</p></li>
+              <li style="list-style-type: none";><p>- unused memory inside overall memory</p></li>
+              <li><p>Compaction: combine all external fragments into a big hole; hopefully it is large enough for another process</p></li>
+              <li style="list-style-type: none";><p>- simple, but time consuming</p></li>
+              <li><p>Break block (process's memory) into little pieces and fit those pieces into fragments</p></li>
+              <li style="list-style-type: none";><p>- easier to fit, but complicated</p></li>
+              <li><p>Prefer breaking over compaction; prefer complexity over time</p></li>
+              <li><p>On average, how many holes are there going to be?</p></li>
+            </ul>
           </div>
           <div class="content" id="logical_memory">
             <h3>Logical Memory</h3>
