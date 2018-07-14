@@ -664,7 +664,46 @@
               <li><p>Break block (process's memory) into little pieces and fit those pieces into fragments</p></li>
               <li style="list-style-type: none";><p>- easier to fit, but complicated</p></li>
               <li><p>Prefer breaking over compaction; prefer complexity over time</p></li>
+            </ul>
+            <h5>50% Rule</h5>
+            <ul>
               <li><p>On average, how many holes are there going to be?</p></li>
+              <li><p>If there are n blocks allocated, there will be m = <sup>n</sup> &frasl; <sub>2</sub> holes, on average</p></li>
+            </ul>
+            <h5>Unused Memory Rule</h5>
+            <ul>
+              <li><p>On average, how much memory is lost to holes?</p></li>
+              <li><p>b: average size of blocks; h: average size of holes; f: fraction of memory lost to holes</p></li>
+              <li><p>M: size of memory; m: number of holes; n: number of blocks</p></li>
+              <li><p>k = <sup>h</sup> &frasl; <sub>b</sub> (ratio of average hole-to-block size)</p></li>
+              <li><p>M = mh + nb</p></li>
+              <li><p>f = <sup>mh</sup> &frasl; <sub>M</sub> = <sup>mh</sup> &frasl; <sub>mh + nb</sub></p></li>
+              <li><p>m = <sup>n</sup> &frasl; <sub>2</sub> -> n = 2m (by the 50% rule)</p></li>
+              <li><p>f = <sup>mh</sup> &frasl; <sub>mh + 2mb</sub> = <sup>h</sup> &frasl; <sub>h + 2b</sub></p></li>
+              <li><p>k = <sup>h</sup> &frasl; <sub>b</sub> -> h = kb</p></li>
+              <li><p>f = <sup>kb</sup> &frasl; <sub>kb + 2b</sub> = <sup>k</sup> &frasl; <sub>k + 2</sub></p></li>
+              <li><p>If k = 1, then the average hole size = average block size. Then f = 1/3, which means there is 33% wasted memory if the average hole size = average block size</p></li>
+              <li><p>If k = 2, then the average hole size = 2x average block size. Then f = 2/4 = 1/2, which means there is 50% wasted memory if the average hole size = 2x average block size</p></li>
+              <li><p>As k -> &infin;, f -> 1. This means the bigger the average hole size, the more wasted memory there is</p></li>
+              <li><p>As k -> 0, f -> 1. This means the smaller the average hole size, the less wasted memory there is</p></li>
+            </ul>
+            <h5>Pre-sized Holes</h5>
+            <ul>
+              <li><p>Variable-sized allocations cause fragmentation</p></li>
+              <li><p>So let's use pre-sized holes</p></li>
+              <li><p>Make all holes the same size</p></li>
+              <li style="list-style-type: none";><p>- easy to allocate blocks, but the holes may be too small</p></li>
+              <li><p>Make holes in different sizes (e.g. small, medium, large)</p></li>
+              <li style="list-style-type: none";><p>- more flexible, but complex</p></li>
+            </ul>
+            <h5>Buddy System</h5>
+            <ul>
+              <li><p>Partition the holes into sizes of powers of 2</p></li>
+              <li><p>allocation: r = size of request</p></li>
+              <li style="list-style-type: none";><p>- find hole larger than r</p></li>
+              <li style="list-style-type: none";><p>- break hole into 2 buddies and see if half is ok; keep breaking until too small</p></li>
+              <li><p>free: check if buddy is free and coalesce</p></li>
+              <img class="img-fluid" src="./pictures/buddy_system.gif">
             </ul>
           </div>
           <div class="content" id="logical_memory">
