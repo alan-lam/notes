@@ -711,6 +711,114 @@
           </div>
           <div class="content" id="logical_memory">
             <h3>Logical Memory</h3>
+            <ul>
+              <li><p>There are three problems with sharing memory among processes</p></li>
+              <li><p>Addressing problem: every process thinks they own their own memory and everyone's memories starts at 0</p></li>
+              <li style="list-style-type: none";><p>- in physical memory, there is only one address 0 and only the kernel gets it</p></li>
+              <li style="list-style-type: none";><p>- processes' memories don't actually start at 0</p></li>
+              <li><p>Protection problem: because multiple processes live in memory, we don't want one process to touch the memory of another process</p></li>
+              <li style="list-style-type: none";><p>- possible because we are forced to keep processes in memory</p></li>
+              <li><p>Space problem: one physical memory shared among a lot of processes means each process only gets a little; even less as more processes come in</p></li>
+              <li><p>Address space: set of addresses for memory</p></li>
+              <li style="list-style-type: none";><p>- usually linear; starting at 0 and going to some max value n-1 where n is the size of memory</p></li>
+              <li><p>Physical address space: address space that applies to physical memory</p></li>
+              <li><p>Logical address: address for logical memory</p></li>
+              <li><p>Logical memory: memory that belongs to process; process thinks it owns that memory; the compiler generates addresses for that memory and can reason about that memory</p></li>
+              <li style="list-style-type: none";><p>- can say memory always starts at 0; structured a certain way; goes up by increments of x; independent of physical memory</p></li>
+              <li><p><b>Machine doesn't care about logical memory, so we need to convert logical addresses to physical addresses</b></p></li>
+              <li><p>There are two possible times when we can do that conversion</p></li>
+              <li><p>Load time: when we load executable into memory; convert via software</p></li>
+              <li style="list-style-type: none";><p>- ex: can add 100 to every address</p></li>
+              <li style="list-style-type: none";><p>- doesn't work with dynamic allocation (creating new address not known at load time)</p></li>
+              <li><p>Access time: every time memory is accessed, we can convert logical address at that point just before it's sent to memory; convert via hardware</p></li>
+            </ul>
+            <h5>Hardware for Logical Addressing</h5>
+            <ul>
+              <li><p>Base register: hardware register; when there is a context switch to a process, the base register gets filled with the start value of that process's memory; every time a logical address is supplied, it gets added by the hardware to the base register and that gets sent to the physical memory</p></li>
+            </ul>
+            <h5>Protection</h5>
+            <ul>
+              <li><p>Bound register: filled with size of logical memory</p></li>
+              <li><p>Every time a logical address is supplied, it's checked against the bound register</p></li>
+              <li style="list-style-type: none";><p>- is this address between 0 and n-1?</p></li>
+              <li style="list-style-type: none";><p>- if yes, add it to the base register to get physical address</p></li>
+              <li style="list-style-type: none";><p>- if no, it is an invalid address; hardware causes TRAP into kernel; kernel kills the process</p></li>
+              <li><p>On every context switch, load the base and bound registers for the selected process</p></li>
+              <li><p>Only the kernel can do this, so kernel memory has to be protected</p></li>
+              <li style="list-style-type: none";><p>- advantage of putting kernel at 0 (or low address)</p></li>
+              <li style="list-style-type: none";><p>- if process can't issue addresses that are negative, they can't reach behind themselves; kernel is behind all processes, so kernel is automatically protected</p></li>
+            </ul>
+            <h5>Fitting Processes Into Memory</h5>
+            <ul>
+              <li><p>Take advantage of the fact that a process is already broken up into text, data, stack; would like to put each of those into a hole that is available</p></li>
+              <li><p>There are two approaches of breaking up memory into pieces</p></li>
+              <li><p>Segmentation: break them up into variable size pieces that are fitted exactly for what we need; results in segmented address space; segments for text, data, stack</p></li>
+              <li><p>Break them up into fixed size pieces regardless of what we actually need; results in paged address space</p></li>
+              <li style="list-style-type: none";><p>- fixed size pieces are called pages</p></li>
+              <li style="list-style-type: none";><p>- text will be same number of pages, data will be same number of pages, ...</p></li>
+            </ul>
+            <h5>Segmented Address Space</h5>
+            <ul>
+              <li><p>Address space is a set of segments</p></li>
+              <li><p>Segment: linearly addressed memory; mini logical memory</p></li>
+              <li style="list-style-type: none";><p>- typically contains logically-related information (e.g. all stuff in this segment is code, data, activation records, ...)</p></li>
+              <li><p>Each segment is identified by an integer s, where 0 &le; s &le; S-1, S: max number of segments</p></li>
+              <li><p>Hardware determines max number of segments</p></li>
+              <li><p>Logical address is a pair of numbers (s, i), s: segment number, i: offset</p></li>
+              <li style="list-style-type: none";><p>- which segment (denoted by s) and where within that segment (denoted by i)</p></li>
+              <li><p>Convenient for compiler; it doesn't have to know anything about physical addresses</p></li>
+              <li><p>No segment for hole between data and stack; not wasting logical memory</p></li>
+              <li><p>How does hardware convert logical addresses based on segmentation into physical addresses?</p></li>
+              <li><p>Segment table: describes how to convert segments into physical addresses that indicate the start of the segment in physical memory</p></li>
+              <li><p>If we know where a segment starts in physical memory, we could just add the offset and get the physical address</p></li>
+              <li><p>Physical address = ST(s) + i</p></li>
+              <li><p>There is one segment table per process</p></li>
+              <li><p>In each entry there are a set of fields:</p></li>
+              <li style="list-style-type: none";><p>- valid bit: says whether that entry is valid</p></li>
+              <li style="list-style-type: none";><p>- base: where segment is located in phsyical memory</p></li>
+              <li style="list-style-type: none";><p>- bound: how big segment is</p></li>
+              <li style="list-style-type: none";><p>- permissions: read, write, execute</p></li>
+              <li><p>Table located in kernel because it has to be protected</p></li>
+              <li><p>Hardware has to be told where table is located, because hardware uses it to automatically convert logical to physical addresses</p></li>
+              <li><p>The kernel loads two hardware registers: segment table base register and segment table size register</p></li>
+            </ul>
+            <h5>Address Translation</h5>
+            <ul>
+              <li><p>Logical address: string of bits (bits for segment number followed by bits for offset)</p></li>
+              <li><p>Hardware takes segment number, indexes into segment table, extracts the base value, and adds offset to get physical address</p></li>
+              <li style="list-style-type: none";><p>- have to check if offset is within bound</p></li>
+              <li><p>First check whether trying to access segment that is within segment table size</p></li>
+              <li><p>Add segment number to segment table base value</p></li>
+              <li><p>Check whether offset is within bounds</p></li>
+              <li><p>Check permissions</p></li>
+              <li><p>Add offset to base value</p></li>
+            </ul>
+            <h5>Sizing the Segment Table</h5>
+            <ul>
+              <li><p>How do we determine the size of the segment table?</p></li>
+              <li><p>If there are n bits for the segment number in logical address, then there are 2<sup>n</sup> segments, so there are 2<sup>n</sup> entries in the table</p></li>
+              <li><p>The width of the table is the number of bits in each entry</p></li>
+              <li><p>Also need 1 bit for the valid bit</p></li>
+              <li><p>The base value can reference any location in physical memory, so we need enough bits to reference any part of memory; we need to know size of memory, which will be the number of bits for the base</p></li>
+              <li><p>Bound tells us size of a segment; need enough bits to express largest possible segment</p></li>
+              <li style="list-style-type: none";><p>- offset indexes into segment; however many bits offset is, we can't reference any more than that within segment</p></li>
+              <li style="list-style-type: none";><p>- number of bits for offset = max segment size = number of bits for bound</p></li>
+              <li><p>Pad remaining space to make entry size a power of 2</p></li>
+            </ul>
+            <h5>Pros and Cons of Segmentation</h5>
+            <ul>
+              <li><p>Pros of segmentation:</p></li>
+              <li style="list-style-type: none";><p>- each segment can be located independently; can put segments wherever we want because all we have to do is change the base value</p></li>
+              <li style="list-style-type: none";><p>- can separately protect them because each segment can be bounded</p></li>
+              <li style="list-style-type: none";><p>- can grow and shrink (increase/decrease bound)</p></li>
+              <li style="list-style-type: none";><p>- segments can be shared by processes</p></li>
+              <li style="list-style-type: none";><p>-- if everyone uses the same compiler, can store text at same address for everyone</p></li>
+              <li><p>Cons of segmentation</p></li>
+              <li style="list-style-type: none";><p>- variable size allocation is difficult to deal with</p></li>
+              <li style="list-style-type: none";><p>-- hard to find holes</p></li>
+              <li style="list-style-type: none";><p>-- external fragmentation</p></li>
+            </ul>
+            <h5>Paged Address Space</h5>
           </div>
           <div class="content" id="virtual_memory">
             <h3>Virtual Memory</h3>
