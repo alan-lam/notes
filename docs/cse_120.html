@@ -819,6 +819,52 @@
               <li style="list-style-type: none";><p>-- external fragmentation</p></li>
             </ul>
             <h5>Paged Address Space</h5>
+            <ul>
+              <li><p>Break logical and physical memory into fixed-size pieces</p></li>
+              <li><p>Pages of logical memory fit into frames of physical memory</p></li>
+              <li><p>Frame: physical unit of information</p></li>
+              <li><p>A page fits exactly into a frame; makes allocation easy</p></li>
+              <li><p>Logical address: string of bits (bits for page number followed by bits for offset)</p></li>
+              <li><p>Size of logical address space is (max number of pages) x (page size)</p></li>
+            </ul>
+            <h5>Frame-Based Physical Addressing</h5>
+            <ul>
+              <li><p>Form of physical address is frame number and offset (f, i)</p></li>
+              <li><p>Offset is within a frame</p></li>
+              <li><p>Translate logical address to physical: convert page number to frame number and concatenate with offset</p></li>
+              <li><p>There is a page table, which is very similar to the segment table</p></li>
+              <li><p>f = PT(p)</p></li>
+              <li><p>Logical memory is a sequence of pages; physical memory is a sequence of frames</p></li>
+              <li><p>Page table tells where to find pages in frames</p></li>
+              <li><p>Page table is a sequence of entries with elements</p></li>
+              <li style="list-style-type: none";><p>- valid bit; demand paging bits; frame number: which frame is this page located in; permission bits</p></li>
+              <li><p>Page table is located in the kernel</p></li>
+              <li><p>Tell hardware where the page table is located with:</p></li>
+              <li style="list-style-type: none";><p>- page table base register: physical address of page table</p></li>
+              <li style="list-style-type: none";><p>- page table size register: number of entries</p></li>
+              <li><p>Hardware takes page number, checks to make sure it's valid to index into the page table by checking against the size register, then indexes into page table</p></li>
+              <li><p>Then checks if valid bit is on, extracts frame number that tells us which frame in physical memory page is located, and concatenates with offset to get physical address</p></li>
+            </ul>
+            <h5>Sizing the Page Table</h5>
+            <ul>
+              <li><p>If there are n bits for page number, then there are 2<sup>n</sup> entries in the table</p></li>
+              <li><p>How wide is each entry?</p></li>
+              <li style="list-style-type: none";><p>- need to know how big physical memory is</p></li>
+              <li style="list-style-type: none";><p>- need to know frame number</p></li>
+              <li><p>To get frame number, take maximum physical memory size and divide it by the size of the frame</p></li>
+              <li><p>Number of bits in offset is the size of the frame</p></li>
+            </ul>
+            <h5>Segments vs Pages</h5>
+            <ul>
+              <li><p>Segments are good logical units of information</p></li>
+              <li><p>If we need to put all instructions in memory, it's nice to be able to say, "we need a memory of this size"</p></li>
+              <li><p>Memory contains same kind of information</p></li>
+              <li><p>However, different sizes lead to expensive allocations and segmentation</p></li>
+              <li><p>Pages are good physical units of information</p></li>
+              <li><p>Memory management is simple; any page will fit in any frame</p></li>
+              <li><p>Can't size them to what is wanted; have to spread code over many pages</p></li>
+            </ul>
+            <h5>Combining Segments and Pages</h5>
           </div>
           <div class="content" id="virtual_memory">
             <h3>Virtual Memory</h3>
