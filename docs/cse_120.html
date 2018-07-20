@@ -865,6 +865,25 @@
               <li><p>Can't size them to what is wanted; have to spread code over many pages</p></li>
             </ul>
             <h5>Combining Segments and Pages</h5>
+            <ul>
+              <li><p>Convert logical memory to physical memory by using segment tables and page tables</p></li>
+              <li><p>A segment is a group of pages</p></li>
+              <li><p>A segment table entry points to the page table</p></li>
+              <li><p>Page table entry tells where to find page in what frame of memory</p></li>
+              <li><p>Logical address has three fields: segment number, page number, offset</p></li>
+              <li><p>Use segment number to index into segment table; base value in segment table tells where to find page table; use page number to index into page table; concatenate frame number of offset to get physical address</p></li>
+              <li><p>Every memory reference costs 2 additional memory references</p></li>
+              <li><p>Locality of reference: if we just referenced memory location 1000, there is a good chance that next memory reference will be the next address 1001</p></li>
+              <li style="list-style-type: none";><p>- if we know page of 1000, then we know page of 1001; we only need to do translation once</p></li>
+              <li><p>Add high-speed memory to keep cache of most frequent translations</p></li>
+              <li><p>TLB: translation look-aside buffer</p></li>
+              <li><p>Each entry is a pair of key and frame number</p></li>
+              <li><p>Key is a bitstring of page number or segment+page number</p></li>
+              <li><p>The more entries there are in the TLB, the higher the hit rate but the slower and more expensive memory references become</p></li>
+              <li><p>TLB has to be flushed on every context switch</p></li>
+              <li style="list-style-type: none";><p>- context switch changes which logical memory we are using; need new segment, page tables</p></li>
+              <li><p>At the beginning of a quantum, all memory references are slow; later in the quantum, the TLB fills up, which makes the machine faster</p></li>
+            </ul>
           </div>
           <div class="content" id="virtual_memory">
             <h3>Virtual Memory</h3>
