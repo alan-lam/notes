@@ -980,6 +980,70 @@
           </div>
           <div class="content" id="security">
             <h3>Security</h3>
+            <ul>
+              <li><p>How to protect computer system (contents, operations, services) from threats (theft, damage, disruption)</p></li>
+              <li><p>Confidentiality: only those authorized should be able to access</p></li>
+              <li><p>Integrity: only authorized changes should be allowed</p></li>
+              <li><p>Authenticity: is person who they are claiming to be actually that person?</p></li>
+              <li><p>Availability: able to access service</p></li>
+              <li><p>Threats: interception, interruption, modification, fabrication</p></li>
+            </ul>
+            <h5>User Authentication</h5>
+            <ul>
+              <li><p>Password: secret only you and computer system knows</p></li>
+              <li><p>Encrypt passwords to prevent others from knowing, if they can see it</p></li>
+              <li><p>Longer passwords are harder to break but harder to remember</p></li>
+              <li><p>Password is data that is secret</p></li>
+              <li><p>Challenge/response protocol: program that is secret</p></li>
+              <li><p>User and computer know secret algorithm</p></li>
+              <li><p>Computer challenges user; user must return correct value based on algorithm</p></li>
+            </ul>
+            <h5>Trojan Horse</h5>
+            <ul>
+              <li><p>Program that contains malicious code; pretends to be useful</p></li>
+              <li><p>Runs in user domain; has access to all user files</p></li>
+            </ul>
+            <h5>Trap Door</h5>
+            <ul>
+              <li><p>Secret access point in program</p></li>
+              <li><p>E.x.: bank hires programmer; programmer puts something in that allows access for programmer</p></li>
+              <li><p>Hard to tell if trap door is in program</p></li>
+              <li><p>Not in source code; compiler can put it in; not in compiler source code; compiler designer can put it in</p></li>
+            </ul>
+            <h5>Virus</h5>
+            <ul>
+              <li><p>Code attached to a legitimate program</p></li>
+              <li><p>When program runs, virus also runs; causes damage, spread to other programs</p></li>
+              <li><p>Disinfectant: checks normal program vs this program</p></li>
+            </ul>
+            <h5>Internet Worm</h5>
+            <ul>
+              <li><p>Program that copies itself over a network</p></li>
+            </ul>
+            <h5>Denial of Service</h5>
+            <ul>
+              <li><p>Prevent others from accessing system</p></li>
+              <li><p>Have many servers to distribute different ways of accessing system</p></li>
+            </ul>
+            <h5>Intrusion Detection</h5>
+            <ul>
+              <li><p>Signature-based: looking for a pattern</p></li>
+              <li style="list-style-type: none";><p>- repeated login</p></li>
+              <li><p>Anomaly-based: looking for unusual behavior</p></li>
+              <li><p>Honey pot: attract intruders</p></li>
+            </ul>
+            <h5>Cryptography</h5>
+            <ul>
+              <li><p>Sender and receiver; send messages to each other in a way so that no one else can tell what the messages are</p></li>
+              <li><p>Plaintext, encryption key, encryption method, decryption method, decryption key</p></li>
+              <li><p>Sender and receiver use same key for encryption and decryption</p></li>
+              <li><p>How to agree on the same key?</p></li>
+              <li><p>Use two keys; private, public; one decrypts, other encrypts</p></li>
+              <li><p>Encrypt using public key; decrypt using private key</p></li>
+              <li><p>Secret key is fast; hard to distribute keys</p></li>
+              <li><p>Public key is slow; easy to distribute keys</p></li>
+              <li><p>Combine both; start with public key; send secret key; use secret key</p></li>
+            </ul>
           </div>
           <div class="content" id="networks">
             <h3>Networks</h3>
