@@ -887,6 +887,100 @@
           </div>
           <div class="content" id="virtual_memory">
             <h3>Virtual Memory</h3>
+            <ul>
+              <li><p>Segments/pages allow partitioning memory for convenient allocation; can reorganize memory to have a convenient way of using it</p></li>
+              <li><p>Address translation used to achieve relocation: put piece of logical memory with own logical address into any physical address</p></li>
+              <li><p>Protection achieved by matching permissions with object (text - execute, data - read)</p></li>
+              <li><p>Break logical memory into little pieces; some don't need to be in physical memory</p></li>
+              <li style="list-style-type: none";><p>- if error handler is never invoked, then don't need in memory</p></li>
+              <li><p>Only bring into physical memory what is needed; allows for large logical memory</p></li>
+              <li><p><b>Virtual memory is logical memory with some pieces not in physical memory</b></p></li>
+              <li><p>Part of logical memory is kept in physical; the rest is kept on disk</p></li>
+            </ul>
+            <h5>Virtual Memory Based on Paging</h5>
+            <ul>
+              <li><p>Virtual memory of pages; every page corresponds to a page table entry; every table entry tells us where to find things in physical memory</p></li>
+              <li><p>Valid bit: whether page is in physical memory or not</p></li>
+              <li><p>Reference bit: has this page been referenced?</p></li>
+              <li><p>Modified bit: has this page been modified?</p></li>
+              <li><p>Frame number: where to find page in physical memory</p></li>
+              <li><p>Protection bits: allowable memory operations</p></li>
+            </ul>
+            <h5>Address Translation and Page Faults</h5>
+            <ul>
+              <li><p>Translate logical to physical: take page number; index into page table; now it's possible to index into entry with valid bit off, which results in a page fault</p></li>
+              <li><p>When page fault happens, the kernel is entered; brings in page from disk to memory; updates page table entry</p></li>
+              <li><p>If physical memory is full of pages, have to kick something out</p></li>
+            </ul>
+            <h5>Faults Under Segmentation/Paging</h5>
+            <ul>
+              <li><p>Virtual address consists of segment number, page number, and offset</p></li>
+              <li><p>Take segment number, index into segment table to get page table</p></li>
+              <li style="list-style-type: none";><p>- possible that page table is on disk; segment fault; bring into physical memory</p></li>
+              <li><p>Check if page number is within bound of page table; index into page table</p></li>
+              <li style="list-style-type: none";><p>- may get segmentation violation if not</p></li>
+              <li><p>Page faults are more expensive than context switches and TLB misses</p></li>
+              <li><p>Tolerable if page faults are really rare</p></li>
+              <li><p>Principle of locality: memory is not referenced uniformly; some a lot, little, not at all</p></li>
+              <li><p>Keep popular pieces in memory and rare pieces on disk</p></li>
+              <li><p>Access memory location 1000, high probability that next reference will be 1000 or 1001; if we access a variable, it is likely we will access it again</p></li>
+              <li><p>Use locality to keep page faults down</p></li>
+            </ul>
+            <h5>Page Replacement Policy</h5>
+            <ul>
+              <li><p>Key to virtual memory is finding a good page replacement policy</p></li>
+              <li><p>If memory is full, need to kick out a page to bring in a new page</p></li>
+              <li><p>FIFO: kick out oldest page, order in which they came</p></li>
+              <li style="list-style-type: none";><p>- simple, but oldest one may be popular</p></li>
+              <li><p>OPT: kick out page that is furthest out in future, will not be referenced anytime soon</p></li>
+              <li style="list-style-type: none";><p>- theoretically optimal, but need knowledge of future</p></li>
+              <li><p>LRU: kick out least recently used, used furthest in the past</p></li>
+              <li><p>All algorithms have obligatory page faults</p></li>
+              <li><p>FIFO typically does bad; LRU typically does better than FIFO</p></li>
+              <li><p>LRU performs well if there is locality, but it is complex - need time stamps</p></li>
+              <li style="list-style-type: none";><p>- if no locality, it may be better, worse, or the same as FIFO</p></li>
+            </ul>
+            <h5>Clock</h5>
+            <ul>
+              <li><p>Clock algorithm: kick page that is old and not recently used (not least recently used)</p></li>
+              <li><p>use reference bit; hardware sets bit to 1, kernel sets bit to 0</p></li>
+              <li><p>Take frames and arrange in circle; clock hand points to frame that is considered for replacement</p></li>
+              <li><p>If reference bit is 1, don't kick out, set bit to 0, move clock hand</p></li>
+              <li><p>If reference bit is 0, kick out and bring in a new page</p></li>
+              <li><p>If clock hand goes all the way around, it will kick out the oldest page</p></li>
+              <li style="list-style-type: none";><p>- defaults to FIFO in the worst case</p></li>
+              <li><p>If frame being replaced has been modified, need to write it to the disk</p></li>
+            </ul>
+            <h5>Resident Set Management</h5>
+            <ul>
+              <li><p>Resident set: process's pages in physical memory</p></li>
+              <li><p>The bigger it is, the less pages other processes get</p></li>
+              <li><p>Try to make sure pages in resident set are valuable</p></li>
+              <li><p>Who provides frames to a process when it needs memory?</p></li>
+              <li><p>Local: process needs to bring in a page; it has to kick out existing ones</p></li>
+              <li style="list-style-type: none";><p>- if one process is page faulting a lot, it won't affect other processes</p></li>
+              <li><p>Global: process grabs frame from another process</p></li>
+              <li style="list-style-type: none";><p>- more efficient; if other processes are not using a page, then give it away</p></li>
+            </ul>
+            <h5>Multiprogramming Level</h5>
+            <ul>
+              <li><p>Number of processes in phsyical memory</p></li>
+              <li><p>Processor utilization: how busy processor is doing useful work, e.g. running code of user program (not overhead like context switches)</p></li>
+              <li><p>Typically one process cannot use all of CPU; waiting for input, writing to display</p></li>
+              <li><p>Utilization goes up as multiprogramming level goes up</p></li>
+              <li><p>After a certain point, processes have just enough; one more process causes other processes to page fault; CPU spends time replacing pages instead of running code</p></li>
+            </ul>
+            <h5>Denning's Working Set Model</h5>
+            <ul>
+              <li><p>Working set: set of pages referenced from t - &Delta; to t</p></li>
+              <li><p>Represents pages that have been recently used</p></li>
+              <li><p>Put process in memory only if working set can be kept in physical memory</p></li>
+              <li><p>Paging: bringing in single pages</p></li>
+              <li><p>Swapping: bringing in as many pages as needed for process to get minimal page faults</p></li>
+              <li><p>Local page replacement policy; one process page faulting does not affect others</p></li>
+              <li><p>Difficult to implement; need time stamps, determine &Delta;</p></li>
+              <li><p>Clock is easy to implement, but it is a global policy</p></li>
+            </ul>
           </div>
           <div class="content" id="file_system">
             <h3>File System</h3>
