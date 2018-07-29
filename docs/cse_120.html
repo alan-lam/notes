@@ -984,6 +984,71 @@
           </div>
           <div class="content" id="file_system">
             <h3>File System</h3>
+            <ul>
+              <li><p>File: logical unit of storage; container of data</p></li>
+              <li><p>File system: collection of files that is structured</p></li>
+              <li><p>Want file system to be persistent, large, sharing, secure</p></li>
+              <li><p>Any object that can be accessed by name, read/written, protected, or shared can be put in a file system (e.g. keyboard, display, processes)</p></li>
+              <li><p>Name space is organized as a tree (more strictly, a directed acyclic graph)</p></li>
+              <li><p>A file has attributes: characteristics that are relevant to the OS</p></li>
+              <li style="list-style-type: none";><p>- type (system user), time (creation, accessed), size, permissions</p></li>
+              <li><p>Read/write model: open, read, write, close; read/write into buffers</p></li>
+              <li><p>Memory-mapped model: map file into memory, access file by memory operations</p></li>
+              <li><p>Efficient for processes that share memory; all open some file, map file into address space, one modifies, everyone else gets to see it</p></li>
+              <li><p>Access control: how we share information</p></li>
+              <li><p>Want to share with this group; give some read, some write</p></li>
+              <li><p>Who can access a file, what operations are allowed</p></li>
+              <li><p>Want file system to support archival storage: saved file should never go away unless we want it to; want earlier versions of a file</p></li>
+              <li><p>Support various storage technologies; disks are slow</p></li>
+              <li><p>Want to achieve balance between performance, reliability, and security</p></li>
+              <li><p>All storage technologies support ability to read and write blocks of data</p></li>
+              <li><p>Abstract storage device: array of blocks; all fixed size</p></li>
+              <li style="list-style-type: none";><p>- read block number into memory address; write block number to abstract storage device</p></li>
+              <li><p>Divide array into three regions: file system metadata, file metadata, data blocks</p></li>
+              <li><p>File system metadata: data about entire file system</p></li>
+              <li style="list-style-type: none";><p>- number of total files</p></li>
+              <li><p>File metadata: data about a particular file</p></li>
+              <li style="list-style-type: none";><p>- attributes</p></li>
+              <li><p>Data blocks: actual contents of data</p></li>
+            </ul>
+            <h5>File System Metadata</h5>
+            <ul>
+              <li><p>First thing in storage array; know exactly where it is, starts at 0</p></li>
+              <li><p>Other parts know where it is only if they know how big file system metadata is</p></li>
+              <li><p>Keep pointers to start of file metadata and data block areas</p></li>
+              <li><p>Keep things like number of files in file system, number free/in-use (files, blocks)</p></li>
+            </ul>
+            <h5>File Metadata</h5>
+            <ul>
+              <li><p>Made up of array of file control blocks: small amount of metadata for a fiel</p></li>
+              <li><p>Contains attributes (type, size, permissions), references to data blocks: where to find data blocks that correspond to a file</p></li>
+            </ul>
+            <h5>Keeping Track of Allocated Blocks</h5>
+            <ul>
+              <li><p>Methods for keeping track of blocks that belong to a file</p></li>
+              <li><p>Contiguous block method: need pointer pointing to first data block and a number indicating number of contiguous blocks</p></li>
+              <li><p>Non-contiguous block method: pointer for each block</p></li>
+              <li><p>Extent method: keep pointer and number for several contiguous blocks</p></li>
+            </ul>
+            <h5>Keeping Track of Free Blocks</h5>
+            <ul>
+              <li><p>When create new file, know where to find them</p></li>
+              <li><p>Free block map: array of pairs (pointer, number of contiguous blocks); like extents</p></li>
+              <li><p>Doubly linked list of extents</p></li>
+              <li><p>Bit map: string of bits; location of bit corresponds to location of block</p></li>
+              <li style="list-style-type: none";><p>- 1: used; 0: not being used</p></li>
+            </ul>
+            <h5>File Name to File Control Block</h5>
+            <ul>
+              <li><p>User wants to use file names; OS wants to use numbers to index into file control block array</p></li>
+              <li><p>Need to translate file name to control block number</p></li>
+              <li><p>Directories are implemented as files organized as a table; array of entries</p></li>
+              <li style="list-style-type: none";><p>- each entry has a name and attributes</p></li>
+              <li><p>i-node number: file control block index</p></li>
+              <li><p>Parsing file name involves repeatedly indexing table</p></li>
+              <li><p>Read/write model has open method to have a faster way of opening files</p></li>
+            </ul>
+            <h5>Big Picture</h5>
           </div>
           <div class="content" id="io">
             <h3>Input/Output System</h3>
