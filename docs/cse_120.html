@@ -1049,6 +1049,58 @@
               <li><p>Read/write model has open method to have a faster way of opening files</p></li>
             </ul>
             <h5>Big Picture</h5>
+            <ul>
+              <li><p>Abstract storage device split into file system metadata, file metadata, and data blocks</p></li>
+              <li><p>File metadata is array of file control blocks/i-nodes</p></li>
+              <li><p>There is a file control block for every file</p></li>
+              <li><p>A block map is made up of 13 pointers, each pointing to a data block</p></li>
+            </ul>
+            <h5>Disks For Storage</h5>
+            <ul>
+              <li><p>Disk is made up of platters stacked on top of each other with space in between</p></li>
+              <li><p>Each platter is coated with magnetic material</p></li>
+              <li><p>Disk head: arm with reader that can magnetize or demagnetize</p></li>
+              <li style="list-style-type: none";><p>- write 0 or 1 on platter</p></li>
+              <li><p>Track: circle of bits</p></li>
+              <li><p>Sector: portion of a track</p></li>
+              <li><p>Cylinder: group of tracks</p></li>
+              <li><p>Rotational latency: amount of time it takes for disk to rotate</p></li>
+              <li><p>Seek time: amount of time it takes to move arm</p></li>
+              <li><p>Transfer time: read bits and transfer into memory</p></li>
+            </ul>
+            <h5>Solid State Drives</h5>
+            <ul>
+              <li><p>NAND-based flash memory: no moving parts</p></li>
+              <li><p>Non-volatile: doesn't forget when take power off</p></li>
+              <li><p>Unaffected by shock, magnetic fields</p></li>
+              <li><p>Limited number of writes; wears out with age</p></li>
+              <li><p>Faster access time; move more data per unit time; less power; less capacity; more cost</p></li>
+            </ul>
+            <h5>Performance: Caching</h5>
+            <ul>
+              <li><p>Keep things in memory for reuse instead of accessing disk</p></li>
+              <li><p>Cache data blocks of files, file system metadata, file metadata, file names</p></li>
+            </ul>
+            <h5>Performance: Clustering</h5>
+            <ul>
+              <li><p>Putting data blocks that are related physically close to each other</p></li>
+              <li style="list-style-type: none";><p>- reduce disk head movement</p></li>
+            </ul>
+            <h5>Performance: Block Size</h5>
+            <ul>
+              <li><p>Bigger: better speed; on disk access, able to bring in or put out more data</p></li>
+              <li><p>Smaller: less wasted space</p></li>
+            </ul>
+            <h5>Reliability: Consistency</h5>
+            <ul>
+              <li><p>Buffer cache reduces disk accesses, but system crash will lose all data</p></li>
+              <li><p>Some blocks write immediately (file system metadata); others less time</p></li>
+            </ul>
+            <h5>Reliability: Journaling</h5>
+            <ul>
+              <li><p>Create log entry for each update</p></li>
+              <li><p>If crash, there is a record</p></li>
+            </ul>
           </div>
           <div class="content" id="io">
             <h3>Input/Output System</h3>
