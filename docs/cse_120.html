@@ -1104,6 +1104,84 @@
           </div>
           <div class="content" id="io">
             <h3>Input/Output System</h3>
+            <ul>
+              <li><p>CPU/Memory and devices; devices communicate over I/O bus into CPU/memory register</p></li>
+              <li><p>Problem: many different types of I/O devices; all operate differently</p></li>
+              <li><p>How does process initiate I/O? achieve synchronization? transfer data?</p></li>
+              <li style="list-style-type: none";><p>- IPC</p></li>
+            </ul>
+            <h5>Background</h5>
+            <ul>
+              <li><p>A system is composed of CPU, memory, devices</p></li>
+              <li><p>Devices attach to I/O bus via controller</p></li>
+              <li><p>CPU and devices communicate through:</p></li>
+              <li style="list-style-type: none";><p>- I/O instructions: hardware instruction designed for I/O</p></li>
+              <li style="list-style-type: none";><p>- Memory-mapped instructions: move value into/out of address in memory of device</p></li>
+              <li><p>Data transfer via:</p></li>
+              <li style="list-style-type: none";><p>- programmed I/O: CPU is involved with moving data from register into device</p></li>
+              <li style="list-style-type: none";><p>- DMA: CPU tells device to move data to certain memory area</p></li>
+              <li><p>Synchronization via:</p></li>
+              <li style="list-style-type: none";><p>- polling: checking register/memory which says whether device is ready and busy wait if it isn't</p></li>
+              <li style="list-style-type: none";><p>- interrupts: device does its thing, generates interrupt that causes kernel to run</p></li>
+            </ul>
+            <h5>Buffered and Unbuffered I/O</h5>
+            <ul>
+              <li><p>Buffered I/O: buffer in kernel</p></li>
+              <li><p>Buffer: temporary data storage</p></li>
+              <li><p>Pro: devices can write data without worrying about memory/process swapped out</p></li>
+              <li><p>Pro: Process can output to device without busy waiting if device is busy</p></li>
+              <li><p>Con: Takes time to copy data</p></li>
+              <li><p>Try to classify devices by shared characteristics</p></li>
+              <li style="list-style-type: none";><p>- lower code, complexity</p></li>
+              <li><p>Variable vs. fixed size units: data transfer</p></li>
+              <li><p>Sequential vs. random access</p></li>
+              <li><p>Synchronous vs. asynchronous: wait for or produce data spontaneously</p></li>
+              <li><p>Speed of operation: high-speed or not</p></li>
+            </ul>
+            <h5>I/O System</h5>
+            <ul>
+              <li><p>Software that deals with I/O</p></li>
+              <li><p>Mostly in kernel</p></li>
+              <li><p>Split into 2 parts: device-dependent, device-independent</p></li>
+              <li><p>Device drivers: device-dependent code; specific to device</p></li>
+            </ul>
+            <h5>Device Dependent</h5>
+            <ul>
+              <li><p>Implements standard interface: open, close, read, write</p></li>
+              <li><p>Kernel invokes device driver through these functions</p></li>
+              <li><p>Interrupt handler: when device completes, tells kernel it is done</p></li>
+            </ul>
+            <h5>Device-Independent I/O</h5>
+            <ul>
+              <li><p>Does everything I/O related but not specific to any device; for all devices</p></li>
+              <li><p>All devices are modeled as files</p></li>
+              <li><p>Anything that can be abstracted out of device driver</p></li>
+              <li><p>Device driver is code run by kernel; bugs could mess up whole OS</p></li>
+              <li><p>Implement device-independent functionality (e.g. buffer) so there is less code and, therefore, less bugs in drivers</p></li>
+            </ul>
+            <h5>User-Space I/O</h5>
+            <ul>
+              <li><p>Part of I/O running in process; user-space</p></li>
+              <li style="list-style-type: none";><p>- e.g. printf</p></li>
+              <li><p>Devices in UNIX are categorized as block or character</p></li>
+              <li><p>Block: operates in fixed size, randomly addressable blocks</p></li>
+              <li style="list-style-type: none";><p>- can use buffer cache</p></li>
+              <li><p>Character: not block (e.g. keyboard, mouse)</p></li>
+            </ul>
+            <h5>UNIX I/O System Call Interface</h5>
+            <ul>
+              <li><p>ioctl: special operations for certain devices</p></li>
+              <li style="list-style-type: none";><p>- rewind for tape</p></li>
+            </ul>
+            <h5>Software Block Cache Design</h5>
+            <ul>
+              <li><p>Blocks of data on disk; devote certain amount of RAM to store blocks</p></li>
+              <li><p>Check if block is in cache</p></li>
+              <li style="list-style-type: none";><p>- if not, then bring it into cache</p></li>
+              <li><p>Use hash table to search if block is in cache</p></li>
+              <li><p>Kick out LRU - least recently used - block</p></li>
+              <li><p>Maintain LRU list that is independent of hash table</p></li>
+            </ul>
           </div>
           <div class="content" id="protection">
             <h3>Protection</h3>
