@@ -54,7 +54,6 @@
       <div class="row">
         <div class="col-md-9">
           <h1>Operating Systems</h1>
-          <h6 class="tab">Professor Joseph Pasquale, CSE 120, Winter 2018</h2>
           <div class="content" id="processes">
             <h3>Processes</h3>
             <ul>
@@ -1336,6 +1335,74 @@
           </div>
           <div class="content" id="networks">
             <h3>Networks</h3>
+            <ul>
+              <li><p><b>Set of computing nodes connected by communication links that allow data to be transferred between sender and receiver</b></p></li>
+              <li><p>Internetwork: network of networks</p></li>
+              <li><p>Many different types of networks; categorize them in different ways</p></li>
+              <li style="list-style-type: none";><p>- topology: the way they're connected (ring, star, bus, graph)</p></li>
+              <li><p>Ring: node sends information in circle</p></li>
+              <li><p>Star: sending/receiving nodes on outside; center is hub</p></li>
+              <li><p>Bus: all nodes attached to bus; send message through bus; everyone hears it but only node with address receives</p></li>
+              <li><p>Geographic coverage: how much territory they span</p></li>
+              <li style="list-style-type: none";><p>- LAN: local area network; span floor, building</p></li>
+              <li style="list-style-type: none";><p>- WAN: wide area network; span state, country</p></li>
+              <li><p>Circuit switching: if A wants to send something to B, A establishes a path from A to B, then all bits flow over that path</p></li>
+              <li><p>Packet switching: if A wants to send to B, A sends information to another node, another node, ... until it reaches B, if possible</p></li>
+              <li><p>Protocol: agreed upon message format and transfer procedure</p></li>
+              <li><p>Multiparty: no central controller; involves cooperation of at least 2 nodes</p></li>
+              <li><p>Protocol is a set of expectations of how operation will happen</p></li>
+              <li><p>Message contains data you want to transmit and additional stuff to help on protocol (e.g. data, header)</p></li>
+              <li><p>Header contains source, destination addresses, state of protocol operation, error control</p></li>
+              <li><p>Network has many layers</p></li>
+              <li><p>Physical: how to get 0's, 1's over wire</p></li>
+              <li style="list-style-type: none";><p>- format: electrical signal</p></li>
+              <li style="list-style-type: none";><p>- transfer procedure: change voltage at one end, go through wire to other end</p></li>
+              <li><p>Link: break message into frames; can tell if anything went wrong with it; physical addressing: who gets message</p></li>
+              <li><p>Network: transfer from one network to another by translating logical address to physical address</p></li>
+              <li><p>Transport: break message into logical sections</p></li>
+              <li><p>Session: start, stop, manage connections</p></li>
+              <li><p>Presentation: format of message (e.g. JPG)</p></li>
+              <li><p>Application: actual application; everything has a protocol (email, browser)</p></li>
+              <li><p>Internet uses 3 levels of addresses</p></li>
+              <li><p>Domain names: convenient for humans; text name</p></li>
+              <li><p>Logical address: something internet understands</li></p>
+              <li><p>Physical address: ethernet; address for underlying physical network</p></li>
+            </ul>
+            <h5>Size of Addresses</h5>
+            <ul>
+              <li><p>IPv4 used 32-bit addresses</p></li>
+              <li><p>Internet grew and we ran out of addresses</p></li>
+              <li><p>IPv6 uses 128-bit addresses</p></li>
+            </ul>
+            <h5>Routing</h5>
+            <ul>
+              <li><p>How to get packet from A to B</p></li>
+              <li><p>Static: always make same decision</p></li>
+              <li><p>Dynamic: decision can change</p></li>
+            </ul>
+            <h5>Scalability</h5>
+            <ul>
+              <li><p>How growable something is</p></li>
+              <li><p>Network is scalable based on how much effort is needed to add a node</p></li>
+              <li><p>Make network scalable by limiting effect of adding a node</p></li>
+            </ul>
+            <h5>Error Control</h5>
+            <ul>
+              <li><p>Used to determine whether what is sent is good</p></li>
+              <li><p>Parity: even number of 1's is good; odd number of 1's is bad</p></li>
+              <li><p>CRC: cyclic redundancy code; attachment of bits</p></li>
+              <li><p>Checksum: take message, interpret it as array of bytes, add them up, receiver compares number</p></li>
+              <li><p>ARQ: automatic repeat request; send message, if receiver doesn't get it in a certain amount of time, send again</p></li>
+            </ul>
+            <h5>Two Generals Problem</h5>
+            <ul>
+              <li><p>Two armies; whoever has more soldiers will win</p></li>
+              <li><p>Two hills; half of one army on each hill, other army in valley</p></li>
+              <li><p>If the army on the hills attack at different times, then it loses; if they attack at the same time, it wins</p></li>
+              <li><p>Only way to communicate is to send a soldier to other side</p></li>
+              <li><p>Everytime a soldier leaves, worry about whether message got through</p></li>
+              <li><p>Moral: can't create perfect channel out of faulty one</p></li>
+            </ul>
           </div>
           <div class="content" id="distributed_systems">
             <h3>Distributed Systems</h3>
