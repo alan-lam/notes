@@ -42,10 +42,98 @@
           <h1>Abstract Algebra II</h1>
           <div class="content" id="rings">
             <h3>Rings</h3>
+            <ul>
+              <li><p>Rings are modeled on the integers</p></li>
+              <li><p>(`ZZ`, +) is an abelian group</p></li>
+              <li><p>`ZZ` also has multiplication which satisfies</p></li>
+              <li style="list-style-type: none";><p>`a*(b + c) = a*b + a*c`</p></li>
+              <li style="list-style-type: none";><p>`(b + c)*a = b*a + c*a`</p></li>
+              <li style="list-style-type: none";><p>`a*(b*c) = (a*b)*c`</p></li>
+              <li><p><b>Def: A <u>ring</u> is a set `R` with two operations `+`, `*` such that (`R`, `+`) is an abelian group and</b></p></li>
+              <li style="list-style-type: none";><p><b>1) `a*(b*c) = (a*b)*c` (`*` is associative)</b></p></li>
+              <li style="list-style-type: none";><p><b>2) `a*(b + c) = a*b + a*c`, `(b + c)*a = b*a + c*a` for all `a, b, c in R`</b></p></li>
+              <li><p>Ex: the set of integer multiples of 3 is a ring, `3ZZ`</p></li>
+              <li><p>Ex: the real numbers, `RR`</p></li>
+              <li><p>Ex: the set of real valued functions `f:[a,b]->ZZ`</p></li>
+              <li><p>Ex: let V be a finite dimensional real vector space. Then `End_RR (V) = {&#966;: V -> V}` forms a ring</p></li>
+              <li style="list-style-type: none";><p>the multiplication operation is function composition</p></li>
+            </ul>
+            <h5>Properties of Rings</h5>
+            <ul>
+              <li><p>The second 3 rings (`1in RR`; `f(x) = 1, AA x in [a,b]`; `i``d_v`) have a <u>multiplicative identity</u></p></li>
+              <li style="list-style-type: none";><p>`a*1 = 1*a = a` (1 is the multiplicative identity)</p></li>
+              <li style="list-style-type: none";><p>But `3a*3b != 3a`</p></li>
+              <li><p>In `RR` and `{f:[a,b]->RR}`, multiplication is commutative</p></li>
+              <li><p>`RR` is the only one of these rings with the property that every nonzero element of `RR` has a multiplicative inverse</p></li>
+              <li><p>`AA a in RR`, `EE b in RR` `s.t. a*b = b*a = 1`</p></li>
+              <li><p>Rings with a `1` element are said to be <u>unital</u></p></li>
+              <li><p>`1` is called a "unity"</p></li>
+              <li><p>Given a ring `R`, the elements of `R` which have a multiplicative inverse (2-sided) are called the <u>units</u> of `R`</p></li>
+            </ul>
+            <h5>Terminology</h5>
+            <ul>
+              <li><p>Given a commutative ring `R`, `a, b in R`, we say `a` divides `b` `a`|`b` if `EE c in R` `s.t. a*c = b`</p></li>
+              <li><p>Since rings are additive groups under addition, given `n in ZZ^+`, we can make sense of `n*a = sum_(i=1)^n a`</p></li>
+              <li><p>We define `-n*a = -sum_(i=1)^n a` when `n` is positive</p></li>
+              <li><p>`0*a = 0`</p></li>
+            </ul>
+            <h5>Proposition</h5>
+            <ul>
+              <li><p>Suppose `a, b, c in R`. Then we have the following properties of multiplication</p></li>
+              <li style="list-style-type: none";><p>`a*0 = 0*a = 0` (`0 in R`, the additive identity)</p></li>
+              <li style="list-style-type: none";><p>`a*(-b) = -a*b`</p></li>
+              <li style="list-style-type: none";><p>`(-a)(-b) = a*b`</p></li>
+              <li style="list-style-type: none";><p>`a*(b-c) = a*b-a*c`</p></li>
+              <li style="list-style-type: none";><p>given any integers `m, n in ZZ`, `(m+n)*a = (m*a) + (n*a)`</p></li>
+              <li style="list-style-type: none";><p>given any integer `m in ZZ`, `m*(a*b) = (m*a)*b = (a)*(m*b)`</p></li>
+              <li style="list-style-type: none";><p>given any integers `m, n in ZZ`, `(m*a)*(n*b) = (m*n)*(a*b)`</p></li>
+              <li style="list-style-type: none";><p>given any integer `n in ZZ`, `n*(a+b) = n*a + n*b`</p></li>
+              <li style="list-style-type: none";><p>given any integer `n in ZZ`, `n*(-a) = -(n*a)`</p></li>
+              <li style="list-style-type: none";><p>If `R` is unital, then</p></li>
+              <li style="list-style-type: none";><p>`(-1)*a = -a` where `-1 in R`</p></li>
+              <li style="list-style-type: none";><p>`(-1)(-1) = 1`</p></li>
+              <li style="list-style-type: none";><p>unity is unique</p></li>
+              <li style="list-style-type: none";><p>if `a` has a left multiplicative inverse and a right multiplicative inverse, then they are equal</p></li>
+              <li style="list-style-type: none";><p>multiplicative inverses are unique</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS `a*0 = 0*a = 0`</p></li>
+              <li><p>`0+0 = 0`</p></li>
+              <li><p>`a*(0 + 0 = 0)`</p></li>
+              <li><p>`= a*0 + a*0 = a*0`</p></li>
+              <li><p>`= a*0 = 0`</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS `a*(-b) = -a*b`</p></li>
+              <li><p>`a*(b + (-b)) = a*0 = 0`</p></li>
+              <li><p>`a*(b + (-b)) = a*b + a(-b) = 0`</p></li>
+              <li><p>By uniqueness of the additive inverse, `a*(-b) = -(a*b)`</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS `(-a)(-b) = a*b`</p></li>
+              <li><p>`-a*(b + (-b)) = a*0 = 0`</p></li>
+              <li><p>`-a*(b + (-b)) = -a*b + (-a)*(-b)`</p></li>
+              <li><p>By uniqueness of the additive inverse, `(-a)*(-b) = a*b`</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS `a*(b - c) = a*b - b*c`</p></li>
+              <li><p>`a*(b - c) = a*(b + (-c))`</p></li>
+              <li><p>`= a*b + a*(-c)`</p></li>
+              <li><p>`= a*b + (-a*c) = a*b - a*c`</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS `(m + n)*a = (m*a) + (n*a)`</p></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
