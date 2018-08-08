@@ -128,6 +128,81 @@
             <h5>Proof</h5>
             <ul>
               <li><p>WTS `(m + n)*a = (m*a) + (n*a)`</p></li>
+              <li><p>When `m, n > 0, (m*a) + (n*a) = sum_(i=1)^m a + sum_(j=1)^n a = sum_(k=1)^(m+n) a = (m + n)*a`</p></li>
+              <li><p>Suppose `n < 0`, then we can write `n = -n'` where `n' > 0`. `(m + n)*a = (m - n') * a`</p></li>
+              <li style="list-style-type: none";><p>1) When `m > n'`, we can write `m - n' = m' > 0`</p></li>
+              <li style="list-style-type: none";><p>`(m - n')*a = sum_(i = 1)^(m-n') a = sum_(i = 1)^m a - sum_(j = 1)^(n') a = (m*a) - (n'*a)`</p></li>
+              <li style="list-style-type: none";><p>`= (m*a) + (-n'*a)`</p></li>
+              <li style="list-style-type: none";><p>`= (m*a) + (n*a)`</p></li>
+              <li style="list-style-type: none";><p>2) If `m < n'`, we can write `m - n' = -m'` where `m' > 0`</p></li>
+              <li style="list-style-type: none";><p>`(m + n)*a = (m - n')*a = (-m')*a = - sum_(i = 1)^(m') a`</p></li>
+              <li style="list-style-type: none";><p>Notice: `sum_(i = 1)^(m') a = sum_(i = 1)^(n') a - sum_(j = 1)^m a`</p></li>
+              <li style="list-style-type: none";><p>`sum_(i = 1)^(m') a + (- sum_(i=1)^(m') a) = 0`</p></li>
+              <li style="list-style-type: none";><p>By uniqueness of the additive inverse, `- sum_(i = 1)^(m') a = sum_(i = 1)^m a - sum_(j = 1)^(n') a`</p></li>
+              <li style="list-style-type: none";><p>`sum_(i = 1)^m a - sum_(j = 1)^(n') a = - sum_(i = 1)^(m') a`</p></li>
+              <li style="list-style-type: none";><p>`(m*a) - (n*a) = (m*a) + (-n'*a) = (m*a) + (n*a)`</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS `m*(a*b) = (m*a)*b = (a)*(m*b)`</p></li>
+              <li><p>If `m = 0,`</p></li>
+              <li style="list-style-type: none";><p>`(m*a)*b = 0*b = 0`</p></li>
+              <li style="list-style-type: none";><p>`m*(a*b) = 0*a*b = 0`</p></li>
+              <li style="list-style-type: none";><p>`(a)*(m*b) = (a)*(0*b) = 0`</p></li>
+              <li><p>Suppose `m` is positive. Then `m*(a*b) = sum_(i = 1)^m a*b = (sum_(i = 1)^m a)*b = (m*a)*b`</p></li>
+              <li><p>If `m` is negative, we can write `m = -m` where `m' > 0`</p></li>
+              <li style="list-style-type: none";><p>`0 = (m + m')*(a*b) = m*(a*b) + m'*(a*b) = m*(a*b) + a*(m'*b)`</p></li>
+              <li style="list-style-type: none";><p>`m*(a*b)` is the additive inverse of `a*(m'*b)`</p></li>
+              <li style="list-style-type: none";><p>`a*(m*b)` is the additive inverse of `a*(m'*b)`</p></li>
+              <li style="list-style-type: none";><p>`a*(m*b) + a(m'*b) = a*(m*b + m'*b) = a*((m+m')*b)) = 0`</p></li>
+              <li style="list-style-type: none";></li><p>By uniqueness of the additive inverse, `a*(m*b) = m*(a*b)`</p>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS `(m*a)*(n*b) = (m*n)*(a*b)`</p></li>
+              <li><p>If `m, n` are both positive, `(m*a)*(n*b) = (sum_(i = 1)^m a)*(sum_(j = 1)^n b) = sum_(k = 1)^(m*n) a*b = (m*n)*(a*b)`</p></li>
+              <li><p>If `m, n` are both negative, `EE m', n' > 0` `s.t. m = -m', n = -n'`</p></li>
+              <li style="list-style-type: none";><p>`(m*a)*(n*b) = (-m'*a)*(-n'*b) = -(m'*a)*(-(n'*b)) = (m'*a)*(n'*b)`</p></li>
+              <li style="list-style-type: none";><p>`= (m'*n')*(a*b) = ((-m')*(-n'))*(a*b) = (m*n)*(a*b)`</p></li>
+              <li><p>If `m` is negative and `n` is positive, there exists `m' > 0` `s.t. m = -m'`</p></li>
+              <li style="list-style-type: none";><p>`(m*a)*(n*b) + (m'*a)*(n*b) = ((m*a) + (m'*a))*(n*b)`</p></li>
+              <li style="list-style-type: none";><p>`= ((m + m')*a)*(n*b)) = 0`</p></li>
+              <li style="list-style-type: none";><p>`(m'*a)*(n*b) = (m'*n)*(a*b)`</p></li>
+              <li style="list-style-type: none";><p>`(m*n)*(a*b) + (m'*n)*(a*b) = (m*n + m'*n)*(a*b)`</p></li>
+              <li style="list-style-type: none";><p>`= ((m + m')*n)*(a*b) = 0`</p></li>
+              <li style="list-style-type: none";><p>By uniqueness of the additive inverse, `(m*n)*(a*b) = -(m'*a)*(n*b)`</p></li>
+              <li style="list-style-type: none";><p>`(m*n)*(a*b) = (-m'*a)*(n*b) = (m*a)*(n*b)`</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS `n*(a + b) = n*a + n*b`</p></li>
+              <li><p>If `n` is positive, `n*(a + b) = sum_(i = 1)^n (a + b) = sum_(i = 1)^n a + sum_(i = 1)^n b = (n*a) = (n*b)`</p></li>
+              <li><p>If `n` is negative, we can write it as `-n'` where `n' > 0`</p></li>
+              <li style="list-style-type: none";><p>`0 = (n + n')*(a + b) = n*(a + b) + n'*(a + b) = n*(a + b) + n'*a + n'*b`</p></li>
+              <li style="list-style-type: none";><p>But `n*a + n*b + n'*a + n'*b = 0`</p></li>
+              <li style="list-style-type: none";><p>By uniqueness of the additive inverse, `n*(a + b) = n*a + n*b`</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS `n*(-a) = -(n*a)`</p></li>
+              <li><p>`0 = n*(a + (-a)) = (n*a) + n*(-a)`</p></li>
+              <li><p>Also know `(n*a) + (-n*a) = 0`</p></li>
+              <li><p>By uniqueness of the additive inverse, `n*(-a) = (-n*a) = -(n*a)`</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS unity is unique</p></li>
+              <li><p>Suppose `1, 1'` are both unity elements of `R`</p></li>
+              <li><p>On one hand, `1` is a mult. identity `=> 1*1' = 1'`</p></li>
+              <li><p>On the other hand, `1'` is a mult. identity `=> 1*1' = 1`</p></li>
+              <li><p>`=> 1 = 1'`</p></li>
+            </ul>
+            <h5>Proof</h5>
+            <ul>
+              <li><p>WTS if `a` has a left mult. inverse and a right mult. inverse, then they are equal</p></li>
+              <li><p>Suppose `b` is a left mult. inverse of `a` and `c` is a right mult. inverse of `a`</p></li>
+              <li><p>`b*a = 1, a*c = 1`</p></li>
+              <li><p>`b = b*1 = b*(a*c) = (b*a)*c = 1*c = c`</p></li>
             </ul>
           </div>
         </div>
