@@ -34,6 +34,7 @@
     <div class="toc">
       <ul>
         <a class="toc_link" href="#rings"><li>Rings</li></a>
+        <a class="toc_link" href="#rings"><li>Integral Domains</li></a>
       </ul>
     </div>
     <div class="container">
@@ -77,7 +78,7 @@
               <li><p>We define `-n*a = -sum_(i=1)^n a` when `n` is positive</p></li>
               <li><p>`0*a = 0`</p></li>
             </ul>
-            <h5>Proposition</h5>
+            <h5>Propositions</h5>
             <ul>
               <li><p>Suppose `a, b, c in R`. Then we have the following properties of multiplication</p></li>
               <li style="list-style-type: none";><p>`a*0 = 0*a = 0` (`0 in R`, the additive identity)</p></li>
@@ -203,6 +204,55 @@
               <li><p>Suppose `b` is a left mult. inverse of `a` and `c` is a right mult. inverse of `a`</p></li>
               <li><p>`b*a = 1, a*c = 1`</p></li>
               <li><p>`b = b*1 = b*(a*c) = (b*a)*c = 1*c = c`</p></li>
+            </ul>
+            <h5>Subrings</h5>
+            <ul>
+              <li><p><b>Def: A <u>subring</u> of a ring `R` is a subset `S sube R` which is a ring with the operations of `+` and `*` restricted to `S`</b></p></li>
+              <li><p>Unwinding this definition, we see that `+: SxxS->R`, `(s_1, s_2)|->s_1 + s_2` must have image contained in `S` (closed under addition) and `*: SxxS->R`, `(s_1, s_2)|->s_1*s_2` must have image contained in `S` (closed under multiplication)</p></li>
+              <li><p>We must have `0 in S` and for every `s in S, -s in S` (closed under taking additive inverses)</p></li>
+              <li><p><b>In fact, we see that `S` is a subring if and only if `s_1 - s_2 in S` and `s_1*s_2 in S`, `AA s_1, s_2 in S`</b></p></li>
+              <li><p>Ex: `3ZZ sube ZZ` is a subring of `ZZ`</p></li>
+              <li><p>Ex: `QQ sube RR` is a subring of `RR`</p></li>
+              <li><p>Ex: `{lambda Id}_(lambda in R) sube End_RR(V)` where `V` is a finite dimensional real vector space</p></li>
+            </ul>
+            <h5>Exercises</h5>
+            <ul>
+              <li><p>Let `R_1, ..., R_n` be rings. The direct sum of `R_1, ..., R_n`, `R_1 o+ R_2 o+ ... o+ R_n` is the set which is the Cartesian product `prod_(i = 1)^n R_i` with ring operations performed component-wise</p></li>
+              <li><p>`(a_1, ..., a_n) + (b_1, ..., b_n) = (a_1 + b_1, ..., a_n + b_n)`</p></li>
+              <li><p>`(a_1, ..., a_n) * (b_1, ..., b_n) = (a_1 * b_1, ..., a_n * b_n)`</p></li>
+              <li><p><b>Exercise: Suppose `R_1, ..., R_n` are rings with nonzero elements. Show that `R = R_1 o+ ... o+ R_n` has unity `<=>` each `R_i` has a unity</b></p></li>
+              <li><p>Proof: (`=>`) Assume `R` has unity, say `(e_1, ..., e_n)`. We want to show that each `R_i` has a unity element. We need to show that `e_i` is the mult. identity of `R_i` for each `i`.</p></li>
+              <li style="list-style-type: none";><p>Need to show: given `r_i in R_i`, `e_i*r_i = r_i*e_i = r_i`</p></li>
+              <li style="list-style-type: none";><p>Consider a function `f:R_j->R_1 o+ ... o+ R_n, r_j |-> (0, ..., 0, r_j, 0, ..., 0)`</p></li>
+              <li style="list-style-type: none";><p>We know that `(0, ..., 0, r_j, 0, ..., 0) * (e_1, ..., e_n) = (0, ..., 0, r_j, 0, ..., 0) = (e_1, ..., e_n)*(0, ..., 0, r_j, 0, ..., 0)`</p></li>
+              <li style="list-style-type: none";><p>`=> (0*e_1, ..., r_j*e_j, ..., 0*e_n) = (e_1*0, ..., e_j*r_j, ..., 0*e_n)`</p></li>
+              <li style="list-style-type: none";><p>`=> (0, ..., 0, r_j*e_j, 0, ..., 0) = (0, ..., 0, e_j*r_j, 0, ..., 0)`</p></li>
+              <li style="list-style-type: none";><p>This shows that `e_j*r_j = r_j = r_j*e_j, AA r in R_j => e_j` is a mult identity of `R_j`</p></li>
+              <li style="list-style-type: none";><p>(`lArr`) Assume that each `R_i` has a mult. identity. We need to show that `R` does too.</p></li>
+              <li style="list-style-type: none";><p>Say `e_i` is the mult. identity of `R_i`. We claim that `(e_1, ..., e_n)` is the mult. identity of `R`. We must show that `(e_1, ..., e_n)*(r_1, ..., r_n) = (r_1, ..., r_n)*(e_1, ..., e_n) = (r_1, ..., r_n), AA (r_1, ..., r_n) in R`</p></li>
+              <li style="list-style-type: none";><p>`(e_1, ..., e_n)*(r_1, ..., r_n) = (e_1*r_1, ..., e_n*r_n) = (r_1, ..., r_n)`</p></li>
+              <li style="list-style-type: none";><p>`(r_1, ..., r_n)*(e_1, ..., e_n) = (r_1*e_1, ..., r_n*e_n) = (r_1, ..., r_n)`</p></li>
+              <li><p><b>Exercise: Suppose that there is a positive even integer `n` `s.t. a^n = a` for all `a in R`. Show that `-a = a` for all `a in R`.</b></p></li>
+              <li><p>Proof: We can write `n = 2k` for some positive integer `k`</p></li>
+              <li style="list-style-type: none";><p>`-a = (-a)^n = (-a)^(2k) = ((-a)^2)^k = (a^2)^k = a^(2k) = a^n = a`</p></li>
+              <li><p><b>Exercise: Suppose that there is an integer `n > 1` such that `x^n = x, AA x in R`. If `m` is a positive integer such that `a^m = 0` for some `a`, show that `a = 0`</b></p></li>
+              <li><p>Proof: Case 1: `m <= n`</p></li>
+              <li style="list-style-type: none";><p>`a = a^n = a^m * a^(n-m) = 0 * a^(n-m) = 0`</p></li>
+              <li><p>Case 2: `m > n`</p></li>
+              <li style="list-style-type: none";><p>Choose `m` to be the smallest positive integer `s.t. a^m = 0`</p></li>
+              <li style="list-style-type: none";><p>Suppose for a contradiction `m > n`</p></li>
+              <li style="list-style-type: none";><p>`0 = a^m = a^n * a^(m-n) = a*a^(m-n) = a^(m-n+1)`</p></li>
+              <li style="list-style-type: none";><p>Since m was chosen to be the smallest positive integer with this property, `m-n+1 >= m => -n + 1 >= 0 => 1 >= n`</p></li>
+              <li style="list-style-type: none";><p>This contradicts the assumption that `n > 1`</p></li>
+            </ul>
+          </div>
+          <div class="content" id="integral_domains">
+            <h3>Integral Domains</h3>
+            <ul>
+              <li><p>`ZZ` has more structure than an arbitrary ring does</p></li>
+              <li><p>`ZZ` is a commutative ring</p></li>
+              <li><p>`ZZ` has a mult. identity</p></li>
+              <li><p>`ZZ` has the property that if `a, b != 0`, then `ab != 0`</p></li>
             </ul>
           </div>
         </div>
