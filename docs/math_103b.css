@@ -37,3 +37,8 @@ body {
   padding-top: 70px;
   padding-left: 50px;
 }
+
+.proof {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}

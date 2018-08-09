@@ -34,7 +34,7 @@
     <div class="toc">
       <ul>
         <a class="toc_link" href="#rings"><li>Rings</li></a>
-        <a class="toc_link" href="#rings"><li>Integral Domains</li></a>
+        <a class="toc_link" href="#integral_domains"><li>Integral Domains</li></a>
       </ul>
     </div>
     <div class="container">
@@ -97,114 +97,136 @@
               <li style="list-style-type: none";><p>if `a` has a left multiplicative inverse and a right multiplicative inverse, then they are equal</p></li>
               <li style="list-style-type: none";><p>multiplicative inverses are unique</p></li>
             </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS `a*0 = 0*a = 0`</p></li>
-              <li><p>`0+0 = 0`</p></li>
-              <li><p>`a*(0 + 0 = 0)`</p></li>
-              <li><p>`= a*0 + a*0 = a*0`</p></li>
-              <li><p>`= a*0 = 0`</p></li>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS `a*(-b) = -a*b`</p></li>
-              <li><p>`a*(b + (-b)) = a*0 = 0`</p></li>
-              <li><p>`a*(b + (-b)) = a*b + a(-b) = 0`</p></li>
-              <li><p>By uniqueness of the additive inverse, `a*(-b) = -(a*b)`</p></li>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS `(-a)(-b) = a*b`</p></li>
-              <li><p>`-a*(b + (-b)) = a*0 = 0`</p></li>
-              <li><p>`-a*(b + (-b)) = -a*b + (-a)*(-b)`</p></li>
-              <li><p>By uniqueness of the additive inverse, `(-a)*(-b) = a*b`</p></li>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS `a*(b - c) = a*b - b*c`</p></li>
-              <li><p>`a*(b - c) = a*(b + (-c))`</p></li>
-              <li><p>`= a*b + a*(-c)`</p></li>
-              <li><p>`= a*b + (-a*c) = a*b - a*c`</p></li>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS `(m + n)*a = (m*a) + (n*a)`</p></li>
-              <li><p>When `m, n > 0, (m*a) + (n*a) = sum_(i=1)^m a + sum_(j=1)^n a = sum_(k=1)^(m+n) a = (m + n)*a`</p></li>
-              <li><p>Suppose `n < 0`, then we can write `n = -n'` where `n' > 0`. `(m + n)*a = (m - n') * a`</p></li>
-              <li style="list-style-type: none";><p>1) When `m > n'`, we can write `m - n' = m' > 0`</p></li>
-              <li style="list-style-type: none";><p>`(m - n')*a = sum_(i = 1)^(m-n') a = sum_(i = 1)^m a - sum_(j = 1)^(n') a = (m*a) - (n'*a)`</p></li>
-              <li style="list-style-type: none";><p>`= (m*a) + (-n'*a)`</p></li>
-              <li style="list-style-type: none";><p>`= (m*a) + (n*a)`</p></li>
-              <li style="list-style-type: none";><p>2) If `m < n'`, we can write `m - n' = -m'` where `m' > 0`</p></li>
-              <li style="list-style-type: none";><p>`(m + n)*a = (m - n')*a = (-m')*a = - sum_(i = 1)^(m') a`</p></li>
-              <li style="list-style-type: none";><p>Notice: `sum_(i = 1)^(m') a = sum_(i = 1)^(n') a - sum_(j = 1)^m a`</p></li>
-              <li style="list-style-type: none";><p>`sum_(i = 1)^(m') a + (- sum_(i=1)^(m') a) = 0`</p></li>
-              <li style="list-style-type: none";><p>By uniqueness of the additive inverse, `- sum_(i = 1)^(m') a = sum_(i = 1)^m a - sum_(j = 1)^(n') a`</p></li>
-              <li style="list-style-type: none";><p>`sum_(i = 1)^m a - sum_(j = 1)^(n') a = - sum_(i = 1)^(m') a`</p></li>
-              <li style="list-style-type: none";><p>`(m*a) - (n*a) = (m*a) + (-n'*a) = (m*a) + (n*a)`</p></li>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS `m*(a*b) = (m*a)*b = (a)*(m*b)`</p></li>
-              <li><p>If `m = 0,`</p></li>
-              <li style="list-style-type: none";><p>`(m*a)*b = 0*b = 0`</p></li>
-              <li style="list-style-type: none";><p>`m*(a*b) = 0*a*b = 0`</p></li>
-              <li style="list-style-type: none";><p>`(a)*(m*b) = (a)*(0*b) = 0`</p></li>
-              <li><p>Suppose `m` is positive. Then `m*(a*b) = sum_(i = 1)^m a*b = (sum_(i = 1)^m a)*b = (m*a)*b`</p></li>
-              <li><p>If `m` is negative, we can write `m = -m` where `m' > 0`</p></li>
-              <li style="list-style-type: none";><p>`0 = (m + m')*(a*b) = m*(a*b) + m'*(a*b) = m*(a*b) + a*(m'*b)`</p></li>
-              <li style="list-style-type: none";><p>`m*(a*b)` is the additive inverse of `a*(m'*b)`</p></li>
-              <li style="list-style-type: none";><p>`a*(m*b)` is the additive inverse of `a*(m'*b)`</p></li>
-              <li style="list-style-type: none";><p>`a*(m*b) + a(m'*b) = a*(m*b + m'*b) = a*((m+m')*b)) = 0`</p></li>
-              <li style="list-style-type: none";></li><p>By uniqueness of the additive inverse, `a*(m*b) = m*(a*b)`</p>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS `(m*a)*(n*b) = (m*n)*(a*b)`</p></li>
-              <li><p>If `m, n` are both positive, `(m*a)*(n*b) = (sum_(i = 1)^m a)*(sum_(j = 1)^n b) = sum_(k = 1)^(m*n) a*b = (m*n)*(a*b)`</p></li>
-              <li><p>If `m, n` are both negative, `EE m', n' > 0` `s.t. m = -m', n = -n'`</p></li>
-              <li style="list-style-type: none";><p>`(m*a)*(n*b) = (-m'*a)*(-n'*b) = -(m'*a)*(-(n'*b)) = (m'*a)*(n'*b)`</p></li>
-              <li style="list-style-type: none";><p>`= (m'*n')*(a*b) = ((-m')*(-n'))*(a*b) = (m*n)*(a*b)`</p></li>
-              <li><p>If `m` is negative and `n` is positive, there exists `m' > 0` `s.t. m = -m'`</p></li>
-              <li style="list-style-type: none";><p>`(m*a)*(n*b) + (m'*a)*(n*b) = ((m*a) + (m'*a))*(n*b)`</p></li>
-              <li style="list-style-type: none";><p>`= ((m + m')*a)*(n*b)) = 0`</p></li>
-              <li style="list-style-type: none";><p>`(m'*a)*(n*b) = (m'*n)*(a*b)`</p></li>
-              <li style="list-style-type: none";><p>`(m*n)*(a*b) + (m'*n)*(a*b) = (m*n + m'*n)*(a*b)`</p></li>
-              <li style="list-style-type: none";><p>`= ((m + m')*n)*(a*b) = 0`</p></li>
-              <li style="list-style-type: none";><p>By uniqueness of the additive inverse, `(m*n)*(a*b) = -(m'*a)*(n*b)`</p></li>
-              <li style="list-style-type: none";><p>`(m*n)*(a*b) = (-m'*a)*(n*b) = (m*a)*(n*b)`</p></li>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS `n*(a + b) = n*a + n*b`</p></li>
-              <li><p>If `n` is positive, `n*(a + b) = sum_(i = 1)^n (a + b) = sum_(i = 1)^n a + sum_(i = 1)^n b = (n*a) = (n*b)`</p></li>
-              <li><p>If `n` is negative, we can write it as `-n'` where `n' > 0`</p></li>
-              <li style="list-style-type: none";><p>`0 = (n + n')*(a + b) = n*(a + b) + n'*(a + b) = n*(a + b) + n'*a + n'*b`</p></li>
-              <li style="list-style-type: none";><p>But `n*a + n*b + n'*a + n'*b = 0`</p></li>
-              <li style="list-style-type: none";><p>By uniqueness of the additive inverse, `n*(a + b) = n*a + n*b`</p></li>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS `n*(-a) = -(n*a)`</p></li>
-              <li><p>`0 = n*(a + (-a)) = (n*a) + n*(-a)`</p></li>
-              <li><p>Also know `(n*a) + (-n*a) = 0`</p></li>
-              <li><p>By uniqueness of the additive inverse, `n*(-a) = (-n*a) = -(n*a)`</p></li>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS unity is unique</p></li>
-              <li><p>Suppose `1, 1'` are both unity elements of `R`</p></li>
-              <li><p>On one hand, `1` is a mult. identity `=> 1*1' = 1'`</p></li>
-              <li><p>On the other hand, `1'` is a mult. identity `=> 1*1' = 1`</p></li>
-              <li><p>`=> 1 = 1'`</p></li>
-            </ul>
-            <h5>Proof</h5>
-            <ul>
-              <li><p>WTS if `a` has a left mult. inverse and a right mult. inverse, then they are equal</p></li>
-              <li><p>Suppose `b` is a left mult. inverse of `a` and `c` is a right mult. inverse of `a`</p></li>
-              <li><p>`b*a = 1, a*c = 1`</p></li>
-              <li><p>`b = b*1 = b*(a*c) = (b*a)*c = 1*c = c`</p></li>
-            </ul>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS `a*0 = 0*a = 0`</p></li>
+                <li><p>`0+0 = 0`</p></li>
+                <li><p>`a*(0 + 0 = 0)`</p></li>
+                <li><p>`= a*0 + a*0 = a*0`</p></li>
+                <li><p>`= a*0 = 0`</p></li>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS `a*(-b) = -a*b`</p></li>
+                <li><p>`a*(b + (-b)) = a*0 = 0`</p></li>
+                <li><p>`a*(b + (-b)) = a*b + a(-b) = 0`</p></li>
+                <li><p>By uniqueness of the additive inverse, `a*(-b) = -(a*b)`</p></li>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS `(-a)(-b) = a*b`</p></li>
+                <li><p>`-a*(b + (-b)) = a*0 = 0`</p></li>
+                <li><p>`-a*(b + (-b)) = -a*b + (-a)*(-b)`</p></li>
+                <li><p>By uniqueness of the additive inverse, `(-a)*(-b) = a*b`</p></li>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS `a*(b - c) = a*b - b*c`</p></li>
+                <li><p>`a*(b - c) = a*(b + (-c))`</p></li>
+                <li><p>`= a*b + a*(-c)`</p></li>
+                <li><p>`= a*b + (-a*c) = a*b - a*c`</p></li>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS `(m + n)*a = (m*a) + (n*a)`</p></li>
+                <li><p>When `m, n > 0, (m*a) + (n*a) = sum_(i=1)^m a + sum_(j=1)^n a = sum_(k=1)^(m+n) a = (m + n)*a`</p></li>
+                <li><p>Suppose `n < 0`, then we can write `n = -n'` where `n' > 0`. `(m + n)*a = (m - n') * a`</p></li>
+                <li style="list-style-type: none";><p>1) When `m > n'`, we can write `m - n' = m' > 0`</p></li>
+                <li style="list-style-type: none";><p>`(m - n')*a = sum_(i = 1)^(m-n') a = sum_(i = 1)^m a - sum_(j = 1)^(n') a = (m*a) - (n'*a)`</p></li>
+                <li style="list-style-type: none";><p>`= (m*a) + (-n'*a)`</p></li>
+                <li style="list-style-type: none";><p>`= (m*a) + (n*a)`</p></li>
+                <li style="list-style-type: none";><p>2) If `m < n'`, we can write `m - n' = -m'` where `m' > 0`</p></li>
+                <li style="list-style-type: none";><p>`(m + n)*a = (m - n')*a = (-m')*a = - sum_(i = 1)^(m') a`</p></li>
+                <li style="list-style-type: none";><p>Notice: `sum_(i = 1)^(m') a = sum_(i = 1)^(n') a - sum_(j = 1)^m a`</p></li>
+                <li style="list-style-type: none";><p>`sum_(i = 1)^(m') a + (- sum_(i=1)^(m') a) = 0`</p></li>
+                <li style="list-style-type: none";><p>By uniqueness of the additive inverse, `- sum_(i = 1)^(m') a = sum_(i = 1)^m a - sum_(j = 1)^(n') a`</p></li>
+                <li style="list-style-type: none";><p>`sum_(i = 1)^m a - sum_(j = 1)^(n') a = - sum_(i = 1)^(m') a`</p></li>
+                <li style="list-style-type: none";><p>`(m*a) - (n*a) = (m*a) + (-n'*a) = (m*a) + (n*a)`</p></li>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS `m*(a*b) = (m*a)*b = (a)*(m*b)`</p></li>
+                <li><p>If `m = 0,`</p></li>
+                <li style="list-style-type: none";><p>`(m*a)*b = 0*b = 0`</p></li>
+                <li style="list-style-type: none";><p>`m*(a*b) = 0*a*b = 0`</p></li>
+                <li style="list-style-type: none";><p>`(a)*(m*b) = (a)*(0*b) = 0`</p></li>
+                <li><p>Suppose `m` is positive. Then `m*(a*b) = sum_(i = 1)^m a*b = (sum_(i = 1)^m a)*b = (m*a)*b`</p></li>
+                <li><p>If `m` is negative, we can write `m = -m` where `m' > 0`</p></li>
+                <li style="list-style-type: none";><p>`0 = (m + m')*(a*b) = m*(a*b) + m'*(a*b) = m*(a*b) + a*(m'*b)`</p></li>
+                <li style="list-style-type: none";><p>`m*(a*b)` is the additive inverse of `a*(m'*b)`</p></li>
+                <li style="list-style-type: none";><p>`a*(m*b)` is the additive inverse of `a*(m'*b)`</p></li>
+                <li style="list-style-type: none";><p>`a*(m*b) + a(m'*b) = a*(m*b + m'*b) = a*((m+m')*b)) = 0`</p></li>
+                <li style="list-style-type: none";></li><p>By uniqueness of the additive inverse, `a*(m*b) = m*(a*b)`</p>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS `(m*a)*(n*b) = (m*n)*(a*b)`</p></li>
+                <li><p>If `m, n` are both positive, `(m*a)*(n*b) = (sum_(i = 1)^m a)*(sum_(j = 1)^n b) = sum_(k = 1)^(m*n) a*b = (m*n)*(a*b)`</p></li>
+                <li><p>If `m, n` are both negative, `EE m', n' > 0` `s.t. m = -m', n = -n'`</p></li>
+                <li style="list-style-type: none";><p>`(m*a)*(n*b) = (-m'*a)*(-n'*b) = -(m'*a)*(-(n'*b)) = (m'*a)*(n'*b)`</p></li>
+                <li style="list-style-type: none";><p>`= (m'*n')*(a*b) = ((-m')*(-n'))*(a*b) = (m*n)*(a*b)`</p></li>
+                <li><p>If `m` is negative and `n` is positive, there exists `m' > 0` `s.t. m = -m'`</p></li>
+                <li style="list-style-type: none";><p>`(m*a)*(n*b) + (m'*a)*(n*b) = ((m*a) + (m'*a))*(n*b)`</p></li>
+                <li style="list-style-type: none";><p>`= ((m + m')*a)*(n*b)) = 0`</p></li>
+                <li style="list-style-type: none";><p>`(m'*a)*(n*b) = (m'*n)*(a*b)`</p></li>
+                <li style="list-style-type: none";><p>`(m*n)*(a*b) + (m'*n)*(a*b) = (m*n + m'*n)*(a*b)`</p></li>
+                <li style="list-style-type: none";><p>`= ((m + m')*n)*(a*b) = 0`</p></li>
+                <li style="list-style-type: none";><p>By uniqueness of the additive inverse, `(m*n)*(a*b) = -(m'*a)*(n*b)`</p></li>
+                <li style="list-style-type: none";><p>`(m*n)*(a*b) = (-m'*a)*(n*b) = (m*a)*(n*b)`</p></li>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS `n*(a + b) = n*a + n*b`</p></li>
+                <li><p>If `n` is positive, `n*(a + b) = sum_(i = 1)^n (a + b) = sum_(i = 1)^n a + sum_(i = 1)^n b = (n*a) = (n*b)`</p></li>
+                <li><p>If `n` is negative, we can write it as `-n'` where `n' > 0`</p></li>
+                <li style="list-style-type: none";><p>`0 = (n + n')*(a + b) = n*(a + b) + n'*(a + b) = n*(a + b) + n'*a + n'*b`</p></li>
+                <li style="list-style-type: none";><p>But `n*a + n*b + n'*a + n'*b = 0`</p></li>
+                <li style="list-style-type: none";><p>By uniqueness of the additive inverse, `n*(a + b) = n*a + n*b`</p></li>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS `n*(-a) = -(n*a)`</p></li>
+                <li><p>`0 = n*(a + (-a)) = (n*a) + n*(-a)`</p></li>
+                <li><p>Also know `(n*a) + (-n*a) = 0`</p></li>
+                <li><p>By uniqueness of the additive inverse, `n*(-a) = (-n*a) = -(n*a)`</p></li>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS unity is unique</p></li>
+                <li><p>Suppose `1, 1'` are both unity elements of `R`</p></li>
+                <li><p>On one hand, `1` is a mult. identity `=> 1*1' = 1'`</p></li>
+                <li><p>On the other hand, `1'` is a mult. identity `=> 1*1' = 1`</p></li>
+                <li><p>`=> 1 = 1'`</p></li>
+              </ul>
+            </div>
+            <div class="proof">
+              <h5>Proof</h5>
+              <ul>
+                <li><p>WTS if `a` has a left mult. inverse and a right mult. inverse, then they are equal</p></li>
+                <li><p>Suppose `b` is a left mult. inverse of `a` and `c` is a right mult. inverse of `a`</p></li>
+                <li><p>`b*a = 1, a*c = 1`</p></li>
+                <li><p>`b = b*1 = b*(a*c) = (b*a)*c = 1*c = c`</p></li>
+              </ul>
+            </div>
             <h5>Subrings</h5>
             <ul>
               <li><p><b>Def: A <u>subring</u> of a ring `R` is a subset `S sube R` which is a ring with the operations of `+` and `*` restricted to `S`</b></p></li>
@@ -220,30 +242,36 @@
               <li><p>Let `R_1, ..., R_n` be rings. The direct sum of `R_1, ..., R_n`, `R_1 o+ R_2 o+ ... o+ R_n` is the set which is the Cartesian product `prod_(i = 1)^n R_i` with ring operations performed component-wise</p></li>
               <li><p>`(a_1, ..., a_n) + (b_1, ..., b_n) = (a_1 + b_1, ..., a_n + b_n)`</p></li>
               <li><p>`(a_1, ..., a_n) * (b_1, ..., b_n) = (a_1 * b_1, ..., a_n * b_n)`</p></li>
-              <li><p><b>Exercise: Suppose `R_1, ..., R_n` are rings with nonzero elements. Show that `R = R_1 o+ ... o+ R_n` has unity `<=>` each `R_i` has a unity</b></p></li>
-              <li><p>Proof: (`=>`) Assume `R` has unity, say `(e_1, ..., e_n)`. We want to show that each `R_i` has a unity element. We need to show that `e_i` is the mult. identity of `R_i` for each `i`.</p></li>
-              <li style="list-style-type: none";><p>Need to show: given `r_i in R_i`, `e_i*r_i = r_i*e_i = r_i`</p></li>
-              <li style="list-style-type: none";><p>Consider a function `f:R_j->R_1 o+ ... o+ R_n, r_j |-> (0, ..., 0, r_j, 0, ..., 0)`</p></li>
-              <li style="list-style-type: none";><p>We know that `(0, ..., 0, r_j, 0, ..., 0) * (e_1, ..., e_n) = (0, ..., 0, r_j, 0, ..., 0) = (e_1, ..., e_n)*(0, ..., 0, r_j, 0, ..., 0)`</p></li>
-              <li style="list-style-type: none";><p>`=> (0*e_1, ..., r_j*e_j, ..., 0*e_n) = (e_1*0, ..., e_j*r_j, ..., 0*e_n)`</p></li>
-              <li style="list-style-type: none";><p>`=> (0, ..., 0, r_j*e_j, 0, ..., 0) = (0, ..., 0, e_j*r_j, 0, ..., 0)`</p></li>
-              <li style="list-style-type: none";><p>This shows that `e_j*r_j = r_j = r_j*e_j, AA r in R_j => e_j` is a mult identity of `R_j`</p></li>
-              <li style="list-style-type: none";><p>(`lArr`) Assume that each `R_i` has a mult. identity. We need to show that `R` does too.</p></li>
-              <li style="list-style-type: none";><p>Say `e_i` is the mult. identity of `R_i`. We claim that `(e_1, ..., e_n)` is the mult. identity of `R`. We must show that `(e_1, ..., e_n)*(r_1, ..., r_n) = (r_1, ..., r_n)*(e_1, ..., e_n) = (r_1, ..., r_n), AA (r_1, ..., r_n) in R`</p></li>
-              <li style="list-style-type: none";><p>`(e_1, ..., e_n)*(r_1, ..., r_n) = (e_1*r_1, ..., e_n*r_n) = (r_1, ..., r_n)`</p></li>
-              <li style="list-style-type: none";><p>`(r_1, ..., r_n)*(e_1, ..., e_n) = (r_1*e_1, ..., r_n*e_n) = (r_1, ..., r_n)`</p></li>
-              <li><p><b>Exercise: Suppose that there is a positive even integer `n` `s.t. a^n = a` for all `a in R`. Show that `-a = a` for all `a in R`.</b></p></li>
-              <li><p>Proof: We can write `n = 2k` for some positive integer `k`</p></li>
-              <li style="list-style-type: none";><p>`-a = (-a)^n = (-a)^(2k) = ((-a)^2)^k = (a^2)^k = a^(2k) = a^n = a`</p></li>
-              <li><p><b>Exercise: Suppose that there is an integer `n > 1` such that `x^n = x, AA x in R`. If `m` is a positive integer such that `a^m = 0` for some `a`, show that `a = 0`</b></p></li>
-              <li><p>Proof: Case 1: `m <= n`</p></li>
-              <li style="list-style-type: none";><p>`a = a^n = a^m * a^(n-m) = 0 * a^(n-m) = 0`</p></li>
-              <li><p>Case 2: `m > n`</p></li>
-              <li style="list-style-type: none";><p>Choose `m` to be the smallest positive integer `s.t. a^m = 0`</p></li>
-              <li style="list-style-type: none";><p>Suppose for a contradiction `m > n`</p></li>
-              <li style="list-style-type: none";><p>`0 = a^m = a^n * a^(m-n) = a*a^(m-n) = a^(m-n+1)`</p></li>
-              <li style="list-style-type: none";><p>Since m was chosen to be the smallest positive integer with this property, `m-n+1 >= m => -n + 1 >= 0 => 1 >= n`</p></li>
-              <li style="list-style-type: none";><p>This contradicts the assumption that `n > 1`</p></li>
+              <div class="proof">
+                <li><p><b>Exercise: Suppose `R_1, ..., R_n` are rings with nonzero elements. Show that `R = R_1 o+ ... o+ R_n` has unity `<=>` each `R_i` has a unity</b></p></li>
+                <li><p>Proof: (`=>`) Assume `R` has unity, say `(e_1, ..., e_n)`. We want to show that each `R_i` has a unity element. We need to show that `e_i` is the mult. identity of `R_i` for each `i`.</p></li>
+                <li><p>Need to show: given `r_i in R_i`, `e_i*r_i = r_i*e_i = r_i`</p></li>
+                <li><p>Consider a function `f:R_j->R_1 o+ ... o+ R_n, r_j |-> (0, ..., 0, r_j, 0, ..., 0)`</p></li>
+                <li><p>We know that `(0, ..., 0, r_j, 0, ..., 0) * (e_1, ..., e_n) = (0, ..., 0, r_j, 0, ..., 0) = (e_1, ..., e_n)*(0, ..., 0, r_j, 0, ..., 0)`</p></li>
+                <li><p>`=> (0*e_1, ..., r_j*e_j, ..., 0*e_n) = (e_1*0, ..., e_j*r_j, ..., 0*e_n)`</p></li>
+                <li><p>`=> (0, ..., 0, r_j*e_j, 0, ..., 0) = (0, ..., 0, e_j*r_j, 0, ..., 0)`</p></li>
+                <li><p>This shows that `e_j*r_j = r_j = r_j*e_j, AA r in R_j => e_j` is a mult identity of `R_j`</p></li>
+                <li><p>(`lArr`) Assume that each `R_i` has a mult. identity. We need to show that `R` does too.</p></li>
+                <li><p>Say `e_i` is the mult. identity of `R_i`. We claim that `(e_1, ..., e_n)` is the mult. identity of `R`. We must show that `(e_1, ..., e_n)*(r_1, ..., r_n) = (r_1, ..., r_n)*(e_1, ..., e_n) = (r_1, ..., r_n), AA (r_1, ..., r_n) in R`</p></li>
+                <li><p>`(e_1, ..., e_n)*(r_1, ..., r_n) = (e_1*r_1, ..., e_n*r_n) = (r_1, ..., r_n)`</p></li>
+                <li><p>`(r_1, ..., r_n)*(e_1, ..., e_n) = (r_1*e_1, ..., r_n*e_n) = (r_1, ..., r_n)`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Exercise: Suppose that there is a positive even integer `n` `s.t. a^n = a` for all `a in R`. Show that `-a = a` for all `a in R`.</b></p></li>
+                <li><p>Proof: We can write `n = 2k` for some positive integer `k`</p></li>
+                <li style="list-style-type: none";><p>`-a = (-a)^n = (-a)^(2k) = ((-a)^2)^k = (a^2)^k = a^(2k) = a^n = a`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Exercise: Suppose that there is an integer `n > 1` such that `x^n = x, AA x in R`. If `m` is a positive integer such that `a^m = 0` for some `a`, show that `a = 0`</b></p></li>
+                <li><p>Proof: Case 1: `m <= n`</p></li>
+                <li style="list-style-type: none";><p>`a = a^n = a^m * a^(n-m) = 0 * a^(n-m) = 0`</p></li>
+                <li><p>Case 2: `m > n`</p></li>
+                <li style="list-style-type: none";><p>Choose `m` to be the smallest positive integer `s.t. a^m = 0`</p></li>
+                <li style="list-style-type: none";><p>Suppose for a contradiction `m > n`</p></li>
+                <li style="list-style-type: none";><p>`0 = a^m = a^n * a^(m-n) = a*a^(m-n) = a^(m-n+1)`</p></li>
+                <li style="list-style-type: none";><p>Since m was chosen to be the smallest positive integer with this property, `m-n+1 >= m => -n + 1 >= 0 => 1 >= n`</p></li>
+                <li style="list-style-type: none";><p>This contradicts the assumption that `n > 1`</p></li>
+              </div>
             </ul>
           </div>
           <div class="content" id="integral_domains">
@@ -253,6 +281,41 @@
               <li><p>`ZZ` is a commutative ring</p></li>
               <li><p>`ZZ` has a mult. identity</p></li>
               <li><p>`ZZ` has the property that if `a, b != 0`, then `ab != 0`</p></li>
+              <li><p><b>Def: A <u>zero-divisor</u> in a commutative ring is a nonzero element `z in R` `s.t.` there exists a nonzero element `y in R` `s.t.` `zy = 0`</b></p></li>
+              <li><p><b>Def: An <u>integral domain</u> is a unital commutative ring `R` `s.t.` if `a, b in R` `s.t. ab = 0`, then either `a = 0` or `b = 0`</b></p></li>
+              <li><p>We almost have division in integral domains: we have cancellation</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: Let `R` be a domain. Suppose that `a != 0 in R`. Then `ab = ac => b= c`</b></p></li>
+                <li><p>Proof: `ab = ac => ab - ac = 0 => a(b-c) = 0`</p></li>
+                <li><p>Since `a != 0`, `b-c = 0 => b = c`</p></li>
+              </div>
+              <li><p>Ex: `QQ` is a domain</p></li>
+              <li><p>Ex: the Gaussian integers `ZZ[i] = {a + bi | a, b in ZZ}` is a domain</p></li>
+              <li><p>Ex: `CC[x]` - the ring of polynomials in a single indeterminate `x` with coefficients `in CC` is a domain</p></li>
+              <li><p>NonEx: `ZZ // (4ZZ)` is not a domain because `[2]_4 * [2]_4 = [4]_4 = [0]_4`</p></li>
+              <li><p><b>Def: A <u>field</u> is a domain `F` `s.t.` every nonzero element of `F` has a mult. inverse</b></p></li>
+              <li><p>Ex: `RR` is a field</p></li>
+              <li><p>Ex: `CC(t) = {f(t)/g(t) | f(t), g(t) in CC(t)}` the ring of rational functions whose coefficients are in `CC` is a field</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: Let `D` be a finite integral domain. Then `D` is a field.</b></p></li>
+                <li><p>Proof: Need to show that every nonzero element has a mult. inverse</p></li>
+                <li><p>Let `a != 0 in D`. Consider the function `&#966;_a: D->D`, `y |-> ay`</p></li>
+                <li><p>If we show that `&#966;_a` is surjective, then we are done</p></li>
+                <li><p>Since `D` is finite, by the pigeonhole principle, `&#966;_a` is surjective `<=> &#966;_a` is injective</p></li>
+                <li><p>Therefore, it suffices to show that `&#966;_a` is injective</p></li>
+                <li><p>Suppose `b, c in D` `s.t.` `&#966;_a(b) = &#966;_a(c) => ab = ac`</p></li>
+                <li><p>Since `a != 0` and `D` is a domain, we conclude that `b = c => &#966;_a` is injective</p></li>
+                <li><p>Since `&#966;_a` is surjective, if we fix `1 in D`, we can find an element `b in D` `s.t.` `&#966;_a(b) = ab = 1 => b` is the mult. inverse of `a`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Corollary: `ZZ // pZZ` is a field `<=> p` is prime</b></p></li>
+                <li><p>Proof: (`=>`) Suppose `ZZ // pZZ` is a field but `p` is not prime</p></li>
+                <li><p>Then `p = qr`, `1 < q, r < p`</p></li>
+                <li><p>Then `[q]_p*[r]_p = [p]_p = [0]_p => ZZ // pZZ` has zero-divisors, which contradicts `ZZ // pZZ` is a field</p></li>
+                <li><p>(`lArr`) If `p` is prime, then we must show `ZZ // pZZ` is a domain by the previous result</p></li>
+                <li><p>Suppose `[a]_p * [b]_p = [0]_p <=> ab = pk` for some integer `k`</p></li>
+                <li><p>`p` prime `=> p|ab <=> p|a` or `p|b <=> [a]_p = [0]_p` or `[b]_p = [0]_p => ZZ // pZZ` is a domain</p></li>
+              </div>
             </ul>
           </div>
         </div>
