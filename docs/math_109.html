@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--
+                                      _
+        /\     _             _   _   | |             __    __
+       /  \   | |      /\   | \ | |  | |       /\   |  \  /  |
+      /    \  | |     /  \  |  \| |  | |      /  \  | |\\//| |
+     / ____ \ | |__  / __ \ | |\  |  | |___  / __ \ | | \/ | |
+    /_/    \_\|____|/_/  \_\|_| \_|  |_____|/_/  \_\|_|    |_|
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Mathematical Reasoning</title>
+    <link href="math_109.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="#" target="_blank">Cheat Sheets</a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+    <div class="toc">
+      <p>I think I took notes badly. Oops.</p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9">
+          <h1>Mathematical Reasoning</h1>
+          <div class="content">
+            <ul>
+              <li><p>If `P` then `Q`</p></li>
+              <li><p>`P` and `Q` are statements. Statements are exclusively `true` or `false`</p></li>
+              <li><p>`P` is the hypothesis and `Q` is the conclusion</p></li>
+              <div class="proof">
+                <li><p>Prove: `-3 = 3`</p></li>
+                <li><p>`=> (-3)^2 = 3^2`</p></li>
+                <li><p>`=> 9 = 9`</p></li>
+                <li><p>`-3 = 3`</p></li>
+                <li><p>Wrong because the proof doesn't go `lArr`</p></li>
+              </div>
+              <li><p>`f: S -> T`</p></li>
+              <li><p>`f` is a function, `S` is the domain, `T` is the codomain</p></li>
+              <li><p>If `a in R`, then `|a| = {(a if a >= 0),(-a if a <= 0):}`</p></li>
+              <div class="proof">
+                <li><p><b>Prove: `|a|^2 = a^2`</b></p></li>
+                <li><p>Proof: Let `a in RR`. Then `a >= 0` or `a <= 0`</p></li>
+                <li><p>Proof by cases: Case 1: `a >= 0`; Case 2: `a <= 0`</p></li>
+                <li><p>Case 1: Suppose `a >= 0`. Then `|a| = a`, so `|a|^2 = a^2`</p></li>
+                <li><p>Case 2: Suppose `a <= 0`. Then `|a| = -a`, so `|a|^2 = (-a)^2 = a^2`</p></li>
+              </div>
+              <li><p>Let `b in ZZ`. `5` divides `b` `<=> 5x = b` for some integer `x`</p></li>
+              <li><p>`<=> EE x in ZZ, 5x = b`</p></li>
+              <li><p><b>Trichotomy: `AA x, y in RR`, exactly one is true:</b></p></li>
+              <li style="list-style-type: none";><p>`x < y`</p></li>
+              <li style="list-style-type: none";><p>`x > y`</p></li>
+              <li style="list-style-type: none";><p>`x = y`</p></li>
+              <div class="proof">
+                <li><p><b>Proposition (false): `x - y in ZZ^+`, `AA x, y in ZZ^+`</b></p></li>
+                <li><p>Proof: Let `x = 1, y = 2`</p></li>
+                <li><p>`x, y in ZZ^+`, but `x - y = -1 !in ZZ^+`</p></li>
+              </div>
+              <li><p><b>Def: `a` divides `b` if `EE k in ZZ, ak = b`</b></p></li>
+              <li style="list-style-type: none";><p>`a | b`</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: If `c|a` and `c|b`, then `c|(a + b)`</b></p></li>
+                <li><p>Proof: Suppose `c|a` and `c|b`. By definition, `EE k, l in ZZ` `s.t.` `ck = a` and `cl = b`</p></li>
+                <li><p>So `a + b = ck + cl = c(k + l)`, where `k+l in ZZ`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Proposition: If `n` is even, then `n^2` is even. `n` is even if `2` divides `n`</b></p></li>
+                <li><p>Proof: Suppose `n` is even. Then `EE k in ZZ`, `n = 2k`</p></li>
+                <li><p>`n^2 = (2k)^2 = 2*2k^2`</p></li>
+                <li><p>Since `2k^2 in ZZ`, `n^2` is even</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Prove: There does not exist `m, n in ZZ` `s.t.` `51m - 34n = 101`</b></p></li>
+                <li><p>Proof: Suppose for contradiction that `EE m, n in ZZ` `s.t.` `51m - 34n = 101`</p></li>
+                <li><p>`51m - 34n = 101 => 17(3m - 2n) = 101`</p></li>
+                <li><p>Let `k in ZZ`</p></li>
+                <li><p>Case 1: Suppose `k <= 5`. Then `17k <= 17*5 = 85`</p></li>
+                <li><p>Case 2: Suppose `k >= 6`. Then `17k >= 17*6 = 102`</p></li>
+                <li><p>So `AA k in ZZ`, `7k != 101`, which is a contradiction</p></li>
+              </div>
+              <li><p>Template for `P => (Q or R)`</p></li>
+              <li><p>Assume `P` is true</p></li>
+              <li><p>Suppose `Q` is not true</p></li>
+              <li><p>Thus `R` is true</p></li>
+              <div class="proof">
+                <li><p><b>Prove: If `a in RR` satisfies `a^2 >= 7a`, then `a <= 0` or `a >= 7`</b></p></li>
+                <li><p>Proof: Suppose `a^2 >= 7a`</p></li>
+                <li><p>Assume `a cancel(<=) 0`. Then `a > 0`</p></li>
+                <li><p>`a^2 = a*a >= 7a => a >= 7` (because `a > 0`)</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Prove: `1 + 2 + ... + n = (n(n+1)) / 2` for each `n in ZZ^+`</b></p></li>
+                <li><p>Proof: Base case (`n = 1`): `1 = (1(1+1)) / 2`. So `P(1)` is true</p></li>
+                <li><p>Inductive step: Suppose `k in ZZ^+` is such that `P(k)` is true</p></li>
+                <li><p>WTS `P(k+1)` is true, `i.e.`, `1 + 2 + ... + k + (k+1) = ((k+1)(k+2)) / 2`</p></li>
+                <li><p>Suppose `1 + 2 + ... + k = (k(k+1)) / 2`</p></li>
+                <li><p>Then `(1 + 2 + ... + k) + (k+1) = ((k(k+1)) / 2) + (k+1)`</p></li>
+                <li><p>`= ((k^2 + k)) / 2 + (2(k+1)) / 2`</p></li>
+                <li><p>`= ((k^2 + k)) / 2 + (2k + 2) / 2`</p></li>
+                <li><p>`= ((k^2 + 3k + 2)) / 2`</p></li>
+                <li><p>`= ((k+1)(k+2)) / 2`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Prove: `n! > 2^n` `AA n >= 4`</b></p></li>
+                <li><p>Proof: Base case (`n= 4`): `4! = 24 > 2^4 = 16`</p></li>
+                <li><p>Suppose `k >= 4` satisfies `k! > 2^k`, `i.e.` `(k!) / 2^k > 1`</p></li>
+                <li><p>Then `((k+1)!) / 2^(k+1) = (k!(k+1)) / (2^k * 2) > (k+1) / 2 > 1`</p></li>
+                <li><p>(Since `k >= 4`, `(k+1) / 2 > 1`, `i.e.` it is a positive integer greater than 1. Since `(k!) / 2^k > 1`, a positive integer greater than `1` multiplied by another positive integer greater than `1` will result in a positive integer greater than `1`)</p></li>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
