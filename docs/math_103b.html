@@ -81,21 +81,21 @@
             <h5>Propositions</h5>
             <ul>
               <li><p>Suppose `a, b, c in R`. Then we have the following properties of multiplication</p></li>
-              <li style="list-style-type: none";><p>`a*0 = 0*a = 0` (`0 in R`, the additive identity)</p></li>
-              <li style="list-style-type: none";><p>`a*(-b) = -a*b`</p></li>
-              <li style="list-style-type: none";><p>`(-a)(-b) = a*b`</p></li>
-              <li style="list-style-type: none";><p>`a*(b-c) = a*b-a*c`</p></li>
-              <li style="list-style-type: none";><p>given any integers `m, n in ZZ`, `(m+n)*a = (m*a) + (n*a)`</p></li>
-              <li style="list-style-type: none";><p>given any integer `m in ZZ`, `m*(a*b) = (m*a)*b = (a)*(m*b)`</p></li>
-              <li style="list-style-type: none";><p>given any integers `m, n in ZZ`, `(m*a)*(n*b) = (m*n)*(a*b)`</p></li>
-              <li style="list-style-type: none";><p>given any integer `n in ZZ`, `n*(a+b) = n*a + n*b`</p></li>
-              <li style="list-style-type: none";><p>given any integer `n in ZZ`, `n*(-a) = -(n*a)`</p></li>
+              <li><p>`a*0 = 0*a = 0` (`0 in R`, the additive identity)</p></li>
+              <li><p>`a*(-b) = -a*b`</p></li>
+              <li><p>`(-a)(-b) = a*b`</p></li>
+              <li><p>`a*(b-c) = a*b-a*c`</p></li>
+              <li><p>given any integers `m, n in ZZ`, `(m+n)*a = (m*a) + (n*a)`</p></li>
+              <li><p>given any integer `m in ZZ`, `m*(a*b) = (m*a)*b = (a)*(m*b)`</p></li>
+              <li><p>given any integers `m, n in ZZ`, `(m*a)*(n*b) = (m*n)*(a*b)`</p></li>
+              <li><p>given any integer `n in ZZ`, `n*(a+b) = n*a + n*b`</p></li>
+              <li><p>given any integer `n in ZZ`, `n*(-a) = -(n*a)`</p></li>
               <li style="list-style-type: none";><p>If `R` is unital, then</p></li>
-              <li style="list-style-type: none";><p>`(-1)*a = -a` where `-1 in R`</p></li>
-              <li style="list-style-type: none";><p>`(-1)(-1) = 1`</p></li>
-              <li style="list-style-type: none";><p>unity is unique</p></li>
-              <li style="list-style-type: none";><p>if `a` has a left multiplicative inverse and a right multiplicative inverse, then they are equal</p></li>
-              <li style="list-style-type: none";><p>multiplicative inverses are unique</p></li>
+              <li><p>`(-1)*a = -a` where `-1 in R`</p></li>
+              <li><p>`(-1)(-1) = 1`</p></li>
+              <li><p>unity is unique</p></li>
+              <li><p>if `a` has a left multiplicative inverse and a right multiplicative inverse, then they are equal</p></li>
+              <li><p>multiplicative inverses are unique</p></li>
             </ul>
             <div class="proof">
               <h5>Proof</h5>
@@ -104,7 +104,7 @@
                 <li><p>`0+0 = 0`</p></li>
                 <li><p>`a*(0 + 0 = 0)`</p></li>
                 <li><p>`= a*0 + a*0 = a*0`</p></li>
-                <li><p>`= a*0 = 0`</p></li>
+                <li><p>`=> a*0 = 0`</p></li>
               </ul>
             </div>
             <div class="proof">
@@ -315,6 +315,49 @@
                 <li><p>(`lArr`) If `p` is prime, then we must show `ZZ // pZZ` is a domain by the previous result</p></li>
                 <li><p>Suppose `[a]_p * [b]_p = [0]_p <=> ab = pk` for some integer `k`</p></li>
                 <li><p>`p` prime `=> p|ab <=> p|a` or `p|b <=> [a]_p = [0]_p` or `[b]_p = [0]_p => ZZ // pZZ` is a domain</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Proposition: If `R` is an integral domain and `S` is a subring of `R` which contains `1 in R`, then `S` itself is an integral domain</b></p></li>
+                <li><p>Proof: `S` is commutative &#10003;</p></li>
+                <li><p>`S` has a mult. identity &#10003;</p></li>
+                <li><p>If `s_1, s_2 in S` `s.t.` `s_1*s_2 = 0 in S`, this same equation holds in `R`</p></li>
+                <li><p>Since `R` is a domain, `s_1s_2 = 0 => s_1 = 0 or s_2 = 0`</p></li>
+              </div>
+              <li><p>Ex: Notice that in `ZZ // nZZ`, `n[a]_n = [na]_n = [0]_n`</p></li>
+              <li style="list-style-type: none";><p>Multiplication by `n` kills all elements of `ZZ // nZZ`</p></li>
+              <li><p>Ex: Consider `CC` (along with all subrings `R` of `CC` containing `1`). There does not exist a positive integer `n` `s.t.` `n*z = 0` `AA z in CC` and `n*z = 0` `AA z in R`</p></li>
+              <li style="list-style-type: none";><p>The only integer which kills all of `CC` (or `R`) is `0`</p></li>
+              <li><p>The integer `n` in these examples is called the characteristic of the ring</p></li>
+              <li><p><b>Def: the <u>characteristic</u> of a ring `R` is the least nonnegative integer `n` `s.t.` `n*r = 0` `AA r in R`</b></p></li>
+              <li><p>`char(ZZ // nZZ) = n`, `char(CC) = 0`</p></li>
+              <li><p>When `R` is a unital commutative ring, we can relate `char(R)` to the order of `1 in R` (as an abelian group under `+`)</p></li>
+              <li><p>If `1` has infinite order in `R`, then `char(R) = 0`</p></li>
+              <li><p>If `1` has finite order, say `n`, then `char(R) = n`</p></li>
+              <li style="list-style-type: none";><p>Since `o``rd(1) = n, n*1 = 0`</p></li>
+              <li style="list-style-type: none";><p>`n*r = (n*1)r = 0` `AA r in R`</p></li>
+              <li style="list-style-type: none";><p>`=> n` kills everything in `R`</p></li>
+              <li style="list-style-type: none";><p>Therefore, `n >= char(R)`</p></li>
+              <li style="list-style-type: none";><p>We know that `char(R)*1 = 0 => n|char(R) => n <= char(R)`</p></li>
+              <li style="list-style-type: none";><p>So `n = char(R)`</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: If `R` is an integral domain, then `char(R) = 0` or `char(R) = p` for some prime number `p`</b></p></li>
+                <li><p>Proof: Suppose that `R` is an integral domain and `char(R) != 0`. Suppose for a contradiction `char(R)` is not prime.</p></li>
+                <li><p>If `char(R)` is not prime, `EE n, q in ZZ^+` `s.t.` `p = nq`, `1 < n, q < p`</p></li>
+                <li><p>Notice that `(n*1)*(q*1) = (nq)*1 = p*1 = 0` where `(n*1)` and `(q*1)` are not equal to `0`</p></li>
+                <li><p>This contradicts the fact that `R` is a domain</p></li>
+              </div>
+              <li><p>If `char(R) = n`, then the subring generated by `1` in `R` is isomorphic to `ZZ // nZZ`</p></li>
+              <div class="proof">
+                <li><p><b>Exercise: Suppose `R` is a commutative ring without zero divisors. (`R` is not necessarily unital.) Show that `char(R)` is `0` or prime.</b></p></li>
+                <li><p>Proof: Suppose `R` is commutative with no zero divisors. Let `p = char(R)` and suppose `p != 0`. Suppose for a contradiction that `p` is not prime.</p></li>
+                <li><p>`=> EE n, q in ZZ^+` `s.t.` `p = nq`, `1 < n, q < p`</p></li>
+                <li><p>Claim: we can find `a, b in R` `s.t.` `n*a != 0` and `q*b != 0`</p></li>
+                <li><p>Suppose not. Then for all `r in R`, `n*r = 0` and `q*r = 0`</p></li>
+                <li><p>But `1 < n, q < p = char(R)`</p></li>
+                <li><p>This contradicts the fact that `p` is the least nonnegative integer `s.t.` `p*r = 0` `AA r in R`</p></li>
+                <li><p>Thus, we can find `a, b in R` `s.t.` `n*a != 0` and `q*b != 0`</p></li>
+                <li><p>`(n*a) * (q*b) = (n*q)*(a*b) = p*(a*b) = 0`</p></li>
+                <li><p>This contradicts the assumption that `R` does not have zero divisors</p></li>
               </div>
             </ul>
           </div>
