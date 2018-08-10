@@ -32,7 +32,9 @@
       </div>
     </nav>
     <div class="toc">
-      <p>I think I took notes badly. Oops.</p>
+      <p>No table of contents</p>
+      <p>I think I took notes badly</p>
+      <p>Oops</p>
     </div>
     <div class="container">
       <div class="row">
@@ -122,6 +124,75 @@
                 <li><p>Then `((k+1)!) / 2^(k+1) = (k!(k+1)) / (2^k * 2) > (k+1) / 2 > 1`</p></li>
                 <li><p>(Since `k >= 4`, `(k+1) / 2 > 1`, `i.e.` it is a positive integer greater than 1. Since `(k!) / 2^k > 1`, a positive integer greater than `1` multiplied by another positive integer greater than `1` will result in a positive integer greater than `1`)</p></li>
               </div>
+              <li><p>Division Theorem: Let `b in ZZ^+` and let `a in ZZ`.</p></li>
+              <li style="list-style-type: none";><p>Then there exist unique integers `q` and `r` `s.t.` `a = q*b + r`, `0 <= r < b`</p></li>
+              <li><p>Idea: divide `a` by `b` to get the smallest nonnegative remainder `r`</p></li>
+              <li><p>`17 = 3*5 + 2`</p></li>
+              <li><p>`a = q*b + r`</p></li>
+              <li><p>Consider `b = 2`</p></li>
+              <li style="list-style-type: none";><p>Given `a in ZZ`, there exist unique `q, r in ZZ` `s.t.` `a = 2q + r`, where `r = 0` or `r = 1`</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: If `r = 1`, `a` is odd.</b></p></li>
+                <li><p>Proof (from uniqueness of `r`): Assume `r = 1`, `i.e.` `a = 2q + 1`.</p></li>
+                <li><p>Suppose for contradiction that `a` is even</p></li>
+                <li><p>Then `a = 2k` for some `k in ZZ`, so `a` has `0` as a remainder, `i.e.` `a = 2k + 0`</p></li>
+                <li><p>By uniqueness in Division Theorem, `q = k` and `1 = 0`, which is a contradiction</p></li>
+              </div>
+              <li><p>`a` even `<=> EE q in ZZ` `s.t.` `a = 2q`</p></li>
+              <li><p>`a` odd `<=> EE q in ZZ` `s.t.` `a = 2q + 1`</p></li>
+              <div class="proof" id="a_2_is_even_a_is_even">
+                <li><p><b>Proposition: Let `a in ZZ`. If `a^2` is even, then `a` is even.</b></p></li>
+                <li><p>Proof: Contrapositive: If `a` is odd, then `a^2` is odd</p></li>
+                <li><p>Suppose `a` is odd. Then `EE q in ZZ` `s.t.` `a = 2q + 1`</p></li>
+                <li><p>`a^2 = (2q + 1)^2 = 4q^2 + 4q + 1`</p></li>
+                <li><p>`= 2(2q^2 + 2q) + 1`</p></li>
+                <li><p>Therefore, `a^2` is odd</p></li>
+              </div>
+              <li><p>Proving ((not `Q`) `=>` (not `P`)) `=>` (`P => Q`)</p></li>
+              <li><p>Suppose `P` is true</p></li>
+              <li><p>Suppose for contradiction not `Q`. Since (not `Q`) `=>` (not `P`), (not `P`) is true, which is a contradiction (since we supposed `P` was true)</p></li>
+              <li><p>Therefore `Q` is true</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: `sqrt 2` is irrational</b></p></li>
+                <li><p>Proof: Assume for contradiction `sqrt 2` is rational</p></li>
+                <li><p>Then `EE a, b in ZZ^+` `s.t.` `sqrt 2 = a / b => 2 = (a / b)^2 = a^2 / b^2` where `a` and `b` have no common factors (so `a` and `b` cannot be even)</p></li>
+                <li><p>`2 = a^2 / b^2 => a^2 = 2b^2`</p></li>
+                <li><p>This means <a href="#a_2_is_even_a_is_even">`a^2` is even, so `a` is even</a></p></li>
+                <li><p>Thus, `EE k in ZZ` `s.t.` `a = 2k`</p></li>
+                <li><p>Therefore, `2b^2 = a^2 = (2k)^2 = 2*2k^2`</p></li>
+                <li><p>So `2b^2 = 2*2k^2 => b^2 = 2k^2`</p></li>
+                <li><p>This means `b^2` is even, so `b` is even</p></li>
+                <li><p>Since `a` and `b` are both even, `2` is a common divisor of `a` and `b`, which contradicts the fact that `sqrt 2 = a / b` is rational</p></li>
+              </div>
+              <li><p>Suppose `X = {T_1, T_2}` and `Y = {1, 2}`</p></li>
+              <li><p>`EE` a function `f: Y -> X` defined by `f(1) = T_2` and `f(2) = T_1`</p></li>
+              <li><p>`Fun(X,Y)`: set of all functions from `X` to `Y`</p></li>
+              <li><p>`RR^2 = RR xx RR = {(x, y) | x, y in RR}` (cartesian product)</p></li>
+              <li><p>Let `A` and `B` be sets.</p></li>
+              <li style="list-style-type: none";><p>`A = B` means they have the same elements, `i.e.` `x in A <=> x in B` (`A sube B` and `B sube A`)</p></li>
+              <li style="list-style-type: none";><p>`A sube B` means `x in A => x in B`</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: `(A sube B` and `B sube C)` `=> A sube C`</b></p></li>
+                <li><p>Proof: Suppose `A sube B` and `B sube C`</p></li>
+                <li><p>Let `x in A`. Since `x in A` and `A sube B`, `x in B`</p></li>
+                <li><p>Since `x in B` and `B sube C`, `x in C`</p></li>
+                <li><p>So `A sube C`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Proposition: Let `D` and `U` be sets `s.t.` `D sube U` and `D^c sube U`. Then `D uu D^c = U`</b></p></li>
+                <li><p>Proof `(U sube D uu D^c)`: Suppose `x in U`</p></li>
+                <li><p>If `x in D`, then `x in D uu D^c`</p></li>
+                <li><p>If `x notin D`, then `x in D^c`. Then `x in D uu D^c`</p></li>
+                <li><p>`(D uu D^c sube U)`: Suppose `x in D uu D^c`</p></li>
+                <li><p>Then `x in D` or `x in D^c`</p></li>
+                <li><p>Suppose `x in D`. Since `x in D` and `D sube U`, `x in U`</p></li>
+                <li><p>Suppose `x in D^c`. Since `x in D^c` and `D^c sube U`, `x in U`</p></li>
+              </div>
+              <li><p>`P(U)`: power set of `U` (set of all subsets of `U`)</p></li>
+              <li><p>Let `A` be a set. `A in P(U) <=> A sube U`</p></li>
+              <li><p>`P(O/)` = `{O/}`</p></li>
+              <li><p>`P({1}) = {O/, {1}}`</p></li>
+              <li><p>`P({1, 2}) = {O/, {1}, {2}, {1, 2}}`</p></li>
             </ul>
           </div>
         </div>
