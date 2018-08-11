@@ -193,6 +193,76 @@
               <li><p>`P(O/)` = `{O/}`</p></li>
               <li><p>`P({1}) = {O/, {1}}`</p></li>
               <li><p>`P({1, 2}) = {O/, {1}, {2}, {1, 2}}`</p></li>
+              <div class="proof">
+                <li><p><b>Prove: `(A uu B) uu C = A uu (B uu C)`</b></p></li>
+                <li><p>Let `x in (A uu B) uu C`. Then `x in A uu B` or `x in C`</p></li>
+                <li><p>Case 1: Suppose `x in C`. Then `x in B uu C`. So `x in A uu (B uu C)`</p></li>
+                <li><p>Case 2: Suppose `x in A uu B`. Then `x in A` or `x in B`. So `x in A` or `x in B uu C`. `I.e.` `x in A uu (B uu C)`</p></li>
+                <li><p>Let `x in A uu (B uu C)`. Then `x in A` or `x in B uu C`</p></li>
+                <li><p>Case 1: Suppose `x in A`. Then `x in A uu B`. So `x in (A uu B) uu C`</p></li>
+                <li><p>Case 2: Suppose `x in B uu C`. Then `x in B` or `x in C`. So `x in A uu B` or `x in C`. `I.e.` `x in (A uu B) uu C`</p></li>
+              </div>
+              <li><p>When a function between finite sets has an inverse, the cardinalities of these 2 sets are equal</p></li>
+              <li><p>Let `f: X -> Y` be a function</p></li>
+              <li style="list-style-type: none";><p>Injection: `f(x_1) = f(x_2) => x_1 = x_2, AA x_1, x_2 in X`</p></li>
+              <li style="list-style-type: none";><p>Surjection: `AA y in Y, EE x in X` `s.t.` `f(x) = y`</p></li>
+              <li><p>Let `X = {(1),(2):}}`, `Y = {a}`</p></li>
+              <li style="list-style-type: none";><p>`f` is not an injection since `f(1) = a, f(2) = a` but `1 != 2`</p></li>
+              <li style="list-style-type: none";><p>`f` is a surjection since `f(1) = a`</p></li>
+              <li><p>The image map `vec f: P(X) -> P(Y)` is defined by `vec f``(A) = {f(x) | x in A}`</p></li>
+              <li style="list-style-type: none";><p>Known informally as the "`y`-values"</p></li>
+              <li><p>Let `X = {1, 2, 3}, Y = {a, b, c}`. Suppose `f(1) = b, f(2) = a, f(3) = b`. Let `A = {1, 3}` be a subset of `X`</p></li>
+              <li style="list-style-type: none";><p>`vec f``(A) = {b}`</p></li>
+              <li style="list-style-type: none";><p>`vec f``(X) = {a, b} != Y`</p></li>
+              <div class="proof">
+                <li><p><b>`vec f``(X) != Y <=> f` is not surjective. (So `vec f``(X) = Y <=> f` is a surjection)</b></p></li>
+                <li><p>Proof `(lArr)`: Suppose `f` is a surjection. Let `y_0 in Y`.</p></li>
+                <li><p>Since `f` is a surjection, `EE x_0 in X` `s.t.` `f(x_0) = y_0`</p></li>
+                <li><p>Thus, `y_0 in vec f``(X) = {f(x) | x in X}`. So `Y sube vec f``(X)`</p></li>
+                <li><p>By definition, `Y supe vec f``(X)`. So `vec f``(X) = Y`</p></li>
+              </div>
+              <li><p>The pre-image map `hat f: P(Y) -> P(X)` is defined by</p></li>
+              <li style="list-style-type: none";><p>`hat f``(B) = {x in X | f(x) in B}` where `B in P(Y)`, `i.e.` `B sube Y`</p></li>
+              <li style="list-style-type: none";><p>Known informally as the "`x`-values"</p></li>
+              <li><p>Let `X = {1, 2, 3}, Y = {a, b, c}`. Suppose `f(1) = b, f(2) = a, f(3) = b`</p></li>
+              <table>
+                <tr>
+                  <td style="border-right: 1px solid black";>`B`</td>
+                  <td>`O/`</td>
+                  <td>`{a}`</td>
+                  <td>`{b}`</td>
+                  <td>`{c}`</td>
+                  <td>`{b,c}`</td>
+                  <td>`{a,c}`</td>
+                  <td>`{a,b}`</td>
+                  <td>`{a,b,c}`</td>
+                </tr>
+                <tr>
+                  <td style="border-right: 1px solid black";>`hat f``(B)`</td>
+                  <td>`O/`</td>
+                  <td>`{2}`</td>
+                  <td>`{1,3}`</td>
+                  <td>`O/`</td>
+                  <td>`{1,3}`</td>
+                  <td>`{2}`</td>
+                  <td>`{1,2,3}`</td>
+                  <td>`{1,2,3}`</td>
+                </tr>
+              </table>
+              <div class="proof">
+                <li><p><b>Proposition: `f` is an injection `<=> hat f``({y})` is empty or consists of exactly one point `AA y in Y`</b></p></li>
+                <li><p>Proof (`lArr`): Suppose `f` satisfies the condition on the right. Suppose `x_1, x_2 in X` are such that `f(x_1) = f(x_2)`</p></li>
+                <li><p>Let `y_0 = f(x_1) = f(x_2)`. By the assumption, |`hat f``({y_0})`| `<= 1`</p></li>
+                <li><p>Well, `x_1 in hat f``({y_0})` so `hat f``({y_0}) != O/`</p></li>
+                <li><p>Thus `hat f``({y_0})` consists of exactly one point, which is `x_1`</p></li>
+                <li><p>But `x_2 in hat f``({y_0})` because `f(x_2) = y_0`</p></li>
+                <li><p>So `x_1 = x_2` (since `hat f``({y_0})` has exactly one point)</p></li>
+                <li><p>So `f` is an injection</p></li>
+              </div>
+              <li><p>Characteristic function of a subset `A` of a set `X` is `chi_A: X -> {0, 1}` defined by `chi_A (x) = {(1 if x in A),(0 if x notin A):}`</p></li>
+              <li><p>`Fun(X,Y) = {f | f` is a function with domain `X` and codomain `Y}`</p></li>
+              <li><p>Let `A sube X`. Then `chi_A in Fun(X, {0,1})`</p></li>
+              <li><p>Conversely, suppose `f in Fun(X, {0,1})`. If we define `A = {x in X | f(x) = 1}`, then `f = chi_A`</p></li>
             </ul>
           </div>
         </div>
