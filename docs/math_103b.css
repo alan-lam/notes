@@ -43,6 +43,8 @@ body {
 .proof {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  padding-left: 5px;
 }
 
 .proof li {
