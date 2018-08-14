@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <title>Operating Systems</title>
     <link href="cse_120.css" rel="stylesheet">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
@@ -108,10 +109,10 @@
               <li style="list-style-type: none";><p>- <b>Running: actually using CPU</b></p></li>
               <li style="list-style-type: none";><p>- <b>Ready: able to use CPU, but not using</b></p></li>
               <li style="list-style-type: none";><p>- <b>Blocked: does not have CPU, not able to run</b></p></li>
-              <li><p>Running -> Blocked (sleep): when process tries to access a resource, but the resource is being used by another process</p></li>
-              <li><p>Blocked -> Ready (wake up): when resource it was waiting for becomes available</p></li>
-              <li><p>Ready -> Running (dispatch): when CPU is given to process by kernel</p></li>
-              <li><p>Running -> Ready (preempt): if process never asks for a resource</p></li>
+              <li><p>Running `->` Blocked (sleep): when process tries to access a resource, but the resource is being used by another process</p></li>
+              <li><p>Blocked `->` Ready (wake up): when resource it was waiting for becomes available</p></li>
+              <li><p>Ready `->` Running (dispatch): when CPU is given to process by kernel</p></li>
+              <li><p>Running `->` Ready (preempt): if process never asks for a resource</p></li>
             </ul>
             <h5>Process vs. Kernel</h5>
             <ul>
@@ -246,7 +247,7 @@
                 </tr>
               </table>
               <p>T T: turnaround time</p>
-              <p>Average Turnaround Time: 22/3</p>
+              <p>Average Turnaround Time: `22/3`</p>
               <p>Process 1, Process 2, Process 3 all arrive at the same time. P<sub>1</sub> is scheduled first and it has service time S<sub>1</sub>. P<sub>2</sub> and P<sub>3</sub> are waiting for P<sub>1</sub> to finish. Once P<sub>1</sub> is done, P<sub>2</sub>, which is the next longest process, is scheduled. Once P<sub>2</sub> is done, P<sub>3</sub> runs.</p>
               <p>P<sub>2</sub>, P<sub>3</sub>, ..., P<sub>n</sub> all have to wait S<sub>1</sub> time. So it is best to make it as small as possible. Hence, shortest first.</p>
               <li style="list-style-type: none";><p>Shortest First</p></li>
@@ -305,11 +306,11 @@
                 </tr>
               </table>
               <p>T T: turnaround time</p>
-              <p>Average Turnaround Time: 14/3</p>
+              <p>Average Turnaround Time: `14/3`</p>
               <li><p>Math proof of shortest first being optimal:</p></li>
-              <li style="list-style-type: none";><p>Average T T = [S<sub>1</sub> + (S<sub>1</sub> + S<sub>2</sub>) + ... + (S<sub>1</sub> + ... + S<sub>n</sub>)] / n</p></li>
-              <li style="list-style-type: none";><p>= [nS<sub>1</sub> + (n-1)S<sub>2</sub> + ... + S<sub>n</sub>] / n</p></li>
-              <li style="list-style-type: none";><p>S<sub>1</sub> has the most weight (n) so it should be as small as possible to minimize average turnaround time.</p></li>
+              <li style="list-style-type: none";><p>Average T T = `[S_1 + (S_1 + S_2) + ... + (S_1 + ... + S_n)] / n`</p></li>
+              <li style="list-style-type: none";><p>`= [nS_1 + (n-1)S_2 + ... + S_n] / n`</p></li>
+              <li style="list-style-type: none";><p>S<sub>1</sub> has the most weight (`n`) so it should be as small as possible to minimize average turnaround time.</p></li>
             </ul>
             <h5>Processes Arrive at Different Times</h5>
             <ul>
@@ -369,7 +370,7 @@
               <li><p>U: utilization = C/T</p></li>
               <li><p>Rate Monotonic Scheduling: select process with highest rate (1/period)</p></li>
               <li style="list-style-type: none";><p>- only works for periodic processes</p></li>
-              <li style="list-style-type: none";><p>- if sum of utilizations &le; n(2<sup>1/n</sup>-1) then all deadlines will be met</p></li>
+              <li style="list-style-type: none";><p>- if sum of utilizations `<= n(2^(1/n)-1)` then all deadlines will be met</p></li>
               <li style="list-style-type: none";><p>- preempt if new period starts and there is a higher priority process</p></li>
               <li style="list-style-type: none";><p>- if process completes burst, it goes to sleep until next period</p></li>
               <li style="list-style-type: none";><p>- static: priorities of processes don't change over time</p></li>
@@ -388,7 +389,7 @@
               <li><p><b>Mutual exclusion: only 1 process active in a critical section</b></p></li>
               <li><p>Programmer must identify critical sections and surround them with entry/exit code, which makes processes atomic</p></li>
               <li><p>Entry code should allow processes to enter critical section if there are no other processes inside</p></li>
-              <li style="list-style-type: none";><p>- none inside -> open; process enters -> close; process leaves -> open</p></li>
+              <li style="list-style-type: none";><p>- none inside `->` open; process enters `->` close; process leaves `->` open</p></li>
               <li><p>Requirements for a good solution for entry/exit code (mutual exclusion):</p></li>
               <li style="list-style-type: none";><p>- at most 1 process in critical section</p></li>
               <li style="list-style-type: none";><p>- can't block entry if no process inside critical section</p></li>
@@ -670,24 +671,24 @@
             <h5>50% Rule</h5>
             <ul>
               <li><p>On average, how many holes are there going to be?</p></li>
-              <li><p>If there are n blocks allocated, there will be m = <sup>n</sup> &frasl; <sub>2</sub> holes, on average</p></li>
+              <li><p>If there are n blocks allocated, there will be `m = n/2` holes, on average</p></li>
             </ul>
             <h5>Unused Memory Rule</h5>
             <ul>
               <li><p>On average, how much memory is lost to holes?</p></li>
               <li><p>b: average size of blocks; h: average size of holes; f: fraction of memory lost to holes</p></li>
               <li><p>M: size of memory; m: number of holes; n: number of blocks</p></li>
-              <li><p>k = <sup>h</sup> &frasl; <sub>b</sub> (ratio of average hole-to-block size)</p></li>
-              <li><p>M = mh + nb</p></li>
-              <li><p>f = <sup>mh</sup> &frasl; <sub>M</sub> = <sup>mh</sup> &frasl; <sub>mh + nb</sub></p></li>
-              <li><p>m = <sup>n</sup> &frasl; <sub>2</sub> -> n = 2m (by the 50% rule)</p></li>
-              <li><p>f = <sup>mh</sup> &frasl; <sub>mh + 2mb</sub> = <sup>h</sup> &frasl; <sub>h + 2b</sub></p></li>
-              <li><p>k = <sup>h</sup> &frasl; <sub>b</sub> -> h = kb</p></li>
-              <li><p>f = <sup>kb</sup> &frasl; <sub>kb + 2b</sub> = <sup>k</sup> &frasl; <sub>k + 2</sub></p></li>
-              <li><p>If k = 1, then the average hole size = average block size. Then f = 1/3, which means there is 33% wasted memory if the average hole size = average block size</p></li>
-              <li><p>If k = 2, then the average hole size = 2x average block size. Then f = 2/4 = 1/2, which means there is 50% wasted memory if the average hole size = 2x average block size</p></li>
-              <li><p>As k -> &infin;, f -> 1. This means the bigger the average hole size, the more wasted memory there is</p></li>
-              <li><p>As k -> 0, f -> 1. This means the smaller the average hole size, the less wasted memory there is</p></li>
+              <li><p>`k = h/b` (ratio of average hole-to-block size)</p></li>
+              <li><p>`M = mh + nb`</p></li>
+              <li><p>`f = (mh)/M = (mh)/(mh + nb)`</p></li>
+              <li><p>`m = n/2 => n = 2m` (by the 50% rule)</p></li>
+              <li><p>`f = (mh)/(mh + 2mb) = h/(h + 2b)`</p></li>
+              <li><p>`k = h/b => h = kb`</p></li>
+              <li><p>`f = (kb)/(kb + 2b) = k/(k + 2)`</p></li>
+              <li><p>If k = 1, then the average hole size = average block size. Then `f = 1/3`, which means there is 33% wasted memory if the average hole size = average block size</p></li>
+              <li><p>If k = 2, then the average hole size = 2x average block size. Then `f = 2/4 = 1/2`, which means there is 50% wasted memory if the average hole size = 2x average block size</p></li>
+              <li><p>As `k -> oo, f -> 1`. This means the bigger the average hole size, the more wasted memory there is</p></li>
+              <li><p>As `k -> 0, f -> 0`. This means the smaller the average hole size, the less wasted memory there is</p></li>
             </ul>
             <h5>Pre-sized Holes</h5>
             <ul>
