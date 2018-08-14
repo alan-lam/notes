@@ -1,6 +1,8 @@
 body {
-  padding-top: 56px;
-  padding-bottom: 56px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  font-family: serif;
+  font-size: 18px;
 }
 
 .toc {
@@ -12,7 +14,7 @@ body {
 }
 
 .toc ul {
-  height: 106%;
+  height: 105%;
   padding-left: 0;
 }
 
