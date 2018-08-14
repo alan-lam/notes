@@ -36,6 +36,7 @@
       <ul>
         <a class="toc_link" href="#rings"><li>Rings</li></a>
         <a class="toc_link" href="#integral_domains"><li>Integral Domains</li></a>
+        <a class="toc_link" href="#ideals"><li>Ideals</li></a>
       </ul>
     </div>
     <div class="container">
@@ -46,9 +47,12 @@
             <div class="proof">
               <p>A <b>ring</b> is a set `R` with two operations `+, *` such that `(R, +)` is an abelian group, `*` is associative, and `+,*` follow distributivity rules</p>
               <p>Subring Test: `a, b in S => a-b in S, ab in S` where `S sube R`</p>
-              <p>An <b>integral domain</b> is a commutative ring with unity and no zero-divisors, which means if `ab = 0`, then `a = 0` or `b = 0`</p>
+              <p>An <b>integral domain</b> is a commutative ring with unity and no zero-divisors</p>
+              <p>Check if S is an integral domain: `ab = 0 => a = 0` or `b = 0` for `a, b in S`</p>
               <p>A <b>field</b> is a commutative ring with unity in which every nonzero element has a multiplicative inverse (`i.e.` every nonzero element is a unit)</p>
               <p>Subfield Test: `a, b (b != 0) in K => a-b in K, ab^(-1) in K` where `K sube F`</p>
+              <p>An <b>ideal</b> of a ring `R` is a subring `I sube R` `s.t.` `rI sube I, Ir sube I` `AA r in R`</p>
+              <p>Ideal Test: `a, b in A => a-b in A` and `a in A, r in R => ra in A` and `ar in A` where `A sube R`</p>
             </div>
             <h3>Rings</h3>
             <ul>
@@ -64,7 +68,7 @@
               <li><p>Ex: the set of integer multiples of 3 is a ring, `3ZZ`</p></li>
               <li><p>Ex: the real numbers, `RR`</p></li>
               <li><p>Ex: the set of real valued functions `f:[a,b]->ZZ`</p></li>
-              <li><p>Ex: let V be a finite dimensional real vector space. Then `End_RR (V) = {&#966;: V -> V}` forms a ring</p></li>
+              <li><p>Ex: let V be a finite dimensional real vector space. Then `End_RR (V) = {phi: V -> V}` forms a ring</p></li>
               <li style="list-style-type: none";><p>the multiplication operation is function composition</p></li>
             </ul>
             <h5>Properties of Rings</h5>
@@ -307,13 +311,13 @@
               <div class="proof">
                 <li><p><b>Proposition: Let `D` be a finite integral domain. Then `D` is a field.</b></p></li>
                 <li><p>Proof: Need to show that every nonzero element has a mult. inverse</p></li>
-                <li><p>Let `a != 0 in D`. Consider the function `&#966;_a: D->D`, `y |-> ay`</p></li>
-                <li><p>If we show that `&#966;_a` is surjective, then we are done</p></li>
-                <li><p>Since `D` is finite, by the pigeonhole principle, `&#966;_a` is surjective `<=> &#966;_a` is injective</p></li>
-                <li><p>Therefore, it suffices to show that `&#966;_a` is injective</p></li>
-                <li><p>Suppose `b, c in D` `s.t.` `&#966;_a(b) = &#966;_a(c) => ab = ac`</p></li>
-                <li><p>Since `a != 0` and `D` is a domain, we conclude that `b = c => &#966;_a` is injective</p></li>
-                <li><p>Since `&#966;_a` is surjective, if we fix `1 in D`, we can find an element `b in D` `s.t.` `&#966;_a(b) = ab = 1 => b` is the mult. inverse of `a`</p></li>
+                <li><p>Let `a != 0 in D`. Consider the function `phi_a: D->D`, `y |-> ay`</p></li>
+                <li><p>If we show that `phi_a` is surjective, then we are done</p></li>
+                <li><p>Since `D` is finite, by the pigeonhole principle, `phi_a` is surjective `<=> phi_a` is injective</p></li>
+                <li><p>Therefore, it suffices to show that `phi_a` is injective</p></li>
+                <li><p>Suppose `b, c in D` `s.t.` `phi_a(b) = phi_a(c) => ab = ac`</p></li>
+                <li><p>Since `a != 0` and `D` is a domain, we conclude that `b = c => phi_a` is injective</p></li>
+                <li><p>Since `phi_a` is surjective, if we fix `1 in D`, we can find an element `b in D` `s.t.` `phi_a(b) = ab = 1 => b` is the mult. inverse of `a`</p></li>
               </div>
               <div class="proof">
                 <li><p><b>Corollary: `ZZ // pZZ` is a field `<=> p` is prime</b></p></li>
@@ -367,6 +371,69 @@
                 <li><p>`(n*a) * (q*b) = (n*q)*(a*b) = p*(a*b) = 0`</p></li>
                 <li><p>This contradicts the assumption that `R` does not have zero divisors</p></li>
               </div>
+              <div class="proof">
+                <li><p><b>Suppose `R` is a commutative ring with prime characteristic `p`. Show that `(x + y)^p = x^p + y^p, AA x, y in R` and `(x + y)^(p^n) = x^(p^n) + y^(p^n)`, for all positive integers `n`</b></p></li>
+                <li><p>Proof: `(x + y)^p = sum_(i = 0)^p ((p), (i)) x^iy^(p-i) = ((p), (0))x^0y^(p) + ((p), (1))xy^(p-1) + ... + ((p), (p-1))x^(p-1)y + ((0), (p))x^p`</p></li>
+                <li><p>`= y^p + pxy^(p-1) + ((p), (2))x^2y^(p-2) + ... + ((p), (p-2))x^(p-2)y^2 + px^(p-1)y + x^p`</p></li>
+                <li><p>It suffices to show that `((p), (i))` is divisible by `p`</p></li>
+                <li><p>`((p), (i)) = (p!) / ((p-i)!p!) = (p * ... * (p-i+1) * (p-i) * ... * 1) / ((p-i)*...*1*i!)`</p></li>
+                <li><p>` = (p*...*(p-i+1)) / (i!) = p(((p-1)*...*(p-i+1)) / (i!))`</p></li>
+                <li><p>`=> p` divides `((p), (i))`</p></li>
+                <li><p>So `y^p + p(_) + ... + p(_) + x^p = y^p + x^p`</p></li>
+                <li><p>Base Case: We just proved `(x+y)^(p^1) = x^(p^1) + y^(p^1)` for all `x, y in R`</p></li>
+                <li><p>Inductive Hypothesis: Assume that for some integer `k >= 1`, `(x+y)^(p^k) = x^(p^k) + y^(p^k)`</p></li>
+                <li><p>`(x+y)^(p^(k+1)) = ((x+y)^(p^k))^p = (x^(p^k) + y^(p^k))^p = ((x^(p^k))^p + (y^(p^k))^p)`</p></li>
+                <li><p>`= x^(p^(k+1)) + y^(p^(k+1))`</p></li>
+                <li><p>By induction, `(x+y)^(p^n) = x^(p^n) + y^(p^n), AA n in ZZ^+`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Exercise: Let `R` be a finite commutative ring with unity. Prove that every nonzero element of `R` is either a zero-divisor or a unit</b></p></li>
+                <li><p>Proof: Let `a != 0` be a non zero-divisor. We claim that `a` is a unit</p></li>
+                <li><p>Define `phi_a: R -> R`, `x |-> ax`. We claim that `phi_a` is injective</p></li>
+                <li><p>Suppose `x, y in R` `s.t.` `phi_a (x) = phi_a (y)`</p></li>
+                <li><p>Then `ax = ay <=> a(x-y) = 0`</p></li>
+                <li><p>Since `a` is not a zero divisor and `a != 0`, `x-y = 0 <=> x = y`</p></li>
+                <li><p>By the Pigeonhole Principle, `phi_a` is also surjective</p></li>
+                <li><p>If we fix `1 in R`, we can find `b in R` `s.t.` `phi_a (b) = 1 <=> ab = 1 => a` is a unit</p></li>
+              </div>
+              <li><p>Let `R` be an integral domain. A subdomain `S` of `R` is a subring of `R` `s.t.` `S` contains the `1` element of `R`.</p></li>
+              <div class="proof">
+                <li><p><b>Exercise: Let `P = {n*1 | n in ZZ} sube R`. Show that `P` is contained in every subdomain. What is the order of `P`?</b></p></li>
+                <li><p>Proof: Let `S` be a subdomain of `R`. We claim that `P sube S`</p></li>
+                <li><p>Any element of `P` has the form `n*1` for some integer `n`</p></li>
+                <li><p>Case 1 `(n = 0)`: `0*1 = 0 in S`</p></li>
+                <li><p>Case 2 `(n > 0)`: `n*1 = sum_(i = 1)^n 1 in S` because `S` is closed under addition</p></li>
+                <li><p>Case 3 `(n < 0)`: `n = -n', n' > 0`. `n'*1 in S => -n'*1 in S` so `S` is closed under taking additive inverses</p></li>
+                <li><p>Therefore `P sube S`</p></li>
+                <li><p>Claim: the order of `P = char(R)`</p></li>
+                <li><p>If `n*1 = 0 in R, n*1 = 0 in P`</p></li>
+                <li><p>`n = char(R), o rd(P) | char(R) => o rd(P) <= char(R)`</p></li>
+                <li><p>`o rd(P)*1 = 0 in P => o rd(P)*1 = 0 in R => char(R) <= o rd(P)`</p></li>
+              </div>
+              <li><p>A ring element `a` is idempotent if `a^2 = a`</p></li>
+              <div class="proof">
+                <li><p><b>Exercise: Prove that the only idempotent elements of an integral domain are `0` and `1`</b></p></li>
+                <li><p>Proof: If `a` is idempotent, then `a^2 = a <=> a^2 - a = 0 <=> a(a-1) = 0`</p></li>
+                <li><p>`<=> a = 1` or `a = 0`</p></li>
+              </div>
+            </ul>
+          </div>
+          <div class="content" id="ideals">
+            <h3>Ideals</h3>
+            <ul>
+              <li><p>From group theory, the cosets of a normal subgroup `N` in a group `G` form a group themselves</p></li>
+              <li><p>It turns out that, with rings, the quotient of a ring by an arbitrary subring need not be a ring itself</p></li>
+              <li><p><b>Definition: A (two-sided) <u>ideal</u> of a ring `R` is a subring `I sube R` `s.t.` `rI sube I, Ir sube I` `AA r in R`</b></p></li>
+              <li><p><b>Definition: An <u>ideal</u> of a commutative ring `R` is a subset `I sube R` `s.t.` `I` is a subgroup of the additive group of `R` and `rI sube I` for all `r in R`</b></p></li>
+              <li><p>Ex: Fix a ring `R`. The set consisting of `{0}` is an ideal generated by a single element</p></li>
+              <li><p>Ex: `I = {f in CC[t]` `|` `t|f} = (t) = {tf}`</p></li>
+              <li style="list-style-type: none";><p>Let `f, g in I => EE f', g' in CC[t]` `s.t.` `f = f't, g = g't`</p></li>
+              <li style="list-style-type: none";><p>`f + g = f't + g't = t(f' + g')`</p></li>
+              <li style="list-style-type: none";><p>Let `h in CC[t], f in I => EE f' in CC[t]` `s.t.` `f = f't`</p></li>
+              <li style="list-style-type: none";><p>Then `hf = h*f't = t(hf') in I`</p></li>
+              <li><p>This is an example of a principle ideal: an ideal generated by a single element</p></li>
+              <li><p>Ex: Given a ring `R` and elements `a_1, ..., a_n in R`, we can consider the set of all `R`-linear combinations of `a_1, ..., a_n`</p></li>
+              <li style="list-style-type: none";><p>`{r_1a_1 + ... + r_na_n | r_i in R} = (a_1, ..., a_n)` is the ideal generated by `a_1, ..., a_n`</p></li>
             </ul>
           </div>
         </div>
