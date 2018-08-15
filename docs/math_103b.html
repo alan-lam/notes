@@ -37,23 +37,24 @@
         <a class="toc_link" href="#rings"><li>Rings</li></a>
         <a class="toc_link" href="#integral_domains"><li>Integral Domains</li></a>
         <a class="toc_link" href="#ideals"><li>Ideals</li></a>
+        <a class="toc_link" href="#quotient_rings"><li>Quotient Rings</li></a>
       </ul>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-md-9">
           <h1>Abstract Algebra II</h1>
+          <div class="proof">
+            <p>A <b>ring</b> is a set `R` with two operations `+, *` such that `(R, +)` is an abelian group, `*` is associative, and `+,*` follow distributivity rules</p>
+            <p>Subring Test: `a, b in S => a-b in S, ab in S` where `S sube R`</p>
+            <p>An <b>integral domain</b> is a commutative ring with unity and no zero-divisors</p>
+            <p>Check if S is an integral domain: `ab = 0 => a = 0` or `b = 0` for `a, b in S`</p>
+            <p>A <b>field</b> is a commutative ring with unity in which every nonzero element has a multiplicative inverse (`i.e.` every nonzero element is a unit)</p>
+            <p>Subfield Test: `a, b (b != 0) in K => a-b in K, ab^(-1) in K` where `K sube F`</p>
+            <p>An <b>ideal</b> of a ring `R` is a subring `I sube R` `s.t.` `rI sube I, Ir sube I` `AA r in R`</p>
+            <p>Ideal Test: `a, b in A => a-b in A` and `a in A, r in R => ra in A` and `ar in A` where `A sube R`</p>
+          </div>
           <div class="content" id="rings">
-            <div class="proof">
-              <p>A <b>ring</b> is a set `R` with two operations `+, *` such that `(R, +)` is an abelian group, `*` is associative, and `+,*` follow distributivity rules</p>
-              <p>Subring Test: `a, b in S => a-b in S, ab in S` where `S sube R`</p>
-              <p>An <b>integral domain</b> is a commutative ring with unity and no zero-divisors</p>
-              <p>Check if S is an integral domain: `ab = 0 => a = 0` or `b = 0` for `a, b in S`</p>
-              <p>A <b>field</b> is a commutative ring with unity in which every nonzero element has a multiplicative inverse (`i.e.` every nonzero element is a unit)</p>
-              <p>Subfield Test: `a, b (b != 0) in K => a-b in K, ab^(-1) in K` where `K sube F`</p>
-              <p>An <b>ideal</b> of a ring `R` is a subring `I sube R` `s.t.` `rI sube I, Ir sube I` `AA r in R`</p>
-              <p>Ideal Test: `a, b in A => a-b in A` and `a in A, r in R => ra in A` and `ar in A` where `A sube R`</p>
-            </div>
             <h3>Rings</h3>
             <ul>
               <li><p>Rings are modeled on the integers</p></li>
@@ -256,7 +257,7 @@
               <li><p>`(a_1, ..., a_n) * (b_1, ..., b_n) = (a_1 * b_1, ..., a_n * b_n)`</p></li>
               <div class="proof">
                 <li><p><b>Exercise: Suppose `R_1, ..., R_n` are rings with nonzero elements. Show that `R = R_1 o+ ... o+ R_n` has unity `<=>` each `R_i` has a unity</b></p></li>
-                <li><p>Proof: (`=>`) Assume `R` has unity, say `(e_1, ..., e_n)`. We want to show that each `R_i` has a unity element. We need to show that `e_i` is the mult. identity of `R_i` for each `i`.</p></li>
+                <li><p>(`=>`) Assume `R` has unity, say `(e_1, ..., e_n)`. We want to show that each `R_i` has a unity element. We need to show that `e_i` is the mult. identity of `R_i` for each `i`.</p></li>
                 <li><p>Need to show: given `r_i in R_i`, `e_i*r_i = r_i*e_i = r_i`</p></li>
                 <li><p>Consider a function `f:R_j->R_1 o+ ... o+ R_n, r_j |-> (0, ..., 0, r_j, 0, ..., 0)`</p></li>
                 <li><p>We know that `(0, ..., 0, r_j, 0, ..., 0) * (e_1, ..., e_n) = (0, ..., 0, r_j, 0, ..., 0) = (e_1, ..., e_n)*(0, ..., 0, r_j, 0, ..., 0)`</p></li>
@@ -270,12 +271,12 @@
               </div>
               <div class="proof">
                 <li><p><b>Exercise: Suppose that there is a positive even integer `n` `s.t. a^n = a` for all `a in R`. Show that `-a = a` for all `a in R`.</b></p></li>
-                <li><p>Proof: We can write `n = 2k` for some positive integer `k`</p></li>
+                <li><p>We can write `n = 2k` for some positive integer `k`</p></li>
                 <li style="list-style-type: none";><p>`-a = (-a)^n = (-a)^(2k) = ((-a)^2)^k = (a^2)^k = a^(2k) = a^n = a`</p></li>
               </div>
               <div class="proof">
                 <li><p><b>Exercise: Suppose that there is an integer `n > 1` such that `x^n = x, AA x in R`. If `m` is a positive integer such that `a^m = 0` for some `a`, show that `a = 0`</b></p></li>
-                <li><p>Proof: Case 1: `m <= n`</p></li>
+                <li><p>Case 1: `m <= n`</p></li>
                 <li style="list-style-type: none";><p>`a = a^n = a^m * a^(n-m) = 0 * a^(n-m) = 0`</p></li>
                 <li><p>Case 2: `m > n`</p></li>
                 <li style="list-style-type: none";><p>Choose `m` to be the smallest positive integer `s.t. a^m = 0`</p></li>
@@ -298,7 +299,7 @@
               <li><p>We almost have division in integral domains: we have cancellation</p></li>
               <div class="proof">
                 <li><p><b>Proposition: Let `R` be a domain. Suppose that `a != 0 in R`. Then `ab = ac => b= c`</b></p></li>
-                <li><p>Proof: `ab = ac => ab - ac = 0 => a(b-c) = 0`</p></li>
+                <li><p>`ab = ac => ab - ac = 0 => a(b-c) = 0`</p></li>
                 <li><p>Since `a != 0`, `b-c = 0 => b = c`</p></li>
               </div>
               <li><p>Ex: `QQ` is a domain</p></li>
@@ -310,7 +311,7 @@
               <li><p>Ex: `CC(t) = {f(t)/g(t) | f(t), g(t) in CC(t)}` the ring of rational functions whose coefficients are in `CC` is a field</p></li>
               <div class="proof">
                 <li><p><b>Proposition: Let `D` be a finite integral domain. Then `D` is a field.</b></p></li>
-                <li><p>Proof: Need to show that every nonzero element has a mult. inverse</p></li>
+                <li><p>Need to show that every nonzero element has a mult. inverse</p></li>
                 <li><p>Let `a != 0 in D`. Consider the function `phi_a: D->D`, `y |-> ay`</p></li>
                 <li><p>If we show that `phi_a` is surjective, then we are done</p></li>
                 <li><p>Since `D` is finite, by the pigeonhole principle, `phi_a` is surjective `<=> phi_a` is injective</p></li>
@@ -321,7 +322,7 @@
               </div>
               <div class="proof">
                 <li><p><b>Corollary: `ZZ // pZZ` is a field `<=> p` is prime</b></p></li>
-                <li><p>Proof: (`=>`) Suppose `ZZ // pZZ` is a field but `p` is not prime</p></li>
+                <li><p>(`=>`) Suppose `ZZ // pZZ` is a field but `p` is not prime</p></li>
                 <li><p>Then `p = qr`, `1 < q, r < p`</p></li>
                 <li><p>Then `[q]_p*[r]_p = [p]_p = [0]_p => ZZ // pZZ` has zero-divisors, which contradicts `ZZ // pZZ` is a field</p></li>
                 <li><p>(`lArr`) If `p` is prime, then we must show `ZZ // pZZ` is a domain by the previous result</p></li>
@@ -330,7 +331,7 @@
               </div>
               <div class="proof">
                 <li><p><b>Proposition: If `R` is an integral domain and `S` is a subring of `R` which contains `1 in R`, then `S` itself is an integral domain</b></p></li>
-                <li><p>Proof: `S` is commutative &#10003;</p></li>
+                <li><p>`S` is commutative &#10003;</p></li>
                 <li><p>`S` has a mult. identity &#10003;</p></li>
                 <li><p>If `s_1, s_2 in S` `s.t.` `s_1*s_2 = 0 in S`, this same equation holds in `R`</p></li>
                 <li><p>Since `R` is a domain, `s_1s_2 = 0 => s_1 = 0 or s_2 = 0`</p></li>
@@ -353,7 +354,7 @@
               <li style="list-style-type: none";><p>So `n = char(R)`</p></li>
               <div class="proof">
                 <li><p><b>Proposition: If `R` is an integral domain, then `char(R) = 0` or `char(R) = p` for some prime number `p`</b></p></li>
-                <li><p>Proof: Suppose that `R` is an integral domain and `char(R) != 0`. Suppose for a contradiction `char(R)` is not prime.</p></li>
+                <li><p>Suppose that `R` is an integral domain and `char(R) != 0`. Suppose for a contradiction `char(R)` is not prime.</p></li>
                 <li><p>If `char(R)` is not prime, `EE n, q in ZZ^+` `s.t.` `p = nq`, `1 < n, q < p`</p></li>
                 <li><p>Notice that `(n*1)*(q*1) = (nq)*1 = p*1 = 0` where `(n*1)` and `(q*1)` are not equal to `0`</p></li>
                 <li><p>This contradicts the fact that `R` is a domain</p></li>
@@ -361,7 +362,7 @@
               <li><p>If `char(R) = n`, then the subring generated by `1` in `R` is isomorphic to `ZZ // nZZ`</p></li>
               <div class="proof">
                 <li><p><b>Exercise: Suppose `R` is a commutative ring without zero divisors. (`R` is not necessarily unital.) Show that `char(R)` is `0` or prime.</b></p></li>
-                <li><p>Proof: Suppose `R` is commutative with no zero divisors. Let `p = char(R)` and suppose `p != 0`. Suppose for a contradiction that `p` is not prime.</p></li>
+                <li><p>Suppose `R` is commutative with no zero divisors. Let `p = char(R)` and suppose `p != 0`. Suppose for a contradiction that `p` is not prime.</p></li>
                 <li><p>`=> EE n, q in ZZ^+` `s.t.` `p = nq`, `1 < n, q < p`</p></li>
                 <li><p>Claim: we can find `a, b in R` `s.t.` `n*a != 0` and `q*b != 0`</p></li>
                 <li><p>Suppose not. Then for all `r in R`, `n*r = 0` and `q*r = 0`</p></li>
@@ -373,7 +374,7 @@
               </div>
               <div class="proof">
                 <li><p><b>Suppose `R` is a commutative ring with prime characteristic `p`. Show that `(x + y)^p = x^p + y^p, AA x, y in R` and `(x + y)^(p^n) = x^(p^n) + y^(p^n)`, for all positive integers `n`</b></p></li>
-                <li><p>Proof: `(x + y)^p = sum_(i = 0)^p ((p), (i)) x^iy^(p-i) = ((p), (0))x^0y^(p) + ((p), (1))xy^(p-1) + ... + ((p), (p-1))x^(p-1)y + ((0), (p))x^p`</p></li>
+                <li><p>`(x + y)^p = sum_(i = 0)^p ((p), (i)) x^iy^(p-i) = ((p), (0))x^0y^(p) + ((p), (1))xy^(p-1) + ... + ((p), (p-1))x^(p-1)y + ((0), (p))x^p`</p></li>
                 <li><p>`= y^p + pxy^(p-1) + ((p), (2))x^2y^(p-2) + ... + ((p), (p-2))x^(p-2)y^2 + px^(p-1)y + x^p`</p></li>
                 <li><p>It suffices to show that `((p), (i))` is divisible by `p`</p></li>
                 <li><p>`((p), (i)) = (p!) / ((p-i)!p!) = (p * ... * (p-i+1) * (p-i) * ... * 1) / ((p-i)*...*1*i!)`</p></li>
@@ -388,7 +389,7 @@
               </div>
               <div class="proof">
                 <li><p><b>Exercise: Let `R` be a finite commutative ring with unity. Prove that every nonzero element of `R` is either a zero-divisor or a unit</b></p></li>
-                <li><p>Proof: Let `a != 0` be a non zero-divisor. We claim that `a` is a unit</p></li>
+                <li><p>Let `a != 0` be a non zero-divisor. We claim that `a` is a unit</p></li>
                 <li><p>Define `phi_a: R -> R`, `x |-> ax`. We claim that `phi_a` is injective</p></li>
                 <li><p>Suppose `x, y in R` `s.t.` `phi_a (x) = phi_a (y)`</p></li>
                 <li><p>Then `ax = ay <=> a(x-y) = 0`</p></li>
@@ -399,7 +400,7 @@
               <li><p>Let `R` be an integral domain. A subdomain `S` of `R` is a subring of `R` `s.t.` `S` contains the `1` element of `R`.</p></li>
               <div class="proof">
                 <li><p><b>Exercise: Let `P = {n*1 | n in ZZ} sube R`. Show that `P` is contained in every subdomain. What is the order of `P`?</b></p></li>
-                <li><p>Proof: Let `S` be a subdomain of `R`. We claim that `P sube S`</p></li>
+                <li><p>Let `S` be a subdomain of `R`. We claim that `P sube S`</p></li>
                 <li><p>Any element of `P` has the form `n*1` for some integer `n`</p></li>
                 <li><p>Case 1 `(n = 0)`: `0*1 = 0 in S`</p></li>
                 <li><p>Case 2 `(n > 0)`: `n*1 = sum_(i = 1)^n 1 in S` because `S` is closed under addition</p></li>
@@ -413,7 +414,7 @@
               <li><p>A ring element `a` is idempotent if `a^2 = a`</p></li>
               <div class="proof">
                 <li><p><b>Exercise: Prove that the only idempotent elements of an integral domain are `0` and `1`</b></p></li>
-                <li><p>Proof: If `a` is idempotent, then `a^2 = a <=> a^2 - a = 0 <=> a(a-1) = 0`</p></li>
+                <li><p>If `a` is idempotent, then `a^2 = a <=> a^2 - a = 0 <=> a(a-1) = 0`</p></li>
                 <li><p>`<=> a = 1` or `a = 0`</p></li>
               </div>
             </ul>
@@ -442,12 +443,50 @@
               <li style="list-style-type: none";><p>`r*sum_(i = 1)^n r_ia_i = sum_(i = 1)^n rr_ia_i in (a_1, ..., a_n)`</p></li>
               <div class="proof">
                 <li><p><b>Exercise: Given two ideals `I, J in R`, let `I+J = {i + j | i in I, j in J}`. Show that `I+J` is an ideal</b></p></li>
-                <li><p>Proof: Let `i_1 + j_1 in I + J` and `i_2 + j_2 in I + J` for `i_1, i_2 in I` and `j_1, j_2 in J`</p></li>
+                <li><p>Let `i_1 + j_1 in I + J` and `i_2 + j_2 in I + J` for `i_1, i_2 in I` and `j_1, j_2 in J`</p></li>
                 <li><p>`(i_1 + j_1) - (i_2 + j_2) = (i_1 - i_2) + (j_1 - j_2) in I + J`</p></li>
                 <li><p>Let `i + j in I + J`. Let `r in R`.</p></li>
                 <li><p>`r(i + j) = ri + rj in I + J` and `(i + j)r = ir + ij in I + J`</p></li>
               </div>
+              <div class="proof">
+                <li><p><b>Exercise: Let `I, J` be ideals of a ring `R`. Let `IJ = {sum_(k = 1)^n i_kj_k | i_k in I, j_k in J, n in ZZ^+}`. Show that `IJ` is an ideal</b></p></li>
+                <li><p>Let `sum_(k = 1)^n i_kj_k, sum_(l = 1)^m i'_lj'_l in IJ`</p></li>
+                <li><p>Then `sum_(k = 1)^n i_kj_k - sum_(l = 1)^m i'_lj'_l = sum_(k = 1)^n i_kj_k + sum_(l = 1)^m (-i'_l)(j'_l) in IJ`</p></li>
+                <li><p>Let `r in R`. Let `sum_(k = 1)^n i_kj_k in IJ`</p></li>
+                <li><p>`r*sum_(k = 1)^n i_kj_k = sum_(k = 1)^n ri_kj_k = sum_(k = 1)^n (ri_k)j_k in IJ`</p></li>
+                <li><p>`(sum_(k = 1)^n i_kj_k)*r = ... = sum_(k = 1)^n i_k(j_kr) in IJ`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Exercise: Let `I, J` be two ideals of `R`. Show that `I nn J` is an ideal</b></p></li>
+                <li><p>From group theory, since `I, J` are subgroups of `(R, +)`, `I nn J` is a subgroup of `(R, +)`</p></li>
+                <li><p>Let `z in I nn J`. Let `r in R`. We claim that `rz, zr in I nn J`</p></li>
+                <li><p>`z in I nn J => z in I => rz in I`</p></li>
+                <li><p>`z in I nn J => z in J => rz in J`</p></li>
+                <li><p>`=> rz in I nn J` (similarly for `zr`)</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Exercise: If `I` and `J` are two ideals in a unital commutative ring, show that `IJ sube I nn J`</b></p></li>
+                <li><p>Let `i in I, j in J`</p></li>
+                <li><p>`ij = (i)j in J` (`i in R, j in J`)</p></li>
+                <li><p>`ij = i(j) in I` (`i in I, j in R`)</p></li>
+                <li><p>`=> ij in I nn J`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>If `I` and `J` are two ideals in a unital commutative ring `R` `s.t.` `I + J = R`, show that `IJ = I nn J`</b></p></li>
+                <li><p>Since `I + J = R`, given any `r in R`, we can write `r = i + j` for some `i in I, j in J`</p></li>
+                <li><p>In particular, `1 = i + j` for some `i in I, j in J`</p></li>
+                <li><p>Let `z in I nn J`. We claim `z in IJ`</p></li>
+                <li><p>`z = 1*z = (i + j)*z = iz + jz`</p></li>
+                <li><p>`z in I nn J => z in I, z in J`</p></li>
+                <li><p>Since `i in I, z in J, iz in IJ`</p></li>
+                <li><p>Since `j in J, z in I, jz in IJ`</p></li>
+                <li><p>So `iz + jz in IJ`</p></li>
+              </div>
             </ul>
+          </div>
+          <div class="content" id="quotient_rings">
+            <h3>Quotient Rings</h3>
+            <ul></ul>
           </div>
         </div>
       </div>
