@@ -58,7 +58,7 @@
               <li><p>If `a in R`, then `|a| = {(a if a >= 0),(-a if a <= 0):}`</p></li>
               <div class="proof">
                 <li><p><b>Prove: `|a|^2 = a^2`</b></p></li>
-                <li><p>Proof: Let `a in RR`. Then `a >= 0` or `a <= 0`</p></li>
+                <li><p>Let `a in RR`. Then `a >= 0` or `a <= 0`</p></li>
                 <li><p>Proof by cases: Case 1: `a >= 0`; Case 2: `a <= 0`</p></li>
                 <li><p>Case 1: Suppose `a >= 0`. Then `|a| = a`, so `|a|^2 = a^2`</p></li>
                 <li><p>Case 2: Suppose `a <= 0`. Then `|a| = -a`, so `|a|^2 = (-a)^2 = a^2`</p></li>
@@ -71,25 +71,25 @@
               <li style="list-style-type: none";><p>`x = y`</p></li>
               <div class="proof">
                 <li><p><b>Proposition (false): `x - y in ZZ^+`, `AA x, y in ZZ^+`</b></p></li>
-                <li><p>Proof: Let `x = 1, y = 2`</p></li>
+                <li><p>Let `x = 1, y = 2`</p></li>
                 <li><p>`x, y in ZZ^+`, but `x - y = -1 !in ZZ^+`</p></li>
               </div>
               <li><p><b>Def: `a` divides `b` if `EE k in ZZ, ak = b`</b></p></li>
               <li style="list-style-type: none";><p>`a | b`</p></li>
               <div class="proof">
                 <li><p><b>Proposition: If `c|a` and `c|b`, then `c|(a + b)`</b></p></li>
-                <li><p>Proof: Suppose `c|a` and `c|b`. By definition, `EE k, l in ZZ` `s.t.` `ck = a` and `cl = b`</p></li>
+                <li><p>Suppose `c|a` and `c|b`. By definition, `EE k, l in ZZ` `s.t.` `ck = a` and `cl = b`</p></li>
                 <li><p>So `a + b = ck + cl = c(k + l)`, where `k+l in ZZ`</p></li>
               </div>
               <div class="proof">
                 <li><p><b>Proposition: If `n` is even, then `n^2` is even. `n` is even if `2` divides `n`</b></p></li>
-                <li><p>Proof: Suppose `n` is even. Then `EE k in ZZ`, `n = 2k`</p></li>
+                <li><p>Suppose `n` is even. Then `EE k in ZZ`, `n = 2k`</p></li>
                 <li><p>`n^2 = (2k)^2 = 2*2k^2`</p></li>
                 <li><p>Since `2k^2 in ZZ`, `n^2` is even</p></li>
               </div>
               <div class="proof">
                 <li><p><b>Prove: There does not exist `m, n in ZZ` `s.t.` `51m - 34n = 101`</b></p></li>
-                <li><p>Proof: Suppose for contradiction that `EE m, n in ZZ` `s.t.` `51m - 34n = 101`</p></li>
+                <li><p>Suppose for contradiction that `EE m, n in ZZ` `s.t.` `51m - 34n = 101`</p></li>
                 <li><p>`51m - 34n = 101 => 17(3m - 2n) = 101`</p></li>
                 <li><p>Let `k in ZZ`</p></li>
                 <li><p>Case 1: Suppose `k <= 5`. Then `17k <= 17*5 = 85`</p></li>
@@ -102,13 +102,13 @@
               <li><p>Thus `R` is true</p></li>
               <div class="proof">
                 <li><p><b>Prove: If `a in RR` satisfies `a^2 >= 7a`, then `a <= 0` or `a >= 7`</b></p></li>
-                <li><p>Proof: Suppose `a^2 >= 7a`</p></li>
+                <li><p>Suppose `a^2 >= 7a`</p></li>
                 <li><p>Assume `a cancel(<=) 0`. Then `a > 0`</p></li>
                 <li><p>`a^2 = a*a >= 7a => a >= 7` (because `a > 0`)</p></li>
               </div>
               <div class="proof">
                 <li><p><b>Prove: `1 + 2 + ... + n = (n(n+1)) / 2` for each `n in ZZ^+`</b></p></li>
-                <li><p>Proof: Base case (`n = 1`): `1 = (1(1+1)) / 2`. So `P(1)` is true</p></li>
+                <li><p>Base case (`n = 1`): `1 = (1(1+1)) / 2`. So `P(1)` is true</p></li>
                 <li><p>Inductive step: Suppose `k in ZZ^+` is such that `P(k)` is true</p></li>
                 <li><p>WTS `P(k+1)` is true, `i.e.`, `1 + 2 + ... + k + (k+1) = ((k+1)(k+2)) / 2`</p></li>
                 <li><p>Suppose `1 + 2 + ... + k = (k(k+1)) / 2`</p></li>
@@ -120,7 +120,7 @@
               </div>
               <div class="proof">
                 <li><p><b>Prove: `n! > 2^n` `AA n >= 4`</b></p></li>
-                <li><p>Proof: Base case (`n= 4`): `4! = 24 > 2^4 = 16`</p></li>
+                <li><p>Base case (`n= 4`): `4! = 24 > 2^4 = 16`</p></li>
                 <li><p>Suppose `k >= 4` satisfies `k! > 2^k`, `i.e.` `(k!) / 2^k > 1`</p></li>
                 <li><p>Then `((k+1)!) / 2^(k+1) = (k!(k+1)) / (2^k * 2) > (k+1) / 2 > 1`</p></li>
                 <li><p>(Since `k >= 4`, `(k+1) / 2 > 1`, `i.e.` it is a positive integer greater than 1. Since `(k!) / 2^k > 1`, a positive integer greater than `1` multiplied by another positive integer greater than `1` will result in a positive integer greater than `1`)</p></li>
@@ -134,7 +134,7 @@
               <li style="list-style-type: none";><p>Given `a in ZZ`, there exist unique `q, r in ZZ` `s.t.` `a = 2q + r`, where `r = 0` or `r = 1`</p></li>
               <div class="proof">
                 <li><p><b>Proposition: If `r = 1`, `a` is odd.</b></p></li>
-                <li><p>Proof (from uniqueness of `r`): Assume `r = 1`, `i.e.` `a = 2q + 1`.</p></li>
+                <li><p>(from uniqueness of `r`) Assume `r = 1`, `i.e.` `a = 2q + 1`.</p></li>
                 <li><p>Suppose for contradiction that `a` is even</p></li>
                 <li><p>Then `a = 2k` for some `k in ZZ`, so `a` has `0` as a remainder, `i.e.` `a = 2k + 0`</p></li>
                 <li><p>By uniqueness in Division Theorem, `q = k` and `1 = 0`, which is a contradiction</p></li>
@@ -143,7 +143,7 @@
               <li><p>`a` odd `<=> EE q in ZZ` `s.t.` `a = 2q + 1`</p></li>
               <div class="proof" id="a_2_is_even_a_is_even">
                 <li><p><b>Proposition: Let `a in ZZ`. If `a^2` is even, then `a` is even.</b></p></li>
-                <li><p>Proof: Contrapositive: If `a` is odd, then `a^2` is odd</p></li>
+                <li><p>Contrapositive: If `a` is odd, then `a^2` is odd</p></li>
                 <li><p>Suppose `a` is odd. Then `EE q in ZZ` `s.t.` `a = 2q + 1`</p></li>
                 <li><p>`a^2 = (2q + 1)^2 = 4q^2 + 4q + 1`</p></li>
                 <li><p>`= 2(2q^2 + 2q) + 1`</p></li>
@@ -155,7 +155,7 @@
               <li><p>Therefore `Q` is true</p></li>
               <div class="proof">
                 <li><p><b>Proposition: `sqrt 2` is irrational</b></p></li>
-                <li><p>Proof: Assume for contradiction `sqrt 2` is rational</p></li>
+                <li><p>Assume for contradiction `sqrt 2` is rational</p></li>
                 <li><p>Then `EE a, b in ZZ^+` `s.t.` `sqrt 2 = a / b => 2 = (a / b)^2 = a^2 / b^2` where `a` and `b` have no common factors (so `a` and `b` cannot be even)</p></li>
                 <li><p>`2 = a^2 / b^2 => a^2 = 2b^2`</p></li>
                 <li><p>This means <a href="#a_2_is_even_a_is_even">`a^2` is even, so `a` is even</a></p></li>
@@ -174,14 +174,14 @@
               <li style="list-style-type: none";><p>`A sube B` means `x in A => x in B`</p></li>
               <div class="proof">
                 <li><p><b>Proposition: `(A sube B` and `B sube C)` `=> A sube C`</b></p></li>
-                <li><p>Proof: Suppose `A sube B` and `B sube C`</p></li>
+                <li><p>Suppose `A sube B` and `B sube C`</p></li>
                 <li><p>Let `x in A`. Since `x in A` and `A sube B`, `x in B`</p></li>
                 <li><p>Since `x in B` and `B sube C`, `x in C`</p></li>
                 <li><p>So `A sube C`</p></li>
               </div>
               <div class="proof">
                 <li><p><b>Proposition: Let `D` and `U` be sets `s.t.` `D sube U` and `D^c sube U`. Then `D uu D^c = U`</b></p></li>
-                <li><p>Proof `(U sube D uu D^c)`: Suppose `x in U`</p></li>
+                <li><p>`(U sube D uu D^c)`: Suppose `x in U`</p></li>
                 <li><p>If `x in D`, then `x in D uu D^c`</p></li>
                 <li><p>If `x notin D`, then `x in D^c`. Then `x in D uu D^c`</p></li>
                 <li><p>`(D uu D^c sube U)`: Suppose `x in D uu D^c`</p></li>
@@ -217,7 +217,7 @@
               <li style="list-style-type: none";><p>`vec f``(X) = {a, b} != Y`</p></li>
               <div class="proof">
                 <li><p><b>`vec f``(X) != Y <=> f` is not surjective. (So `vec f``(X) = Y <=> f` is a surjection)</b></p></li>
-                <li><p>Proof `(lArr)`: Suppose `f` is a surjection. Let `y_0 in Y`.</p></li>
+                <li><p>`(lArr)` Suppose `f` is a surjection. Let `y_0 in Y`.</p></li>
                 <li><p>Since `f` is a surjection, `EE x_0 in X` `s.t.` `f(x_0) = y_0`</p></li>
                 <li><p>Thus, `y_0 in vec f``(X) = {f(x) | x in X}`. So `Y sube vec f``(X)`</p></li>
                 <li><p>By definition, `Y supe vec f``(X)`. So `vec f``(X) = Y`</p></li>
@@ -252,7 +252,7 @@
               </table>
               <div class="proof">
                 <li><p><b>Proposition: `f` is an injection `<=> hat f``({y})` is empty or consists of exactly one point `AA y in Y`</b></p></li>
-                <li><p>Proof (`lArr`): Suppose `f` satisfies the condition on the right. Suppose `x_1, x_2 in X` are such that `f(x_1) = f(x_2)`</p></li>
+                <li><p>(`lArr`) Suppose `f` satisfies the condition on the right. Suppose `x_1, x_2 in X` are such that `f(x_1) = f(x_2)`</p></li>
                 <li><p>Let `y_0 = f(x_1) = f(x_2)`. By the assumption, |`hat f``({y_0})`| `<= 1`</p></li>
                 <li><p>Well, `x_1 in hat f``({y_0})` so `hat f``({y_0}) != O/`</p></li>
                 <li><p>Thus `hat f``({y_0})` consists of exactly one point, which is `x_1`</p></li>
@@ -266,7 +266,7 @@
               <li><p>Conversely, suppose `f in Fun(X, {0,1})`. If we define `A = {x in X | f(x) = 1}`, then `f = chi_A`</p></li>
               <div class="proof">
                 <li><p><b>Proposition: `f = chi_A`</b></p></li>
-                <li><p>Proof: Case 1: Suppose `x_0 in A`. Then `chi_A (x_0) = 1` since `x_0 in A`</p></li>
+                <li><p>Case 1: Suppose `x_0 in A`. Then `chi_A (x_0) = 1` since `x_0 in A`</p></li>
                 <li><p>We have `f(x_0) = 1` since `x_0 in {x in X | f(x) = 1}` by definition of `A`</p></li>
                 <li><p>So `f(x_0) = 1 = chi_A (x_0)`</p></li>
                 <li><p>Case 2: Suppose `x notin A`. Then `chi_A (x) = 0` since `x notin A`</p></li>
@@ -278,7 +278,7 @@
               <li><p>Otherwise `X` is infinite</p></li>
               <div class="proof">
                 <li><p><b>Addition Principle: If `X` and `Y` are (disjoint) finite, then `X uu Y` is finite and `|X uu Y| = |X| + |Y| (- |X nn Y|)`</b></p></li>
-                <li><p>Proof: Let `|X| = n` and `|Y| = m`. By definition, there exist bijections `f: NN_n -> X` and `g:NN_m -> Y`</p></li>
+                <li><p>Let `|X| = n` and `|Y| = m`. By definition, there exist bijections `f: NN_n -> X` and `g:NN_m -> Y`</p></li>
                 <li><p>Define `h: NN_(n+m) -> X uu Y` by `h(i) = {(f(i) if 1 <= i <= n),(g(i-n) if n+1 <= i <= m+n):}`</p></li>
                 <li><p>It suffices to show that `h` is a bijection</p></li>
                 <li><p>Suppose `i_1, i_2 in NN_(n+m)` satisfy `h(i_1) = h(i_2) = j in X uu Y`</p></li>
@@ -290,11 +290,11 @@
                 <li><p>Since `f` is injective, `i_1 = i_2 => h` is injective</p></li>
                 <li><p>Case 2: Suppose `j in Y`. From similar reasoning as above, `g(i_1-n) = h(i_1) = h(i_2) = g(i_2-n)`</p></li>
                 <li><p>Since `g` is an injection, `i_1-n = i_2-n`, so `i_1 = i_2 => h` is an injection</p></li>
-                <li><p>Proof that `h` is a surjection is left to the reader xD</p></li>
+                <li><p>Proof that `h` is a surjection is left to the reader as an exercise xD</p></li>
               </div>
               <div class="proof">
                 <li><p><b>Inclusion-Exclusion Principle: If `X` and `Y` are finite, then `X uu Y` is finite and `|X uu Y| = |X| + |Y| - |X nn Y|`</b></p></li>
-                <li><p>Proof: By some propositions from the book (lol), `X uu Y = (X - Y) uu (Y - X) uu (X nn Y)` is a disjoint union</p></li>
+                <li><p>By some propositions from the book (lol), `X uu Y = (X - Y) uu (Y - X) uu (X nn Y)` is a disjoint union</p></li>
                 <li><p>By the Addition Principle, `|X uu Y| = |X - Y| + |Y - X| + |X nn Y|`</p></li>
                 <li><p>`X = (X - Y) uu (X nn Y)` is a disjoint union</p></li>
                 <li><p>So `|X| = |X - Y| + |X nn Y|`</p></li>

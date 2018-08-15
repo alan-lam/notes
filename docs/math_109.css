@@ -25,10 +25,19 @@ body {
 }
 
 .proof {
-  padding-top: 70px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  margin-top: 5px;
+  padding-left: 5px;
+}
+
+.proof li {
   list-style-type: circle;
+}
+
+#a_2_is_even_a_is_even {
+  padding-top: 70px;
 }
 
 td {
