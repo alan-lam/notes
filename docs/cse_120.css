@@ -29,6 +29,10 @@ body {
   color: black;
 }
 
+#last {
+  border-bottom: 1px solid black;
+}
+
 .container {
   width: 70vw;
   margin-left: 300px;
