@@ -51,3 +51,7 @@ body {
 .proof li {
   list-style-type: circle;
 }
+
+#inzz {
+  padding-top: 70px;
+}

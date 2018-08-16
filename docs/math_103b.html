@@ -38,6 +38,7 @@
         <a class="toc_link" href="#integral_domains"><li>Integral Domains</li></a>
         <a class="toc_link" href="#ideals"><li>Ideals</li></a>
         <a class="toc_link" href="#quotient_rings"><li>Quotient Rings</li></a>
+        <a class="toc_link" href="#ring_homomorphisms"><li>Ring Homomorphisms</li></a>
       </ul>
     </div>
     <div class="container">
@@ -509,8 +510,8 @@
               <li><p>Ex: Let's determine what the cosets of `(t)` in `CC[t]` are. What is `(CC[t])/((t))`?</p></li>
               <li style="list-style-type: none";><p>Given `f(t) in CC[t]`, we can consider the polynomial `f(t) - f(0)` which lies in `(t)`</p></li>
               <li style="list-style-type: none";><p>Therefore, `f(t) + (t) = f(0) + t` as cosets</p></li>
-              <div class="proof">
-                <li><p>Ex: classify all ideals in `ZZ`. We claim that every ideal has the form `nZZ` for some `n in ZZ^+`</p></li>
+              <div class="proof" id="inzz">
+                <li><p>Ex: Classify all ideals in `ZZ`. We claim that every ideal has the form `nZZ` for some `n in ZZ^+`</p></li>
                 <li><p>Let `I != (0)` be an ideal of `ZZ`. Let `n` be the least positive integer in `I`</p></li>
                 <li><p>We claim `I = nZZ`. It suffices to show that `n | m`, `AA m in I`</p></li>
                 <li><p>Let `m != 0 in I`. Assume that `m > 0`. Consider `gcd(m,n)`</p></li>
@@ -538,6 +539,72 @@
                 <li><p>`p|b` and `b|p` `=> b = p`</p></li>
                 <li><p>`=> p` is a prime number</p></li>
               </div>
+              <li><p><b>Definition: An ideal `m` of a commutative ring `R` is said to be <u>maximal</u> if `m sub R` (`m` is a proper ideal) and, whenever `I` is an ideal `s.t.` `m sube I`, we must have `I = m` or `I = R`</b></p></li>
+              <li><p>Ex: Returning to `ZZ`, it turns out that `pZZ` is not only prime, but also maximal when `p` is prime</p></li>
+              <div class="proof">
+                <li><p><b>We claim `pZZ` is maximal</b></p></li>
+                <li><p>Suppose `pZZ sube I` where `I` is an ideal of `ZZ`</p></li>
+                <li><p><a href="#inzz">We've already seen that `I = nZZ` for some positive integer `n`</a></p></li>
+                <li><p>Therefore, `pZZ sube nZZ`</p></li>
+                <li><p>In particular, `p in pZZ sube nZZ => p in nZZ <=> n|p`</p></li>
+                <li><p>Since `p` is prime, we either have `n = p` (`=> nZZ = pZZ`) or `n = 1` (`=> nZZ = ZZ`)</p></li>
+                <li><p>So `pZZ` is maximal</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Proposition: If `R` is a commutative ring with unity, then the following are equivalent</b></p></li>
+                <li><p><b>1) `p` is a prime ideal</b></p></li>
+                <li><p><b>2) `R // P` is an integral domain</b></p></li>
+                <li><p><b>and</b></p></li>
+                <li><p><b>3) `M` is a maximal ideal</b></p></li>
+                <li><p><b>4) `R // M` is a field</b></p></li>
+                <li><p>(`1 => 2`): Suppose `p` is a prime ideal. We already know that `R // P` is a commutative ring with unity. We must show that `R // P` has no zero-divisors</p></li>
+                <li><p>Suppose `(x + p)(y + p) = (0 + p) => (xy + p) = (0 + p) <=> xy in p`</p></li>
+                <li><p>Since `p` is a prime ideal, `xy in p <=> x in p` or `y in p`</p></li>
+                <li><p>If `x in p`, then `x + p = 0 + p`</p></li>
+                <li><p>If `y in p`, then `y + p = 0 + p`</p></li>
+                <li><p>Then `R // P` is an integral domain</p></li>
+                <li><p>(`2 => 1`): Suppose `R // P` is an integral domain. Let `x, y in R` `s.t.` `xy in p`</p></li>
+                <li><p>We claim that `x in p` or `y in p`</p></li>
+                <li><p>Consider `(x + p)*(y + p) = (xy + p)`</p></li>
+                <li><p>Since `xy in p, (xy + p) = (0 + p)`</p></li>
+                <li><p>Since `R // P` is an integral domain, we must have either `x + p = 0 + p <=> x in p` or `y + p = 0 + p <=> y in p`</p></li>
+                <li><p>Therefore `p` is prime</p></li>
+                <li><p>(`3 => 4`): Assume that `M` is a maximal ideal</p></li>
+                <li><p>Let `x + M != 0 + M in R // M`</p></li>
+                <li><p>We claim that there exists `y + M in R // M` `s.t.` `(x + M)*(y + M) = 1 + M => xy + M = 1 + M`</p></li>
+                <li><p>We need to show that we can find `y in R` `s.t.` `xy = 1 (mod M)`</p></li>
+                <li><p>Consider the ideal `(x) + M sube R`</p></li>
+                <li><p>We know that `(x) + M != M` since `x notin M`</p></li>
+                <li><p>Since `(x) + M sup M` and `M` is maximal, `(x) + M = R`</p></li>
+                <li><p>We need to use the fact that `(x) + M = R` to produce an element `y` `s.t.` `xy - 1 in M`</p></li>
+                <li><p>Since `(x) + M = R`, we can find `y in R, m in M` `s.t.` `xy + m = 1 => xy - 1 = m in M`</p></li>
+                <li><p>So `xy = 1 (mod M) <=> y + M` is the multiplicative inverse of `x + M`</p></li>
+                <li><p>(`4 => 3`): Suppose `R // M` is a field</p></li>
+                <li><p>Let `I` be an ideal of `R` `s.t.` `M sube I`</p></li>
+                <li><p>We must show that `I = R <=> 1 in I`</p></li>
+                <li><p>Consider `(I + M) // M = {i + M | i in I}`</p></li>
+                <li><p>It turns out that `(I + M) // M` is an ideal of `R // M`</p></li>
+                <li><p>Let `i_1 + M, i_2 + M in (I + M) // M`</p></li>
+                <li><p>Notice that `(i_1 + M) - (i_2 + M) = ((i_1 - i_2) + M) in (I + M) // M`</p></li>
+                <li><p>Therefore, `(I + M) // M` is a subgroup of `R // M`</p></li>
+                <li><p>Let `i + M in (I + M) // M, r + M in R // M`</p></li>
+                <li><p>Notice that `(r + M)*(i + M) = (ri + M) in (I + M) // M`</p></li>
+                <li><p>Therefore, `(I + M) // M = {i + M | i in I}` is an ideal of `R // M`</p></li>
+                <li><p>This is not the zero ideal since `I sup M`</p></li>
+                <li><p>Therefore, there exists `i + M != 0 + M in (I + M) // M`</p></li>
+                <li><p>`R // M` is a field `=> EE j + M in R // M` `s.t.` `(i + M)(j + M) = 1 + M = ij + M`</p></li>
+                <li><p>Since `(I + M) // M` is an ideal containing `i + M`, `(i + M)(j + M) = 1 + M in (I + M) // M`</p></li>
+                <li><p>Since `(ij + M) = (1 + M), 1 - ij in M`</p></li>
+                <li><p>Remember `i in I => ij in 1` and `m sub I => 1 - ij in I`</p></li>
+                <li><p>Therefore, `1 - ij = i' in I`, so `1 = ij + i' in I => 1 in I => I = R`</p></li>
+              </div>
+            </ul>
+          </div>
+          <div class="content" id="ring_homomorphisms">
+            <h3>Ring Homomorphisms</h3>
+            <ul>
+              <li><p>In group theory, we saw that group homomorphisms allow us to translate data from one group to another</p></li>
+              <li><p>`phi(g_1 **_1 g_2) = phi(g_1) **_2 phi(g_2)`</p></li>
             </ul>
           </div>
         </div>
