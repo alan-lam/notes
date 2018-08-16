@@ -486,7 +486,59 @@
           </div>
           <div class="content" id="quotient_rings">
             <h3>Quotient Rings</h3>
-            <ul></ul>
+            <ul>
+              <li><p>Let `R` be a ring and let `I` be an ideal</p></li>
+              <li><p>Let `R//I = {r + I | r in R}`. We will put a ring structure on `R//I`</p></li>
+              <li><p>From group theory, `R` is an abelian group under `+` and `I` is a subgroup</p></li>
+              <li><p>Therefore, `R//I` is a group under `+`, which is defined as `(r_1 + I) + (r_2 + I) = (r_1 + r_2 + I)`</p></li>
+              <li><p>We define multiplication by `(r_1 + I) * (r_2 + I) = (r_1r_2 + I)`</p></li>
+              <div class="proof">
+                <li><p>We claim that this is well-defined</p></li>
+                <li><p>Suppose `r_1 + I = s_1 + I, r_2 + I = s_2 + I`</p></li>
+                <li><p>We need to show that `r_1r_2 + I = s_1s_2 + I`</p></li>
+                <li><p>`r_1 + I = s_1 + I <=> r_1 - s_1 in I`</p></li>
+                <li><p>`r_2 + I = s_2 + I <=> r_2 - s_2 in I`</p></li>
+                <li><p>Notice that `r_1r_2 + I = s_1s_2 + I <=> r_1r_2 - s_1s_2 in I`</p></li>
+                <li><p>Since `r_1-s_1, r_2-s_2 in I`, we see that `(r_1-s_1)(r_2-s_2) = r_1r_2 - s_1r_2 - r_1s_2 + s_1s_2`</p></li>
+                <li><p>`= r_1r_2 - r_2s_1 - r_1s_2 + s_1s_2`</p></li>
+                <li><p>`= r_1r_2 - r_2s_1 - r_1s_2 + s_1s_2 + (s_1s_2 - s_1s_2)`</p></li>
+                <li><p>`= (r_1r_2 - s_1s_2) - s_1(r_2-s_2) - s_2(r_1-s_1)`</p></li>
+                <li><p>`=> r_1r_2 - s_1s_2 in I`</p></li>
+              </div>
+              <li><p>Ex: `ZZ // nZZ` is the quotient of `ZZ` by the ideal `nZZ`</p></li>
+              <li><p>Ex: Let's determine what the cosets of `(t)` in `CC[t]` are. What is `(CC[t])/((t))`?</p></li>
+              <li style="list-style-type: none";><p>Given `f(t) in CC[t]`, we can consider the polynomial `f(t) - f(0)` which lies in `(t)`</p></li>
+              <li style="list-style-type: none";><p>Therefore, `f(t) + (t) = f(0) + t` as cosets</p></li>
+              <div class="proof">
+                <li><p>Ex: classify all ideals in `ZZ`. We claim that every ideal has the form `nZZ` for some `n in ZZ^+`</p></li>
+                <li><p>Let `I != (0)` be an ideal of `ZZ`. Let `n` be the least positive integer in `I`</p></li>
+                <li><p>We claim `I = nZZ`. It suffices to show that `n | m`, `AA m in I`</p></li>
+                <li><p>Let `m != 0 in I`. Assume that `m > 0`. Consider `gcd(m,n)`</p></li>
+                <li><p>By the Euclidean algorithm, we can write `gcd(m,n) = am + bn` for some `a, b in ZZ^+`</p></li>
+                <li><p>`m, n in I => gcd(m,n) = am + bn in I`</p></li>
+                <li><p>Therefore, `gcd(m,n) in I` but `0 < gcd(m,n) <= n => gcd(m,n) = n` (since `n` is the least positive integer in `I`) `=> n|m`</gcd></p></li>
+                <li><p>If `m < 0`, then `-m in I` and the argument we just proved shows that `n|-m =>n|m`</0> </p></li>
+              </div>
+              <li><p>`pZZ` where `p` is prime is a "special type" of ideal</p></li>
+              <li><p>Let `a, b in ZZ` `s.t.` `p|ab`. Then `p|a` or `p|b`</p></li>
+              <li style="list-style-type: none";><p>`ab in pZZ <=> p|ab => p|a` or `p|b <=> a in pZZ` or `b in pZZ`</p></li>
+              <li style="list-style-type: none";><p>So `ab in pZZ => a in pZZ` or `b in pZZ`</p></li>
+              <li><p>If `aZZ, bZZ` are two ideals of `ZZ`, then `aZZ * bZZ sube pZZ => aZZ sube pZZ` or `bZZ sube pZZ`</p></li>
+              <li><p>Such ideals with this property are called prime ideals</p></li>
+              <li><p><b>Definition: An ideal `p sube R` is a <u>prime ideal</u> if `p` is a proper ideal and whenever `ab in p`, we must have `a in p` or `b in p` `AA a, b in R`</b></p></li>
+              <div class="proof">
+                <li><p><b>`pZZ` is a prime ideal `<=> p` is prime</b></p></li>
+                <li><p>(`lArr`) We've already seen that if `p` is prime, then `pZZ` is a prime ideal</p></li>
+                <li><p>(`=>`) Suppose `pZZ` is a prime ideal. It suffices to show that if `p = ab` where `a, b > 0`, then `p = a` or `p = b`</p></li>
+                <li><p>If `p = ab`, then `ab in pZZ`</p></li>
+                <li><p>Since `pZZ` is a prime ideal, we must have either `a in pZZ` or `b in pZZ`</p></li>
+                <li><p>`a in pZZ <=> p|a` and `b in pZZ <=> p|b`</p></li>
+                <li><p>Either `p|a` or `p|b`</p></li>
+                <li><p>Since `a, b, p > 0`, `p|a` and `a|p` `=> a = p`</p></li>
+                <li><p>`p|b` and `b|p` `=> b = p`</p></li>
+                <li><p>`=> p` is a prime number</p></li>
+              </div>
+            </ul>
           </div>
         </div>
       </div>
