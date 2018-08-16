@@ -10,11 +10,11 @@ body {
   width: 300px;
   background-color: lightgray;
   position: fixed;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .toc ul {
-  height: 106%;
   padding-left: 0;
 }
 
