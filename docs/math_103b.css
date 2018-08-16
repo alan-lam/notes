@@ -6,7 +6,7 @@ body {
 }
 
 .toc {
-  height: 600px;
+  height: 90%;
   width: 300px;
   background-color: lightgray;
   position: fixed;
