@@ -605,6 +605,30 @@
             <ul>
               <li><p>In group theory, we saw that group homomorphisms allow us to translate data from one group to another</p></li>
               <li><p>`phi(g_1 **_1 g_2) = phi(g_1) **_2 phi(g_2)`</p></li>
+              <li><p><b>Definition: Let `R, S` be rings. A <u>ring homomorphism</u> `phi: R -> S` is a function from `R` to `S` `s.t.` `AA r_1, r_2 in R`</b></p></li>
+              <li style="list-style-type: none";><p>1) `phi(r_1 + r_2) = phi(r_1) + phi(r_2)`</p></li>
+              <li style="list-style-type: none";><p>2) `phi(r_1r_2) = phi(r_1)phi(r_2)`</p></li>
+              <li><p><b>Definition: Suppose `R, S` have unity elements. A ring homomorphism is <u>unital</u> if `phi(1_R) = 1_S`</b></p></li>
+              <li><p><b>Definition: A <u>ring isomorphism</u> is a ring homomorphism which is both one-to-one and onto</b></p></li>
+              <div class="proof">
+                <li><p><b>Ex: Let `n` be a positive integer. Then reduction modulo `n` is a ring homomorphism: `pi_n: ZZ -> ZZ // nZZ, a |-> [a]_n`</b></p></li>
+                <li><p>Let `a, b in ZZ`</p></li>
+                <li><p>Then `pi_n(a + b) = [a + b]_n = [a]_n + [b]_n = pi_n(a) + pi_n(b)`</p></li>
+                <li><p>Also `pi_n(ab) = [ab]_n = [a]_n[b]_n = pi_n(a)pi_n(b)`</p></li>
+                <li><p>Since `pi_n(1) = [1]_n, pi_n` is also unital</p></li>
+              </div>
+              <li><p>This is a special case of the natural projection homomorphism:</p></li>
+              <li><p>Given a ring `R` and a two-sided ideal `I`, `pi_I: R -> R // I, r |-> r + I`</p></li>
+              <div class="proof">
+                <li><p><b>Ex: Let `z in CC`. Consider the map `ev_z: CC[t] -> CC, f |-> f(z)`. This is a ring homomorphism</b></p></li>
+                <li><p>Let `f, g in CC[t]`.</p></li>
+                <li><p>Then `ev_z(f+g) = (f+g)(z) = f(z) + g(z) = ev_z(f) + ev_z(g)`</p></li>
+                <li><p>`ev_z(fg) = (fg)(z) = f(z)g(z) = ev_z(f)ev_z(g)`</p></li>
+              </div>
+              <li><p><b>Definition: Let `phi: R -> S` be a homomorphism of rings. Define the <u>kernel</u> of `phi` to be `ker(phi) = {r in R | phi(r) = 0}`</b></p></li>
+              <div class="proof">
+                <li><p><b>Find the kernel of `ev_0: CC[t] -> CC, f |-> f(0)`</b></p></li>
+              </div>
             </ul>
           </div>
         </div>
