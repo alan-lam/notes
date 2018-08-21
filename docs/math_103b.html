@@ -683,7 +683,36 @@
               </div>
               <div class="proof">
                 <li><p><b>WTS `phi` is one-to-one `<=> ker(phi) = 0`</b></p></li>
+                <li><p>(`=>`) Suppose `phi` is one-to-one. Since `0` is an element of `R` which maps to `0 in S`, `phi` is one-to-one `=>` if `phi(r) = 0`, then `r = 0`</p></li>
+                <li><p>(`lArr`) Suppose `ker(phi) = 0`. Let `r_1, r_2 in R` `s.t.` `phi(r_1) = phi(r_2)`</p></li>
+                <li><p>Then `phi(r_1 - r_2) = 0 => r_1 - r_2 in ker(phi)`</p></li>
+                <li><p>So `r_1 - r_2 = 0 <=> r_1 = r_2`</p></li>
               </div>
+              <div class="proof">
+                <li><p><b>WTS If `phi` is an isomorphism from `R` to `S`, then `phi^-1` is an isomorphism from `S` to `R`</b></p></li>
+                <li><p>Suppose `phi` is an isomorphism. Then `phi` is a one-to-one and onto homomorphism</p></li>
+                <li><p>Since `phi` is one-to-one and onto, `EE phi^-1: S -> R` `s.t.` `phi @ phi^-1 =` `i``d_S`, `phi^-1 @ phi =` `i``d_R`</p></li>
+                <li><p>We claim that `phi^-1 (s_1 + s_2) = phi^-1(s_1) + phi^-1(s_2)` and `phi^-1(s_1s_2) = phi^-1(s_1)phi^-1(s_2)` `AA s_1s_2 in S`</p></li>
+                <li><p>Let `s_1, s_2 in S`. Then we can find `r_1, r_2 in R` `s.t.` `phi(r_1) = s_1, phi(r_2) = s_2`</p></li>
+                <li><p>`phi^-1(s_1 + s_2) = phi^-1(phi(r_1) + phi(r_2))`</p></li>
+                <li><p>`= phi^-1(phi(r_1 + r_2)) = r_1 + r_2 = phi^-1(s_1) + phi^-1(s_2)`</p></li>
+                <li><p>`phi^-1(s_1s_2) = phi^-1(phi(r_1)phi(r_2)) = phi^-1(phi(r_1r_2)) = r_1r_2 = phi^-1(s_1)phi^-1(s_2)`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Exercise: Show that if `phi: R -> S` is a ring homomorphism, then `ker(phi)` is an ideal of `R`</b></p></li>
+                <li><p>Let `r_1, r_2 in ker(phi)`. We claim `r_1 - r_2 in ker(phi)`</p></li>
+                <li><p>`phi(r_1 - r_2) = phi(r_1) - phi(r_2) = 0 - 0 = 0 => r_1 - r_2 in ker(phi)`</p></li>
+                <li><p>Let `r' in R, r in ker(phi)`. We claim that `r'r in ker(phi)`</p></li>
+                <li><p>Notice that `phi(r'r) = phi(r')phi(r) = phi(r')*0 = 0 => r'r in ker(phi)`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Exercise: Show that if `I` is a two-sided ideal of `R`, then `I` is the kernel of some ring homomorphism</b></p></li>
+                <li><p>Consider `pi_I: R -> R // I`. We claim that `ker(pi_I) = I`</p></li>
+                <li><p>(`supe`) If `i in I => pi_I(i) = i + I = 0 + I` since `i in I`</p></li>
+                <li><p>(`sube`) Suppose `r in ker(pi_I) => pi_I(r) = 0 + I`</p></li>
+                <li><p>`pi_I(r) = r + I = 0 + I <=> r in I`</p></li>
+              </div>
+              <li><p><b>Ideal Correspondence Theorem: Let `R` be a commutative ring with unity and let `I` be an ideal. Then there is a one-to-one order preserving correspondence between ideals of `R` which contain `I` and ideals of `R // I`</b></p></li>
             </ul>
           </div>
         </div>
