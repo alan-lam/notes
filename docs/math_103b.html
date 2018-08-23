@@ -39,6 +39,7 @@
         <a class="toc_link" href="#ideals"><li>Ideals</li></a>
         <a class="toc_link" href="#quotient_rings"><li>Quotient Rings</li></a>
         <a class="toc_link" href="#ring_homomorphisms"><li>Ring Homomorphisms</li></a>
+        <a class="toc_link" href="#field_of_fractions"><li>Field of Fractions</li></a>
       </ul>
     </div>
     <div class="container">
@@ -375,7 +376,8 @@
               </div>
               <div class="proof">
                 <li><p><b>Suppose `R` is a commutative ring with prime characteristic `p`. Show that `(x + y)^p = x^p + y^p, AA x, y in R` and `(x + y)^(p^n) = x^(p^n) + y^(p^n)`, for all positive integers `n`</b></p></li>
-                <li><p>`(x + y)^p = sum_(i = 0)^p ((p), (i)) x^iy^(p-i) = ((p), (0))x^0y^(p) + ((p), (1))xy^(p-1) + ... + ((p), (p-1))x^(p-1)y + ((0), (p))x^p`</p></li>
+                <li><p>`(x + y)^p = sum_(i = 0)^p ((p), (i)) x^iy^(p-i)`</p></li>
+                <li><p>`= ((p), (0))x^0y^(p) + ((p), (1))xy^(p-1) + ... + ((p), (p-1))x^(p-1)y + ((0), (p))x^p`</p></li>
                 <li><p>`= y^p + pxy^(p-1) + ((p), (2))x^2y^(p-2) + ... + ((p), (p-2))x^(p-2)y^2 + px^(p-1)y + x^p`</p></li>
                 <li><p>It suffices to show that `((p), (i))` is divisible by `p`</p></li>
                 <li><p>`((p), (i)) = (p!) / ((p-i)!p!) = (p * ... * (p-i+1) * (p-i) * ... * 1) / ((p-i)*...*1*i!)`</p></li>
@@ -520,16 +522,18 @@
                 <li><p>Therefore, `gcd(m,n) in I` but `0 < gcd(m,n) <= n => gcd(m,n) = n` (since `n` is the least positive integer in `I`) `=> n|m`</gcd></p></li>
                 <li><p>If `m < 0`, then `-m in I` and the argument we just proved shows that `n|-m =>n|m`</0> </p></li>
               </div>
-              <li><p>`pZZ` where `p` is prime is a "special type" of ideal</p></li>
-              <li><p>Let `a, b in ZZ` `s.t.` `p|ab`. Then `p|a` or `p|b`</p></li>
-              <li style="list-style-type: none";><p>`ab in pZZ <=> p|ab => p|a` or `p|b <=> a in pZZ` or `b in pZZ`</p></li>
-              <li style="list-style-type: none";><p>So `ab in pZZ => a in pZZ` or `b in pZZ`</p></li>
-              <li><p>If `aZZ, bZZ` are two ideals of `ZZ`, then `aZZ * bZZ sube pZZ => aZZ sube pZZ` or `bZZ sube pZZ`</p></li>
+              <div id="prime_ideal" class="proof">
+                <li><p>`pZZ` where `p` is prime is a "special type" of ideal</p></li>
+                <li><p>Let `a, b in ZZ` `s.t.` `p|ab`. Then `p|a` or `p|b`</p></li>
+                <li><p>`ab in pZZ <=> p|ab => p|a` or `p|b <=> a in pZZ` or `b in pZZ`</p></li>
+                <li><p>So `ab in pZZ => a in pZZ` or `b in pZZ`</p></li>
+              </div>
+                <li><p>If `aZZ, bZZ` are two ideals of `ZZ`, then `aZZ * bZZ sube pZZ => aZZ sube pZZ` or `bZZ sube pZZ`</p></li>
               <li><p>Such ideals with this property are called prime ideals</p></li>
               <li><p><b>Definition: An ideal `p sube R` is a <u>prime ideal</u> if `p` is a proper ideal and whenever `ab in p`, we must have `a in p` or `b in p` `AA a, b in R`</b></p></li>
               <div class="proof">
                 <li><p><b>`pZZ` is a prime ideal `<=> p` is prime</b></p></li>
-                <li><p>(`lArr`) We've already seen that if `p` is prime, then `pZZ` is a prime ideal</p></li>
+                <li><p>(`lArr`)<a href="#prime_ideal"> We've already seen that if `p` is prime, then `pZZ` is a prime ideal</a></p></li>
                 <li><p>(`=>`) Suppose `pZZ` is a prime ideal. It suffices to show that if `p = ab` where `a, b > 0`, then `p = a` or `p = b`</p></li>
                 <li><p>If `p = ab`, then `ab in pZZ`</p></li>
                 <li><p>Since `pZZ` is a prime ideal, we must have either `a in pZZ` or `b in pZZ`</p></li>
@@ -619,14 +623,14 @@
               </div>
               <li><p>This is a special case of the natural projection homomorphism:</p></li>
               <li><p>Given a ring `R` and a two-sided ideal `I`, `pi_I: R -> R // I, r |-> r + I`</p></li>
-              <div class="proof">
+              <div id="ev_hom" class="proof">
                 <li><p><b>Ex: Let `z in CC`. Consider the map `ev_z: CC[t] -> CC, f |-> f(z)`. This is a ring homomorphism</b></p></li>
                 <li><p>Let `f, g in CC[t]`.</p></li>
                 <li><p>Then `ev_z(f+g) = (f+g)(z) = f(z) + g(z) = ev_z(f) + ev_z(g)`</p></li>
                 <li><p>`ev_z(fg) = (fg)(z) = f(z)g(z) = ev_z(f)ev_z(g)`</p></li>
               </div>
               <li><p><b>Definition: Let `phi: R -> S` be a homomorphism of rings. Define the <u>kernel</u> of `phi` to be `ker(phi) = {r in R | phi(r) = 0}`</b></p></li>
-              <div class="proof">
+              <div id="ev_ker" class="proof">
                 <li><p><b>Find the kernel of `ev_0: CC[t] -> CC, f |-> f(0)`</b></p></li>
                 <li><p>We claim that `ker(ev_0) = (t)`</p></li>
                 <li><p>Let `f in ker(ev_0) => ev_0(f) = 0 <=> f(0) = 0 => f` has no constant term, so `t|f <=> f in (t)`</p></li>
@@ -683,37 +687,106 @@
               </div>
               <div class="proof">
                 <li><p><b>WTS `phi` is one-to-one `<=> ker(phi) = 0`</b></p></li>
-                <li><p>(`=>`) Suppose `phi` is one-to-one. Since `0` is an element of `R` which maps to `0 in S`, `phi` is one-to-one `=>` if `phi(r) = 0`, then `r = 0`</p></li>
-                <li><p>(`lArr`) Suppose `ker(phi) = 0`. Let `r_1, r_2 in R` `s.t.` `phi(r_1) = phi(r_2)`</p></li>
-                <li><p>Then `phi(r_1 - r_2) = 0 => r_1 - r_2 in ker(phi)`</p></li>
-                <li><p>So `r_1 - r_2 = 0 <=> r_1 = r_2`</p></li>
+                <li><p>`(=>)` Suppose `phi` is one-to-one. Since `0` is an element of `R` which maps to `0 in S`, `phi` is one-to-one `=>` if `phi(r) = 0`, then `r = 0`</p></li>
+                <li><p>`(lArr)` Suppose `ker(phi) = 0`. Let `r_1, r_2 in R` `s.t.` `phi(r_1) = phi(r_2)`</p></li>
+                <li><p>Then `phi(r_1) - phi(r_2) = 0 => phi(r_1 - r_2) = 0 => r_1 - r_2 in ker(phi)` so `r_1 - r_2 = 0 <=> r_1 = r_2`</p></li>
               </div>
               <div class="proof">
                 <li><p><b>WTS If `phi` is an isomorphism from `R` to `S`, then `phi^-1` is an isomorphism from `S` to `R`</b></p></li>
                 <li><p>Suppose `phi` is an isomorphism. Then `phi` is a one-to-one and onto homomorphism</p></li>
-                <li><p>Since `phi` is one-to-one and onto, `EE phi^-1: S -> R` `s.t.` `phi @ phi^-1 =` `i``d_S`, `phi^-1 @ phi =` `i``d_R`</p></li>
-                <li><p>We claim that `phi^-1 (s_1 + s_2) = phi^-1(s_1) + phi^-1(s_2)` and `phi^-1(s_1s_2) = phi^-1(s_1)phi^-1(s_2)` `AA s_1s_2 in S`</p></li>
+                <li><p>Since `phi` is one-to-one and onto, `EE phi^-1: S -> R` `s.t.` `phi @ phi^-1 =` `i``d_s`, `phi^-1 @ phi =` `i``d_r`</p></li>
+                <li><p>We claim that `phi^-1(s_1 + s_2) = phi^-1(s_1) + phi^-1(s_2)` and `phi^-1(s_1s_2) = phi^-1(s_1)phi^-1(s_2) AA s_1, s_2 in S`</p></li>
                 <li><p>Let `s_1, s_2 in S`. Then we can find `r_1, r_2 in R` `s.t.` `phi(r_1) = s_1, phi(r_2) = s_2`</p></li>
-                <li><p>`phi^-1(s_1 + s_2) = phi^-1(phi(r_1) + phi(r_2))`</p></li>
-                <li><p>`= phi^-1(phi(r_1 + r_2)) = r_1 + r_2 = phi^-1(s_1) + phi^-1(s_2)`</p></li>
-                <li><p>`phi^-1(s_1s_2) = phi^-1(phi(r_1)phi(r_2)) = phi^-1(phi(r_1r_2)) = r_1r_2 = phi^-1(s_1)phi^-1(s_2)`</p></li>
+                <li><p>`phi^-1(s_1 + s_2) = phi^-1(phi(r_1) + phi(r_2)) = phi^-1(phi(r_1 + r_2))`</p></li>
+                <li><p>`= r_1 + r_2 = phi^-1(s_1) + phi^-1(s_2)`</p></li>
+                <li><p>`phi^-1(s_1s_2) = phi^-1(phi(r_1)phi(r_2)) = phi^-1(phi(r_1r_2))`</p></li>
+                <li><p>`= r_1r_2 = phi^-1(s_1)phi^-1(s_2)`</p></li>
               </div>
               <div class="proof">
                 <li><p><b>Exercise: Show that if `phi: R -> S` is a ring homomorphism, then `ker(phi)` is an ideal of `R`</b></p></li>
                 <li><p>Let `r_1, r_2 in ker(phi)`. We claim `r_1 - r_2 in ker(phi)`</p></li>
                 <li><p>`phi(r_1 - r_2) = phi(r_1) - phi(r_2) = 0 - 0 = 0 => r_1 - r_2 in ker(phi)`</p></li>
                 <li><p>Let `r' in R, r in ker(phi)`. We claim that `r'r in ker(phi)`</p></li>
-                <li><p>Notice that `phi(r'r) = phi(r')phi(r) = phi(r')*0 = 0 => r'r in ker(phi)`</p></li>
+                <li><p>`phi(r'r) = phi(r')phi(r) = phi(r')*0 = 0 => r'r in ker(phi)`</p></li>
               </div>
               <div class="proof">
                 <li><p><b>Exercise: Show that if `I` is a two-sided ideal of `R`, then `I` is the kernel of some ring homomorphism</b></p></li>
                 <li><p>Consider `pi_I: R -> R // I`. We claim that `ker(pi_I) = I`</p></li>
-                <li><p>(`supe`) If `i in I => pi_I(i) = i + I = 0 + I` since `i in I`</p></li>
-                <li><p>(`sube`) Suppose `r in ker(pi_I) => pi_I(r) = 0 + I`</p></li>
+                <li><p>`(supe)` If `i in I => pi_I(i) = i + I = 0 + I` since `i in I`</p></li>
+                <li><p>`(sube)` Suppose `r in ker(pi_I) => pi_I(r) = 0 + I`</p></li>
                 <li><p>`pi_I(r) = r + I = 0 + I <=> r in I`</p></li>
               </div>
-              <li><p><b>Ideal Correspondence Theorem: Let `R` be a commutative ring with unity and let `I` be an ideal. Then there is a one-to-one order preserving correspondence between ideals of `R` which contain `I` and ideals of `R // I`</b></p></li>
+              <div class="proof">
+                <li><p><b>Ideal Correspondence Theorem: Let `R` be a commutative ring with unity and let `I` be an ideal. Then there is a one-to-one order-preserving correspondence between ideals of `R` which contain `I` and ideals of `R // I`</b></p></li>
+                <img class="img-fluid" src="./pictures/ideal_correspondence_theorem.jpg">
+                <li><p>Since `pi_I` is surjective, given any ideal `J sube R` which contains `I`, `pi_I(J)` is an ideal of `R // I`</p></li>
+                <li><p>`pi_I(J) = {j + I | j in J} = (J + I) // I`</p></li>
+                <li><p>We claim that `pi_I^-1(pi_I(J)) = J`</p></li>
+                <li><p>`(supe)` If `j in J`, then `pi_I(j) = j + I in pi_I(J) => j in pi_I^-1(pi_I(j))`</p></li>
+                <li><p>`(sube)` Suppose `r in pi_I^-1(pi_I(J)) => pi_I(r) in pi_I(J) => r + I in pi_I(J)`</p></li>
+                <li><p>`EE j in J` `s.t.` `r + I = j + I <=> r - j in I`</p></li>
+                <li><p>Since `I sube J, r - j in J => r in J`</p></li>
+                <li><p>Let `H sube R // I`. Consider `pi_I^-1(H) sube R`. We claim that `pi_I^-1(H) supe I`</p></li>
+                <li><p>Let `i in I => pi_I(i) = i + I = 0 + I`</p></li>
+                <li><p>Since `H` is an ideal, `0 + I in H => i in pi_I^-1(H) => I in pi_I^-1(H)`</p></li>
+                <li><p>We claim that `pi_I(pi_I^-1(H)) = H`</p></li>
+                <li><p>Since `pi_I` is surjective, this is true.</p></li>
+                <li><p>Therefore, `pi_I: {I sube J sube R} -> {(0 + I) // I sube H sube R // I}` is a bijection</p></li>
+                <li><p>Suppose `I sube J_1 sube J_2`. We claim that `pi_I(J_1) sub pi_I(J_2)`</p></li>
+                <li><p>We always have `J_1 sube J_2 => pi_I(J_1) sube pi_I(J_2)`</p></li>
+                <li><p>If `pi_I(J_1) = pi_I(J_2) => J_1 = J_2` since correspondence is one-to-one</p></li>
+                <li><p>So we must have `pi_I(J_1) sub pi_I(J_2)`</p></li>
+                <li><p>Suppose `H_1 sub H_2 sube R // I`. We claim that `pi_I^-1(H_1) sub pi_I^-1(H_2)`</p></li>
+                <li><p>We always have `pi_I^-1(H_1) sube pi_I^-1(H_2)`</p></li>
+                <li><p>If `pi_I^-1(H_1) = pi_I^-1(H_2)`, then since `pi_I^-1` is a bijection, we must have `H_1 = H_2`</p></li>
+                <li><p>Therefore, `pi_I^-1(H_1) sub pi_I^-1(H_2)`</p></li>
+              </div>
+              <li><p>Through this order-preserving correspondence, we can think of the set of ideals of `R // I` as a subset of the set of ideals of `R`</p></li>
+              <li><p>In particular, the set of prime ideals of `R // I` can be viewed as a subset of the set of prime ideals of `R`</p></li>
+              <div class="proof">
+                <li><p><b>First Isomorphism Theorem: If `phi: R -> S` is a ring homomorphism, then there is an isomorphism of rings `bar phi: R // ker(phi) -> phi(R), r + ker(phi) |-> phi(r)`</b></p></li>
+                <li><p>We need to prove that `bar phi` is well-defined.</p></li>
+                <li><p>Let `r_1 + ker(phi) = r_2 + ker(phi) in R // ker(phi)`</p></li>
+                <li><p>We claim `bar phi(r_1 + ker(phi)) = bar phi(r_2 + ker(phi))`</p></li>
+                <li><p>`bar phi(r_1 + ker(phi)) = phi(r_1) and bar phi(r_2 + ker(phi)) = phi(r_2)`</p></li>
+                <li><p>Therefore, we must show that if `r_1 + ker(phi) = r_2 + ker(phi)`, then `phi(r_1) = phi(r_2)`</p></li>
+                <li><p>Suppose `r_1 + ker(phi) = r_2 + ker(phi) <=> r_1 - r_2 in ker(phi)`</p></li>
+                <li><p>`=> phi(r_1 - r_2) = 0 => phi(r_1) - phi(r_2) = 0 => phi(r_1) = phi(r_2)`</p></li>
+                <li><p>Next we check that `bar phi` is a ring homomorphism</p></li>
+                <li><p>Let `r_1 + ker(phi), r_2 + ker(phi) in R // ker(phi)`</p></li>
+                <li><p>Consider `bar phi((r_1 + ker(phi)) + (r_2 + ker(phi)))`</p></li>
+                <li><p>`= bar phi(r_1 + r_2 + ker(phi)) = phi(r_1 + r_2) = phi(r_1) + phi(r_2)`</p></li>
+                <li><p>`= bar phi(r_1 + ker(phi)) + bar phi(r_2 + ker(phi))`</p></li>
+                <li><p>`bar phi((r_1 + ker(phi)) * (r_2 + ker(phi))) = bar phi(r_1r_2 + ker(phi)) = phi(r_1r_2)`</p></li>
+                <li><p>`= phi(r_1)phi(r_2) = bar phi(r_1 + ker(phi)) bar phi(r_2 + ker(phi))`</p></li>
+                <li><p>We must check that `bar phi` is onto. Fix `s in phi(R)`</p></li>
+                <li><p>Then we can find `r in R` `s.t.` `phi(r) = s`</p></li>
+                <li><p>Notice that `bar phi(r + ker(phi)) = phi(r)`, so `bar phi` is onto</p></li>
+                <li><p>Suppose that `r + ker(phi) in ker(bar phi) => bar phi(r + ker(phi)) = 0`</p></li>
+                <li><p>But `bar phi(r + ker(phi)) = phi(r) = 0 <=> r in ker(phi) => r + ker(phi) = 0 + ker(phi)`</p></li>
+                <li><p>So `bar phi` is injective</p></li>
+              </div>
+              <li><p>Last time we defined `ev_0: CC[t] -> CC, f |-> f(c)`</p></li>
+              <li><p><a href="#ev_hom">We saw that this is a ring homomorphism which maps onto `CC`</a></p></li>
+              <li><p><a href="#ev_ker">We saw that `ker(ev_0) = (t)`</a></p></li>
+              <li><p>Therefore, by the First Isomorphism Theorem, `CC[t] // (t) ~= CC`</p></li>
+              <li><p>Suppose `I` is an ideal of a commutative ring `R`. Then we can use the First Isomorphism Theorem to determine what `R // I` is isomorphic to</p></li>
+              <li style="list-style-type: none;"><p>Suppose we have a hunch that `R // I ~= S`. To prove this, we can exhibit a surjective ring homomorphism `phi: R -> S` whose kernel is `I`</p></li>
+              <li style="list-style-type: none;"><p>First Isomorphism Theorem `=> R // I ~= S`</p></li>
+              <li><p>If `char(R) = n` and `R` is unital, then `R` contains a subring `~= ZZ // nZZ`</p></li>
+              <li style="list-style-type: none;"><p>`varepsilon_R: ZZ -> R, m |-> m*1`</p></li>
+              <li style="list-style-type: none;"><p>Since `char(R) = n`, the additive order of `1` in `(R,+)` is `n => ker(varepsilon_R) = nZZ`</p></li>
+              <li style="list-style-type: none;"><p>By the First Isomorphism Theorem, `ZZ // nZZ ~= ZZ // ker(varepsilon_R) ~= im(varepsilon_R)`</p></li>
+              <li><p>If `F` is a field of `char(p)` where `p` is prime, then `F` has a subfield isomorphic to `ZZ // pZZ`, called the prime subfield of `F`</p></li>
+              <li><p>What is the prime subfield of a field of characteristic `0`?</p></li>
+              <li style="list-style-type: none;"><p>By the First Isomorphism Theorem, we have a subring `~= ZZ`</p></li>
+              <li style="list-style-type: none;"><p>`varepsilon_R: ZZ -> F`</p></li>
+              <li style="list-style-type: none;"><p>Since `char(R) = 0`, the additive order of `1` in `F` is `oo`</p></li>
+              <li style="list-style-type: none;"><p>Therefore, `varepsilon_R` is injective, so `ZZ` is a subring of `F`</p></li>
             </ul>
+          </div>
+          <div class="content" id="field_of_fractions">
+            <h3>Field of Fractions</h3>
           </div>
         </div>
       </div>

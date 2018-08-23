@@ -52,6 +52,6 @@ body {
   list-style-type: circle;
 }
 
-#inzz {
+#inzz, #ev_hom, #ev_ker, #prime_ideal {
   padding-top: 70px;
 }
