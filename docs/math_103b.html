@@ -951,6 +951,45 @@
               </div>
               <div class="proof">
                 <li><p><b>Theorem: A polynomial of degree `n` over a field `F` has at most `n` roots in `F`</b></p></li>
+                <li><p>Base case: If `n = 0`, then `f(x) in F \\ {0}`, so it has `0` roots</p></li>
+                <li><p>Inductive Hypothesis: Suppose for some `n >= 0, k <= n` `AA k in ZZ^(>= 0)` If `f(x)` is a polynomial of degree `k`, then `f(x)` has at most `k` roots in `F`</p></li>
+                <li><p>WTS: If `f(x)` is a polynomial of degree `n+1`, then `f(x)` has at most `n+1` roots in `F`</p></li>
+                <li><p>Let `f(x)` be a polynomial of degree `n+1`. If `f(x)` has no roots in `F`, then the statement is proven</p></li>
+                <li><p>Therefore we can assume `f(x)` has a root, call it `alpha in F`</p></li>
+                <li><p>Let `h` be the multiplicity of `alpha`. We can write `f(x) = (x-alpha)^hq(x)` where `(x-alpha) cancel(|) q(x)`</p></li>
+                <li><p>If `alpha` is the only root, then `h <= n + 1` and the statement is proven</p></li>
+                <li><p>Suppose that `beta` is a root of `f(x), beta != alpha`</p></li>
+                <li><p>`0 = f(beta) = (beta - alpha)^hq(beta) => q(beta) = 0`</p></li>
+                <li><p>Therefore, `beta` is a root of `q(x)`</p></li>
+                <li><p>We claim that the multiplicity of `beta` as a root of `q(x)` is equal to the multiplicity of `beta` as a root of `f(x)`</p></li>
+                <li><p>Since `beta` is a root of `q(x) => (x - beta) | q(x)`</p></li>
+                <li><p>Let `m_1` be the multiplicity of `beta` as a root of `q(x)` (So `(x-beta)^(m_1) | q(x)` and `(x - beta)^(m_1+1) cancel(|) q(x)`)</p></li>
+                <li><p>Since `beta` is a root of `f(x)`, we can write `f(x) = (x - beta)^(m_2)q_2(x)`</p></li>
+                <li><p>`m_2`: the multiplicity of `beta` as a root of `f(x)`</p></li>
+                <li><p>`q(x) = (x - beta)^(m_1)q_1(x)`</p></li>
+                <li><p>Notice `f(x) = (x - alpha)^nq(x) = (x - alpha)^h(x - beta)^(m_1)q_1(x)`</p></li>
+                <li><p>`f(x) = (x - beta)^(m_2)q_2(x)`. We claim `m_1 = m_2`</p></li>
+                <li><p>Case 1: `m_1 > m_2`. `(x - alpha)^h(x - beta)^(m_1)q_1(x) - (x - beta)^(m_2)q_2(x) = 0`</p></li>
+                <li><p>Since `F[x]` is a domain, `(x - alpha)^h(x - beta)^(m_2 - m_1)q_1(x) - q_2(x) = 0`</p></li>
+                <li><p>Plugging in `beta` gives `q_2(beta) = 0`, which is a contradiction</p></li>
+                <li><p>Case 2: `m_1 < m_2`. (x - alpha)^h(x - beta)^(m_1)q(x) = (x - beta)^(m_2)q_2(x)`</p></li>
+                <li><p>`(x - alpha)^h(x- beta)^(m_1)q_1(x) - (x - beta)^(m_2)q_2(x) = 0`</p></li>
+                <li><p>Since `F[x]` is a domain, `(x - alpha)^hq_1(x) - (x - beta)^(m_2 - m_1)q_2(x) = 0`</p></li>
+                <li><p>Plugging in `beta => q_1(beta) = 0`, which is a contradiction</p></li>
+                <li><p>Therefore, `m_1 = m_2`</p></li>
+                <li><p>By the induction hypothesis, since `deg(q(x)) < deg(f(x)) = n + 1, q(x)` has at most `deg(q(x)) = n + 1 - h` roots counted with multiplicity</p></li>
+                <li><p>Since the remaining roots of `f(x)` are exactly the roots of `q(x)` with the same multiplicity, since `f(x) = (x - alpha)^hq(x)` we see that `f(x)` has at most `h + deg(q(x)) = h + n + 1 - h = n + 1` roots in `F`</p></li>
+              </div>
+              <li><p>Why "at most"? Ex: `x^2 + 1 in RR[x]` has no roots</p></li>
+              <div class="proof">
+                <li><p><b>Theorem: `F[x]` is a principle ideal domain</b></p></li>
+                <li><p>Let `I` be a nonzero proper ideal of `F[x]`. Let `f(x) != 0` be an element of minimal degree in `I`</p></li>
+                <li><p>Since `I` is proper, the degree of `f(x)` must be positive</p></li>
+                <li style="list-style-type: none"><p>(If `deg(f(x)) = 0 => f(x) in F \\ {0} => f(x)` is a unit in `I => I = F[x]`)</p></li>
+                <li><p>Let `g(x) in I`. By the division algorithm, `EE q(x), r(x) in F[x]` `s.t` `g(x) = f(x)q(x) + r(x)` where `0 <= deg(r(x)) < deg(f(x))` or `r(x) = 0`</p></li>
+                <li><p>We can rewrite this as `r(x) = g(x) - f(x)q(x) in I`</p></li>
+                <li><p>Since `F` was chosen to have minimal degree, `r(x) = 0 => I sube (f(x))`</p></li>
+                <li><p>Since `f(x) in I => (f(x)) sube I => (f(x)) = I`</p></li>
               </div>
             </ul>
           </div>
