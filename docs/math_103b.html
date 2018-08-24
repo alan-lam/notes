@@ -40,6 +40,7 @@
         <a class="toc_link" href="#quotient_rings"><li>Quotient Rings</li></a>
         <a class="toc_link" href="#ring_homomorphisms"><li>Ring Homomorphisms</li></a>
         <a class="toc_link" href="#field_of_fractions"><li>Field of Fractions</li></a>
+        <a class="toc_link" href="#polynomial_rings"><li>Polynomial Rings</li></a>
       </ul>
     </div>
     <div class="container">
@@ -787,6 +788,100 @@
           </div>
           <div class="content" id="field_of_fractions">
             <h3>Field of Fractions</h3>
+            <ul>
+              <li><p>Rational numbers can be thought of as tuples `(a,b)` where `a in ZZ, b in ZZ \\ {0}`</p></li>
+              <li><p>For instance, `6/3 = 2/1`, so `(6,3) ~ (2,1)`</p></li>
+              <li><p>We have to put an equivalence relation on `ZZ oplus ZZ \\ {0}`</p></li>
+              <li><p>The relation is `(a,b) ~ (c,d) <=> ad - bc = 0`</p></li>
+              <div class="proof">
+                <li><p>Let's check that `~` defines an equivalence relation on `ZZ oplus ZZ \\ {0}`</p></li>
+                <li><p>Reflexive: We must check that `(a,b) ~ (a,b)` `AA a,b in ZZ oplus ZZ \\ {0}`</p></li>
+                <li><p>`(a,b) ~ (a,b) <=> ab - ba = 0`</p></li>
+                <li><p>Since `ab - ba = 0 => (a,b) ~ (a,b)`</p></li>
+                <li><p>Symmetric: We must check that if `(a,b) ~ (c,d)`, then `(c,d) ~ (a,b)`</p></li>
+                <li><p>Assume `(a,b) ~ (c,d) <=> ad - bc = 0`</p></li>
+                <li><p>`(c,d) ~ (a,b) <=> cb - da = 0`</p></li>
+                <li><p>Since `ad - bc = 0 => (c,d) ~ (a,b)`</p></li>
+                <li><p>Transitive: Suppose `(a,b) ~ (c,d)` and `(c,d) ~ (e,f)`</p></li>
+                <li><p>We claim `(a,b) ~ (e,f)`. We must show `af - be = 0`</p></li>
+                <li><p>`(a,b) ~ (c,d) => ad - bc = 0 => ad = bc`</p></li>
+                <li><p>`(c,d) ~ (e,f) => cf - de = 0 => cf = de`</p></li>
+                <li><p>`=> adcf = bcde => cd(af - be) = 0`</p></li>
+                <li><p>Either `cd = 0 or cd != 0`</p></li>
+                <li><p>If `cd = 0, d != 0 => c = 0`</p></li>
+                <li><p>`ad = bc = b*0 = 0`</p></li>
+                <li><p>`d != 0 => a = 0`</p></li>
+                <li><p>`0*f = cd = de = 0`</p></li>
+                <li><p>`d != 0 => e = 0`</p></li>
+                <li><p>`af - be = 0 - 0 = 0`</p></li>
+              </div>
+              <li><p>We now define addition and multiplication on `ZZ oplus ZZ \\ {0} // ~`</p></li>
+              <div class="proof">
+                <li><p>We define addition by `(a,b) + (c,d) = (ad + bc, bd)`</p></li>
+                <li><p>We must check that this is well-defined</p></li>
+                <li><p>Suppose `(a_1,b_1) ~ (a_2,b_2)` and `(c_1,d_1) ~ (c_2,d_2)`</p></li>
+                <li><p>We claim `(a_1d_1 + b_1c_1, b_1d_1) ~ (a_2d_2 + b_2c_2, b_2d_2)`</p></li>
+                <li><p>`<=> a_1d_1b_2d_2 + b_1c_1b_2d_2 - (a_2d_2b_1d_1 + b_2c_2b_1d_1) = 0`</p></li>
+                <li><p>`(a_1,b_1) ~ (a_2,b_2) <=> a_1b_2 - b_1a_2 = 0`</p></li>
+                <li><p>`(c_1,d_1) ~ (c_2,d_2) <=> c_1d_2 - c_2d_1 = 0`</p></li>
+                <li><p>Since `a_1b_2 - b_1a_2 = 0` and `c_1d_2 - c_2d_1 = 0`</p></li>
+                <li><p>`=> d_1d_2(a_1b_2 - b_1a_2) + b_1b_2(c_1d_2 - c_2d_1) = 0`</p></li>
+                <li><p>Therefore, `(a_1d_1 + b_1c_1, b_1d_1) ~ (a_2d_2 + b_2c_2, b_2d_2)`</p></li>
+                <li><p>Now we check that multiplication is well-defined</p></li>
+                <li><p>We define `(a,b) * (c,d) = (ac,bd)`</p></li>
+                <li><p>Suppose `(a_1,b_1) ~ (a_2,b_2)` and `(c_1,d_1) ~ (c_2,d_2)`</p></li>
+                <li><p>We claim `(a_1c_1, b_1d_1) ~ (a_2c_2, b_2d_2) <=> a_1c_1b_2d_2 - b_1d_1a_2c_2 = 0`</p></li>
+                <li><p>Since `(a_1,b_1) ~ (a_2,b_2) <=> a_1b_2 - b_1a_2 = 0`</p></li>
+                <li><p>`(c_1,d_1) ~ (c_2,d_2) <=> c_1d_2 - c_2d_1 = 0`</p></li>
+                <li><p>`(a_1b_2 - b_1a_2)(c_1d_2 - c_2d_1) = 0`</p></li>
+                <li><p>`a_1b_2c_1d_2 - b_1a_2c_1d_2 + b_1a_2c_2d_1 - a_1b_2c_2d_1 + (b_1a_2c_2d_1 - b_1a_2c_2d_1) = 0`</p></li>
+                <li><p>`(a_1b_2c_1d_2 - b_1a_2c_2d_1) + b_1a_2(c_2d_1 - c_1d_2) + c_2d_1(b_1a_2 - a_1b_2) = 0`</p></li>
+                <li><p>`=> (a_1b_2c_1d_2 - b_1a_2c_2d_1) = 0`</p></li>
+              </div>
+              <li><p>Given any integral domain, we define the field of fractions, `Q(A)` to be `A oplus A \\ {0} // ~`</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: Given an integral domain `R` and an injective unital ring homomorphism `phi: R -> K` where `K` is a field, the map `phi` extends uniquely to a unital ring homomorphism `bar phi: Q(R) -> K, bar phi((r,1)``) = phi(r)`</b></p></li>
+                <li><p>We first prove uniqueness of `bar phi`</p></li>
+                <li><p>Suppose `bar phi, psi` are ring homomorphisms extending `phi`. We claim `bar phi = psi`</p></li>
+                <li><p>`bar phi((r,1)``) = phi(r) = ``psi((r,1)``)`</p></li>
+                <li><p>Since both are ring homomorphisms,</p></li>
+                <li><p>`bar phi((a,b)``) = bar phi((a,1)``, (1,b)) = bar phi((a,1)``) * bar phi((1,b)``) = phi(a) * bar phi((1,b)``)`</p></li>
+                <li><p>`psi((a,b)``) = psi((a,1)``, (1,b)) = psi((a,1)``) * psi((1,b)``) = phi(a) * psi((1,b)``)`</p></li>
+                <li><p>Therefore, it suffices to show that `psi((1,b)``) = bar phi((1,b)``)` `AA b in ZZ \\ {0}`</p></li>
+                <li><p>We show that both are multiplicative inverses of `phi(b)`</p></li>
+                <li><p>Notice `psi((1,b)``) * psi((b,1)``) = psi((1,b)(b,1)) = psi((b,b)``) = 1`</p></li>
+                <li><p>`=> psi((1,b)``)` is the multiplicative inverse of `psi((b,1)``) = phi(b)`</p></li>
+                <li><p>`bar phi((1,b)``) * bar phi((b,1)``) = bar phi((1,b)(b,1)) = bar phi((b,b)``) = 1`</p></li>
+                <li><p>`=> bar phi((1,b)``)` is the multiplicative inverse of `bar phi((b,1)``) = phi(b)`</p></li>
+                <li><p>`=> psi((1,b)``) = bar phi((1,b)``)`` = phi(b)^-1`</p></li>
+                <li><p>Therefore, `bar phi` is unique</p></li>
+                <li><p>Now we prove existence</p></li>
+                <li><p>If `bar phi` exists, it must be defined as `bar phi((a,b)``)`` = phi(a)phi(b)^-1`</p></li>
+                <li><p>Let's show that `bar phi` is well-defined</p></li>
+                <li><p>Suppose `(a_1,b_1) ~ (a_2,b_2) <=> a_1b_2 = b_1a_2`</p></li>
+                <li><p>We claim `bar phi((a_1,b_1)``) = bar phi((a_2,b_2)``)` `<=> phi(a_1)phi(b_1)^-1 = phi(a_2)phi(b_2)^-1`</p></li>
+                <li><p>Since `a_1b_2 = b_1a_2 => phi(a_1b_2) = phi(b_1a_2) => phi(a_1)phi(b_2) = phi(b_1)phi(a_2)`</p></li>
+                <li><p>`b_1, b_2 != 0, phi` injective `=> phi(b_1), phi(b_2) != 0 =>` they are units</p></li>
+                <li><p>Multiply `phi(a_1)phi(b_2) = phi(a_2)phi(b_1)` by `phi(b_1)^-1phi(b_2)^-1`</p></li>
+                <li><p>to get `phi(a_1)phi(b_1)^-1 = phi(a_2)phi(b_2)^-1`</p></li>
+                <li><p>We must check that `bar phi` is a ring homomorphism</p></li>
+                <li><p>Let `(a,b), (c,d) in Q(R)`</p></li>
+                <li><p>`bar phi((a,b) + (c,d)) = bar phi((ad + bc, bd)``)`</p></li>
+                <li><p>`= phi(ad + bc)phi(bd)^-1 = phi(a)phi(d)phi(b)^-1phi(d)^-1 + phi(b)phi(c)phi(b)^-1phi(d)^-1`</p></li>
+                <li><p>`= phi(a)phi(b)^-1 + phi(c)phi(d)^-1 = bar phi((a,b)``) + bar phi((c,d)``)`</p></li>
+                <li><p>`bar phi((a,b)(c,d)``) = phi((ac,bd)``)`` = phi(ac)phi(bd)^-1 = phi(a)phi(c)phi(b)^-1phi(d)^-1`</p></li>
+                <li><p>`= (phi(a)phi(b)^-1)(phi(c)phi(d)^-1) = bar phi((a,b)``) bar phi((c,d)``)`</p></li>
+                <li><p>`a != 0, bar phi((a,a)``)`` = phi(a)phi(a)^-1 = 1 => bar phi` is a unital ring homomorphism</p></li>
+                <li><p>`bar phi((a,b)``)`` = 0 => phi(a)phi(b)^-1 = 0 => phi(a) = 0 => a = 0 => bar phi` is injective</p></li>
+              </div>
+              <li><p>Suppose `F` is a field of characteristic `0`. What is the prime subfield of `F`?</p></li>
+              <li><p>We've seen that we have an injective unital ring homomorphism `varepsilon_F: ZZ -> F`</p></li>
+              <li><p>By the proposition, `EE!` `phi: Q(ZZ) ~= QQ -> F =>` the prime subfield of `F` when `char(F) = 0` is `QQ`</p></li>
+              <li><p>Every field either contains `QQ` or `ZZ // pZZ` for some prime `p`</p></li>
+            </ul>
+          </div>
+          <div class="content" id="polynomial_rings">
+            <h3>Polynomial Rings</h3>
           </div>
         </div>
       </div>
