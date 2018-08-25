@@ -45,7 +45,7 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-sm-9">
           <h1>Abstract Algebra II</h1>
           <div class="proof">
             <p>A <b>ring</b> is a set `R` with two operations `+, *` such that `(R, +)` is an abelian group, `*` is associative, and `+,*` follow distributivity rules</p>
@@ -991,6 +991,91 @@
                 <li><p>Since `F` was chosen to have minimal degree, `r(x) = 0 => I sube (f(x))`</p></li>
                 <li><p>Since `f(x) in I => (f(x)) sube I => (f(x)) = I`</p></li>
               </div>
+              <div class="proof">
+                <li><p><b>Exercise: Let `R` be a commutative ring with unity. Let `I sube R` be an ideal. Show that `I[x]` = the set of polynomials in `R[x]` whose coefficients lie in `I` is an ideal of `R[x]`</b></p></li>
+                <li><p>We must show that `I[x]` is a subgroup. Let `f(x) = sum_(i = 0)^n a_ix^i, g(x) = sum_(j = 0)^m b_jx^j in I[x]`</p></li>
+                <li><p>WLOG, `n >= m`</p></li>
+                <li><p>`f(x) - g(x) = sum_(k = 0)^n c_kx^k` where `c_k = {(a_k - b_k if k <= m), (a_k if m < k <= n):}`</p></li>
+                <li><p>`a_k - b_k in I` since `a_k, b_k in I` and `I` is an ideal (for `0 <= k <= m`)</p></li>
+                <li><p>`a_k in I` if `m < k <= n =>` By definition, `f(x) - g(x) in I[x]`</k></p></li>
+                <li><p>It suffices to show that `AA` monomials `r_hx^h in R[x]`, `AA f(x) in I[x], r_hx^h - f(x) in I[x]`</p></li>
+                <li><p>Let `f(x) = sum_(i = 0)^n a_ix^i`. Then `r_hx^h(sum_(i = 0)^n a_ix^i) = sum_(j = h)^(n+1) r_ha_j - hx^j in I[x]`</p></li>
+                <li><p>Let `sum_(k = 0)^m r_kx^k in R[x], f(x) in I[x]`</p></li>
+                <li><p>Then `sum_(k = 0)^m r_kx^k*f(x) = sum_(k = 0)^m (r_kx^kf(x)) in I[x]`</p></li>
+                <li><p>Since `I[x]` is a subgroup `=> sum_(k = 0)^m r_kx^kf(x) in I[x]`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Ex: If `p` is a prime ideal in `R`, then `p[x]` is a prime ideal in `R[x]`</b></p></li>
+                <li><p>We show that `R[x] // p[x]` is an integral domain</p></li>
+                <li><p>To do this, we exhibit an isomorphism `R[x] // p[x] ~= R // p [x]`</p></li>
+                <li><p>`pi_p: R -> R // p`</p></li>
+                <li><p>There is a map of rings `bar pi_p: R[x] -> R // p [x], sum_(i = 0)^n a_ix^i |-> sum_(i = 0)^n pi_p(a_i)x^i`</p></li>
+                <li><p>(Surjective): Fix `sum_(j = 0)^m (b_i + p)x^i in R // p [x]`</p></li>
+                <li><p>Notice `bar pi_p(sum_(j = 0)^m b_jx^j) = sum_(j = 0)^m pi_p(b_j)x^j = sum_(j=  0)^m (b_j + p)x^j`</p></li>
+                <li><p>`bar pi` is onto `R[x] -> R // p [x]`</p></li>
+                <li><p>We claim `ker(bar pi_p) = p[x]`</p></li>
+                <li><p>`(sube)` Let `sum_(i = 0)^n a_ix^i in ker(bar pi_p) => bar pi_p(sum_(i = 0)^n a_ix^i) = sum_(i = 0)^n pi_p(a_i)x^i = 0`</p></li>
+                <li><p>`=> pi_p(a_i) = 0` `AA i`</p></li>
+                <li><p>`a_i + p = 0 + p => a_i in p` `AA i =>` since all `a_i in p => sum_(i = 0)^n a_ix^i in p[x]`</p></li>
+                <li><p>`(supe)` Suppose `sum_(i = 0)^m c_ix^i in p[x] => c_i in p` `AA i`</p></li>
+                <li><p>`bar pi_p(sum_(i = 0)^m c_ix^i) = sum_(i = 0)^m pi_p(c_i)x^i = sum_(i = 0)^m (c_i + p)x^i = sum_(i = 0)^m (0 + p)x^i = 0`</p></li>
+                <li><p>`=> sum_(i = 0)^m c_ix^i in ker(bar pi_p)`</p></li>
+                <li><p>Since `bar pi_p: R[x] -> R // p [x]` is surjective and `ker(bar pi_p) = p[x]`, by the First Isomorphism Theorem, `R[x] // p[x] ~= R // p [x]`</p></li>
+                <li><p>`R // p [x]` is a domain `<=> R[x] // p[x]` is a domain `<=> p[x]` is prime</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>However, if `m` is a maximal ideal of `R`, `m[x]` need not be a maximal ideal of `R[x]`</b></p></li>
+                <li><p>Let `R = ZZ, m = pZZ`, `p` prime</p></li>
+                <li><p>Then `ZZ[x] // pZZ[x] ~= ZZ // pZZ [x]`</p></li>
+                <li><p>We know that `ZZ // pZZ [x]` is not a field `<=> pZZ[x]` is not maximal</p></li>
+              </div>
+              <li><p>What is the right generalization of a prime number in `F[x]`?</p></li>
+              <li><p>`p in ZZ` is prime `<=>` whenever `p = ab, a = +- p, b = +- p` or vice versa</p></li>
+              <li><p><b>Definition: Let `R` be an integral domain. Let `f(x) in R[x]` which is nonzero and not a unit. `f(x)` is <u>irreducible</u> if whenever `f(x) = g(x)h(x)` for some `g(x), h(x) in R[x]`, either `g(x)` or `h(x)` must be a unit. If an element is not a unit, nonzero, and not irreducible, it is <u>reducible</u></b></p></li>
+              <li><p>Re-examining the definition of irreducible polynomials, since `R` is a domain, the units of `R[x]` are the units of `R` itself, so we can rephrase the definition as:</p></li>
+              <li><p><b>`f(x)` is irreducible if whenever `f(x) = g(x)h(x)` for some `g(x), h(x) in R[x]` we must have `g(x)` or `h(x)` is a unit in `R`</b></p></li>
+              <li><p>When `R` is a field, we can say even more</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: Let `F` be a field. Then an element `f(x) in F[x]` (nonzero, non-unit) is irreducible if and only if we cannot express `f(x)` as a product of two polynomials whose degrees are `< deg(f(x))`</b></p></li>
+                <li><p>`(=>)` Suppose that `f(x)` is irreducible. Suppose for a contradiction that `f(x) = g(x)h(x)` where `deg(g(x)), deg(h(x)) < deg(f(x))`</p></li>
+                <li><p>Since `f(x)` is irreducible, one of `g(x)` or `h(x)` must be a unit in `F`</p></li>
+                <li><p>If `g(x) in F^x`, then `deg(g(x)) = 0`</p></li>
+                <li><p>`f(x) = g(x)h(x) => deg(f(x)) = cancel(deg(g(x))) + deg(h(x)) => deg(f(x)) = deg(h(x))`, which is a contradiction</p></li>
+                <li><p>`(lArr)` Suppose that `f(x)` is such that `f(x)` cannot be factored as a product `f(x) = g(x)h(x)` where `deg(g(x)), deg(h(x)) < deg(f(x))`</p></li>
+                <li><p>We claim that `f` is irreducible</p></li>
+                <li><p>Suppose `f(x) = p(x)q(x)`</p></li>
+                <li><p>By assumption, either `deg(p(x)) = deg(f(x))` or `deg(q(x)) = deg(f(x))`</p></li>
+                <li><p>In the first case, `deg(q(x)) = 0 <=> q(x) in F^x`</p></li>
+                <li><p>In the second case, `deg(p(x)) = 0 <=> p(x) in F^x`</p></li>
+                <li><p>Therefore, `f` is irreducible</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Proposition: If `R` is a principal ideal domain, then every prime ideal is maximal</b></p></li>
+                <li><p>`(lArr)` maximal ideals are always prime in integral domains</p></li>
+                <li><p>`(=>)` Suppose that `p` is a prime ideal. Let `p in I` where `I` is an ideal</p></li>
+                <li><p>We claim that `I = p` or `I = R`</p></li>
+                <li><p>Since `R` is a principal ideal domain, `EE x, z in R` `s.t.` `(x) = p, (z) = I, (x) sube (z)` where `(x)` is prime</p></li>
+                <li><p>Since `(x) sube (z), EE y in R` `s.t.` `x = yz => yz in (x)`</p></li>
+                <li><p>Since `(x)` is a prime ideal, either `y in (x)` or `z in (x)`</p></li>
+                <li><p>If `y in (x) => EE r in R` `s.t.` `y = rx`</p></li>
+                <li><p>Then `x = yz = rxz = (rz)x`</p></li>
+                <li><p>Since `R` is a domain `=> rz = 1 => z in R^x => (z) = R`</p></li>
+                <li><p>If `z in (x)`, then `(z) sube (x)` and therefore `(z) = (x)`</p></li>
+                <li><p>`=> p = (x)` is maximal</p></li>
+              </div>
+              <li><p>Since `F(x)` is a principal ideal domain, to show that irreducible polynomials generate maximal ideals, it suffices to show that irreducible polynomials generate prime ideals</p></li>
+              <li><p>To do this, we must establish some properties of irreducible polynomials</p></li>
+              <li><p>The property we want is: If `f(x)` is irreducible, then `f(x) | g(x)h(x) => f(x)|g(x)` or `f(x)|h(x)`</p></li>
+              <li><p><b>Definition: Let `f(x), g(x) in F[x]`. A polynomial `h(x)` is a <u>greatest common divisor</u> of `f(x)` and `g(x)` if</b></p></li>
+              <li style="list-style-type: none"><p><b>1) `h(x) | f(x)` and `h(x) | g(x)`</b></p></li>
+              <li style="list-style-type: none"><p><b>2) If `q(x)` is any other common divisor of `f(x)` and `g(x)`, then `q(x) | h(x)`</b></p></li>
+              <li><p>We used "a" and not "the" because if `h(x)` satisfies these conditions, so does `c*h(x)` `AA c in F^x`</p></li>
+              <li><p>Suppose `h_1(x), h_2(x)` both satisfy these conditions.</p></li>
+              <li><p>Then `h_1(x) | h_2(x) => EE p_1(x) in F[x]` `s.t.` `h_1(x)p_1(x) = h_2(x)`</p></li>
+              <li><p>And `h_2(x) | h_1(x) => EE p_2(x) in F[x]` `s.t.` `h_2(x)p_2(x) = h_1(x)`</p></li>
+              <li><p>`h_2(x) = h_1(x)p_1(x) = h_2(x)p_2(x)p_1(x)`</p></li>
+              <li><p>Since `F[x]` is a domain, `p_2(x)p_1(x) = 1 => p_2(x), p_1(x) in F^x`</p></li>
+              <li><p>From now on, "the greatest common divisor" means the <b>unique</b> polynomial `h(x)` satisfying these conditions of the definition which is <b>monic</b></p></li>
             </ul>
           </div>
         </div>
