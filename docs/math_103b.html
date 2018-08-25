@@ -41,6 +41,7 @@
         <a class="toc_link" href="#ring_homomorphisms"><li>Ring Homomorphisms</li></a>
         <a class="toc_link" href="#field_of_fractions"><li>Field of Fractions</li></a>
         <a class="toc_link" href="#polynomial_rings"><li>Polynomial Rings</li></a>
+        <a class="toc_link" href="#return_to_integral_domains"><li>Return to Integral Domains</li></a>
       </ul>
     </div>
     <div class="container">
@@ -919,7 +920,7 @@
                 <li><p>`f(x) = g(x)*0 + f(x), 0 <= deg(r(x)) = deg(f(x)) < deg(g(x))`</p></li>
                 <li><p>We've reduced to the case where `deg(f(x)) >= deg(g(x))`</p></li>
                 <li><p>We induct on `deg(f(x)) = n`</p></li>
-                <li><p>Base case: `n = 0`. In this case `f(x)` is constant, and since `deg(g(x)) <= deg(f(x)) = 0 => deg(g(x)) = 0 => g(x)` is a constant</p></li>
+                <li><p>Base Case: `n = 0`. In this case `f(x)` is constant, and since `deg(g(x)) <= deg(f(x)) = 0 => deg(g(x)) = 0 => g(x)` is a constant</p></li>
                 <li><p>`f(x)` is constant `=> f(x) = a in F \\ {0}`</p></li>
                 <li><p>`g(x)` is constant `=> g(x) = b in F \\ {0}`</p></li>
                 <li><p>`a = b*(a/b)`. Let `q(x) = a/b`. Let `r(x) = 0`</p></li>
@@ -954,7 +955,7 @@
               </div>
               <div class="proof">
                 <li><p><b>Theorem: A polynomial of degree `n` over a field `F` has at most `n` roots in `F`</b></p></li>
-                <li><p>Base case: If `n = 0`, then `f(x) in F \\ {0}`, so it has `0` roots</p></li>
+                <li><p>Base Case: If `n = 0`, then `f(x) in F \\ {0}`, so it has `0` roots</p></li>
                 <li><p>Inductive Hypothesis: Suppose for some `n >= 0, k <= n` `AA k in ZZ^(>= 0)` If `f(x)` is a polynomial of degree `k`, then `f(x)` has at most `k` roots in `F`</p></li>
                 <li><p>WTS: If `f(x)` is a polynomial of degree `n+1`, then `f(x)` has at most `n+1` roots in `F`</p></li>
                 <li><p>Let `f(x)` be a polynomial of degree `n+1`. If `f(x)` has no roots in `F`, then the statement is proven</p></li>
@@ -1220,7 +1221,7 @@
                 <li><p>We claim that `| (ZZ // pZZ[x]) / (f(x)) | = p^n`</p></li>
                 <li><p>Any element in `(ZZ // pZZ[x]) / (f(x))` can be written as a `ZZ // pZZ` linear combination of `{1 + (f(x)), x + (f(x)), ..., x^(n-1) + f(x)}`</p></li>
                 <li><p>We're proving by induction that `x^k + (f(x)) in ZZ // pZZ` linear span of `{1 + (f(x)), ..., x^(n-1) + (f(x))}` `AA k >= n`</p></li>
-                <li><p>Base case: `k = n`. `f(x) = x^n + a_(n-1)x^(n-1) + ... + a_1x + a_0 in ZZ // pZZ[x]`</p></li>
+                <li><p>Base Case: `k = n`. `f(x) = x^n + a_(n-1)x^(n-1) + ... + a_1x + a_0 in ZZ // pZZ[x]`</p></li>
                 <li><p>`x_n + a_(n-1)x^(n-1) + ... + a_0 + (f(x)) = 0 + (f(x))`</p></li>
                 <li><p>`x_n + (f(x)) = -a_(n-1)x^(n-1) - ... - a_0 + (f(x))`</p></li>
                 <li><p>Inductive Hypothesis: Suppose for some `k >= n, AA j <= k, x^j + (f(x)) in span{1 + (f(x)), ..., x^(n-1) + (f(x))}`</p></li>
@@ -1239,8 +1240,46 @@
               </div>
               <div class="proof">
                 <li><p><b>Theorem: `ZZ[x]` is a UFD (Unique Factorization Domain). Let `f(x) in ZZ[x]` which is not a unit and not zero. Then we can always write `f(x) = prod_(i = 1)^n p_i prod_(j = 1)^m q_j (x)` where `p_i` are primes in `ZZ` (not necessarily distinct) This factorization is unique: given `f(x) = prod_(i = 1)^n p_i prod_(j =1)^m q_j (x) = prod_(k = 1)^(n') p'_k prod_(l = 1)^(m') q'_l (x)`, we must have `n = n'`, `m = m'` and possibly after renumbering, `p_i = +- p'_i`, `q_j(x) = +- q'_j(x)`</b></p></li>
+                <li><p>Existence: Induction on the degree of `f`</p></li>
+                <li><p>If `deg(f) = 0`, this follows straight from the fundamental theorem of arithmetic</p></li>
+                <li><p>We can factor out the content of a nonconstant polynomial `f` and apply the fundamental theorem of arithmetic</p></li>
+                <li><p>Therefore, it suffices to prove the result in the case that `f(x)` is a primitive, non-constant polynomial</p></li>
+                <li><p>Claim: Given a primitive polynomial of `deg > 0`, we can write the polynomial as a product of irreducible polynomials</p></li>
+                <li><p>Let `n = deg(f)`</p></li>
+                <li><p>Base Case: n = 1. In this case, `f` is a monic linear polynomial, which is automatically irreducible</p></li>
+                <li><p>Inductive Hypothesis: Suppose that, for some `n >= 1`, `AA k <= n`, for any primitive polynomial `f(x) in ZZ[x]` of degree `k`, `f(x)` can be factored into a product of irreducible polynomials</p></li>
+                <li><p>Suppose `f(x) in ZZ[x]` has degree `n+1` and is primitive</p></li>
+                <li><p>If `f(x)` is irreducible, we are done</p></li>
+                <li><p>Suppose `f(x)` is reducible `=> f(x) = g(x)h(x)` for some `g(x), h(x) in ZZ[x]` `s.t.` `g(x), h(x)` are primitive and neither is a unit</p></li>
+                <li><p>Thus, `deg(g(x)), deg(h(x)) < n + 1`</p></li>
+                <li><p>The inductive hypothesis applies to show that `g(x), h(x)` can be written as products of irreducible polynomials in `ZZ[x]`</p></li>
+                <li><p>Uniqueness: Suppose that `f(x) = prod_(i = 1)^n p_i prod_(j = 1)^m q_j(x) = prod_(k = 1)^(n') p'_k prod_(l = 1)^(m') q'_l(x)`</p></li>
+                <li><p>Since `q_i(x), q'_l(x)` are irreducible, `q_j(x), q'_l(x)` must be primitive</p></li>
+                <li><p>`=>` By Gauss's Lemma, `prod_(j = 1)^m q_j(x)`, `prod_(l = 1)^(m') q'_l(x)` are primitive</p></li>
+                <li><p>Taking the content of both sides, we see that `prod_(i = 1)^n p_i = +- prod_(k = 1)^(n') p'_k`</p></li>
+                <li><p>The uniqueness statement for the `p_i`'s, `p_k`'s follows from the fundamental theorem of arithmetic</p></li>
+                <li><p>Therefore, it suffices to show that given `prod_(j = 1)^m q_j(x) = prod_(l = 1)^(m') q'_l(x)`, then `m = m'`, `q_j(x), q'_l(x)` are irreducible, `q_j(x) = +- q'_l(x)` after reordering</p></li>
+                <li><p>We prove the result by induction on `j`</p></li>
+                <li><p>Base Case: `j = 1`. Since `q_j(x)` is irreducible in `ZZ[x]`, it is irreducible in `QQ[x]` `AA j` (and similarly for all `q'_l(x)`)</p></li>
+                <li><p>From the equation `prod_(j = 1)^m q_j(x) = prod_(l = 1)^(m') q'_l(x)`, we see that `q_1(x) | prod_(l = 1)^(m') q'_l(x) in QQ[x]`</p></li>
+                <li><p>Therefore, `q_1(x) | q'_l(x) in QQ[x]` for some `l => q'_l(x) = q_1(x)h(x)`</p></li>
+                <li><p>Since `q'_l(x)` is irreducible `=> h(x) in QQ[x] \\ {0}`</p></li>
+                <li><p>`q'_l(x) = q_1(x) * a/b => bq'_l(x) = aq_1(x)`</p></li>
+                <li><p>Since `q'_l(x), q_1(x)` are primitive, `a = +- b => a/b = +- 1`</p></li>
+                <li><p>Relabel `q'_l(x) = q'_1(x)`</p></li>
+                <li><p>Inductive Hypothesis: Suppose for some `j AA i <= j`, `q_i(x) = +- q_i(x)` (after reordering)</p></li>
+                <li><p>Given this, we can cancel the common terms on both sides</p></li>
+                <li><p>`prod_(k = 1)^m q_k(x) = prod_(l = 1)^(m') q'_l(x)`</p></li>
+                <li><p>This yields `prod_(k = j + 1)^m q_k(x) = prod_(l = j + 1)^(m') q'_l(x)`</p></li>
+                <li><p>To show that `q_(j+1)(x) = q'_l(x)` for some `j+1 <= l <= m`, we use the same argument as in the base case</p></li>
+                <li><p>We claim `m = m'`</p></li>
+                <li><p>If `m > m', prod_(j = m' + 1)^m q_j(x) = +- 1`, which is a contradiction</p></li>
+                <li><p>If `m < m'`, `prod_(l = m + 1)^(m') q'_l(x) = +- 1`, which is a contradiction</p></li>
               </div>
             </ul>
+          </div>
+          <div class="content" id="return_to_integral_domains">
+            <h3>Return to Integral Domains</h3>
           </div>
         </div>
       </div>
