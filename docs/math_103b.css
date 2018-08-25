@@ -30,7 +30,6 @@ body {
 }
 
 .container {
-  width: 70vw;
   margin-left: 300px;
   padding-top: 20px;
 }
@@ -52,6 +51,6 @@ body {
   list-style-type: circle;
 }
 
-#inzz, #ev_hom, #ev_ker, #prime_ideal {
+#inzz, #ev_hom, #ev_ker, #prime_ideal, #gcd_lin_comb, #f_irreducible {
   padding-top: 70px;
 }
