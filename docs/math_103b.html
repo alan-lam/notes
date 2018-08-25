@@ -47,6 +47,9 @@
       <div class="row">
         <div class="col-12 col-sm-8">
           <h1>Abstract Algebra II</h1>
+          <div id="note" class="proof">
+            <p>Note: All links in the page point to the topmost bullet point shown on the page when clicked</p>
+          </div>
           <div class="proof">
             <p>A <b>ring</b> is a set `R` with two operations `+, *` such that `(R, +)` is an abelian group, `*` is associative, and `+,*` follow distributivity rules</p>
             <p>Subring Test: `a, b in S => a-b in S, ab in S` where `S sube R`</p>
@@ -1124,7 +1127,7 @@
                 <li><p>`f(x)|q(x) => EE q'(x) in F[x]` `s.t.` `f(x)q'(x) = q(x)`</p></li>
                 <li><p>`f(x) = f(x)p(x)q'(x) => p(x) in F^x`</p></li>
               </div>
-              <li><p>Every maximal ideal is of the form `(f(x))` where `f(x)` is irreducible `// F`</p></li>
+              <li id="f_maximal"><p>Every maximal ideal is of the form `(f(x))` where `f(x)` is irreducible `// F`</p></li>
               <li><p>There are conditions that imply irreducibility or reducibility</p></li>
               <li><p>The first condition applies to any field, but only to degree `2` or degree `3` polynomials</p></li>
               <div class="proof">
@@ -1138,6 +1141,104 @@
                 <li><p>Suppose for a contradiction that `f(x)` is reducible `=> EE g(x), h(x) in F[x]` `s.t.` `f(x) = g(x)h(x) in F[x]` where `deg(g(x)), deg(h(x)) < 3`</p></li>
                 <li><p>`=>` either `deg(g(x)) = 2` and `deg(h(x)) = 1`, which is a contradiction*, or vice versa, which is also a contradiction*</p></li>
                 <li><p>*contradiction because `f(x)` has no linear factors</p></li>
+              </div>
+              <li><p><b>Definition: Let `f(x) in ZZ[x]`. The <u>content</u> of `f(x)` is the greatest common divisor of the coefficients of `f(x)`. If the content is `1`, then `f(x)` is <u>primitive</u></b></p></li>
+              <li><p>Ex: Monic polynomials are primitive</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: If `f(x), g(x)` are primitive, then `f(x)g(x)` is primitive</b></p></li>
+                <li><p>We prove the contrapositive. Suppose `f(x), g(x) in ZZ[x]` `s.t.` `f(x)g(x)` is not primitive</p></li>
+                <li><p>Then `EE p in ZZ^+` prime such that `p|content(f(x)g(x)) => EE q(x) in ZZ[x]` `s.t.` `f(x)g(x) = p(q(x)) in pZZ[x]`</p></li>
+                <li><p><a href="#prime_ideal">We've already seen that `pZZ` is a prime ideal of `ZZ[x]`</a></p></li>
+                <li><p>Thus `f(x)g(x) in pZZ[z] => f(x) in pZZ[x]` or `g(x) in pZZ[x]`</p></li>
+                <li><p>`=> p|content(f(x))` or `p|content(g(x)) =>` either `f(x)` or `g(x)` is not primitive</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Gauss's Lemma: If `f(x) in ZZ[x]` is reducible over `QQ`, then `f(x)` is reducible over `ZZ`</b></p></li>
+                <li><p>Suppose that `f(x)` is reducible over `QQ`</p></li>
+                <li><p>Then `EE g(x), h(x) in QQ[x]` `s.t.` `f(x) = g(x)h(x)`</p></li>
+                <li><p>We can harmlessly divide through by the content of `f(x)` to assume that `f(x)` is primitive</p></li>
+                <li><p>Let `alpha` be the least common multiple of the denominators in `g(x)`. Let `beta` be the least common  multiple of the denominators in `h(x)`</p></li>
+                <li><p>Thus, `alpha*g(x) in ZZ[x], beta*h(x) in ZZ[x]`</p></li>
+                <li><p>So we have a factorization `alpha beta f(x) = alpha g(x) * beta h(x) in ZZ[x]`</p></li>
+                <li><p>Notice that the content of `alpha beta f(x)` is `alpha beta`</p></li>
+                <li><p>Let `c_g` be the content of `alpha g(x)`, `c_h` be the content of `beta h(x)`</p></li>
+                <li><p>Notice that `(alpha g(x)) / c_g` and `(beta h(x)) / c_h` are primitive</p></li>
+                <li><p>We can write `alpha beta f(x) = c_(g) ((alpha g(x)) / c_g) * c_h ((beta h(x)) / c_h)`</p></li>
+                <li><p>Since `(alpha g(x)) / c_g, (beta h(x)) / c_h` are primitive, the content of the right side is `c_g*c_h`</p></li>
+                <li><p>The content of the left side is `alpha beta => alpha beta = c_gc_h`</p></li>
+                <li><p>Therefore `(alpha beta)/(c_gc_h) f(x) = f(x) = (alpha g(x)) / c_g * (beta h(x)) / c_h` where `(alpha g(x)) / c_g, (beta h(x)) / c_h in ZZ[x]`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Proposition: Suppose that `f(x) in ZZ[x]` `s.t.` `deg(f(x)) >= 1`. Let `p` be a prime number. Let `bar pi_p: ZZ[x] -> ZZ // pZZ[x]` be the ring homomorphism which reduces coefficients modulo `p`. If `bar pi_p(f(x))` is irreducible over `ZZ // pZZ` and `deg(bar pi_p(f(x))) = deg(f(x))`, then `f(x)` is irreducible over `QQ`</b></p></li>
+                <li><p>Let `f(x) in ZZ[x]` and let `p` be a prime number `s.t.` `bar pi_p(f(x))` is irreducible and `deg(bar pi_p(f(x))) = deg(f(x))`</p></li>
+                <li><p>Suppose for a contradiction that `f` is reducible over `QQ`</p></li>
+                <li><p>`=> EE g(x), h(x) in QQ[x]` `s.t.` `f(x) = g(x)h(x)` where `deg(g(x)), deg(h(x)) < deg(f(x))`</p></li>
+                <li><p>Divide through by `content(f)`. Then if `alpha` is the `lcm` of the denominators of `g(x)` and `beta` is the `lcm` of the denominators of `h(x)`, then `alpha g(x), beta h(x) in ZZ[x]`</p></li>
+                <li><p>Let `c_g, c_h` denote the content of `alpha g(x), beta h(x)`</p></li>
+                <li><p>Then `f(x) = (alpha g(x)) / c_g * (beta h(x)) / c_h`</p></li>
+                <li><p>Notice that `deg((alpha g(x)) / c_g) = deg(g(x))` and `deg((beta h(x)) / c_h) = deg(h(x))`</p></li>
+                <li><p>Reducing `mod p`, we see that `bar pi_p(f(x)) = bar pi_p((alpha g(x)) / c_g) bar pi_p((beta h(x)) / c_h)`</p></li>
+                <li><p>By assumption, `bar pi_p(f(x))` is irreducible `=>` either `deg(bar pi_p((alpha g(x)) / c_g)) = 0` or `deg(bar pi_p((beta h(x)) / c_h)) = 0`</p></li>
+                <li><p>`=> deg(bar pi_p((beta h(x)) / c_h)) = deg(bar pi_p(f(x)))` or `deg(bar pi_p((alpha g(x)) / c_g))) = deg(bar pi_p(f(x)))`</p></li>
+                <li><p>Since we assumed `deg(bar pi_p(f(x))) = deg(f(x))`, either `deg(bar pi_p((beta h(x)) / c_h)) = deg(f(x))` or `deg(bar pi_p((alpha g(x)) / c_g)) = deg(f(x))`</p></li>
+                <li><p>Since degree only drops or stays the same when reducing `mod p`,</p></li>
+                <li><p>1) `deg(h(x)) >= deg(bar pi_p((beta h(x)) / c_h)) = deg(f(x))`, which is a contradiction</p></li>
+                <li><p>2) `deg(g(x)) >= deg(bar pi_p((alpha g(x)) / c_g)) = deg(f(x))`, which is a contradiction</p></li>
+                <li><p>Therefore, `f` is irreducible over `QQ`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Eisenstein's Criterion: Let `f(x) = sum_(i = 0)^n a_ix^i`. Let `p` be a prime number. Suppose that `p cancel(|) a_n`, `p|a_i AA 0 <= i <= n-1`, and `p^2 cancel(|) a_0`. Then `f` is irreducible `// QQ`</b></p></li>
+                <li><p>Suppose `f(x) in ZZ[x]` and `p` is a prime `s.t.` `p cancel(|) a_n`, `p|a_i AA 0 <= i <= n-1`, `p^2 cancel(|) a_0`</p></li>
+                <li><p>Suppose `f` is reducible over `QQ => EE g(x), h(x) in ZZ[x]` `s.t.` `deg(g(x), h(x)) < deg(f(x))` `s.t.` `f(x) = g(x)h(x)`</p></li>
+                <li><p>Therefore, both have positive degree</p></li>
+                <li><p>Let `g(x) = sum_(j = 0)^r b_jx_j, h(x) = sum_(k = 0)^s c_kx^k`</p></li>
+                <li><p>Notice that `a_0 = b_0c_0`</p></li>
+                <li><p>Since `p|a_0` but `p^2 cancel(|) a_0`, WLOG `p cancel(|) b_0, p|c_0`</p></li>
+                <li><p>So `cc C = {l in {1, ..., s} | p cancel(|) c_l} != {0, ..., s}`</p></li>
+                <li><p>Observe that `cc C` is nonempty since `p cancel(|) a_n, a_n = b_rc_s => p cancel(|) c_s`</p></li>
+                <li><p>`cc C sub {0, ..., s}, ccC != O/`</p></li>
+                <li><p>Let `l_0` be the minimum of `cc C => AA l < l_0, p|c_l`</p></li>
+                <li><p>Notice that `a_(l_0) = b_0c_(l_0) + b_1c_(l_0-1) + ... + b_qc_(l_0-q)` where `q` is the largest index `<= r` `s.t.` `l_0-q >= 0`</p></li>
+                <li><p>Since `p|b_1c_(l_0-1) + ... + b_qc_(l_0-q)` and `p|a_(l_0) => p|b_0c_(l_0)`, since `p cancel(|) b_0 => p|c_(l_0)`, which is a contradiction</p></li>
+                <li><p>Therefore, `f` is irreducible over `QQ`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Let `p` be prime. The `p^(th)` cyclotomic polynomial, `Phi_p(x) = (x^p-1)/(x-1)` is irreducible `// QQ`</b></p></li>
+                <li><p>Replace `x` with `(x+1) => Phi_p(x+1) = (((x+1)^p-1)/x) = (sum_(k = 0)^p ((p),(k)) x^k - 1)/x`</p></li>
+                <li><p>`= (sum_(k = 1)^p ((p),(k)) x^k) / x = sum_(k = 1)^p ((p),(k)) x^(k-1) = sum_(k = 0)^(p-1) ((p),(k+1)) x^k`</p></li>
+                <li><p>`= ((p),(1)) + ((p),(2))x + ... + ((p),(p-1))x^(p-2) + ((p),(p))x^(p-1)`</p></li>
+                <li><p>`= p + ((p),(2))x + ... + px^(p-2) + x^(p-1)`</p></li>
+                <li><p>Therefore `Phi_p(x+1)` is irreducible by Eisenstein's criterion</p></li>
+                <li><p>If `Phi_p(x) = f(x)g(x)` where `deg(f(x)), deg(g(x)) < deg(Phi_p(x))`, then `Phi_p(x+1) = f(x+1)g(x+1)` where `deg(f(x+1)), deg(g(x+1)) < deg(Phi_p(x+1)) = deg(Phi_p(x))`</p></li>
+                <li><p>Since `Phi_p(x+1)` is irreducible, this is a contradiction</p></li>
+              </div>
+              <div class="proof">
+                <li><p>Constructing a finite field other `ZZ // pZZ`</p></li>
+                <li><p>Let `f(x)` be an irreducible polynomial of degree `n` in `ZZ // pZZ [x]`</p></li>
+                <li><p><a href="#f_maximal">We know that `(f(x)) sube ZZ // pZZ [x]` is a maximal ideal</a></p></li>
+                <li><p>So `(ZZ // pZZ[x]) / (f(x))` is a finite field</p></li>
+                <li><p>We claim that `| (ZZ // pZZ[x]) / (f(x)) | = p^n`</p></li>
+                <li><p>Any element in `(ZZ // pZZ[x]) / (f(x))` can be written as a `ZZ // pZZ` linear combination of `{1 + (f(x)), x + (f(x)), ..., x^(n-1) + f(x)}`</p></li>
+                <li><p>We're proving by induction that `x^k + (f(x)) in ZZ // pZZ` linear span of `{1 + (f(x)), ..., x^(n-1) + (f(x))}` `AA k >= n`</p></li>
+                <li><p>Base case: `k = n`. `f(x) = x^n + a_(n-1)x^(n-1) + ... + a_1x + a_0 in ZZ // pZZ[x]`</p></li>
+                <li><p>`x_n + a_(n-1)x^(n-1) + ... + a_0 + (f(x)) = 0 + (f(x))`</p></li>
+                <li><p>`x_n + (f(x)) = -a_(n-1)x^(n-1) - ... - a_0 + (f(x))`</p></li>
+                <li><p>Inductive Hypothesis: Suppose for some `k >= n, AA j <= k, x^j + (f(x)) in span{1 + (f(x)), ..., x^(n-1) + (f(x))}`</p></li>
+                <li><p>Consider `x^(k+1) + (f(x)) = -a_(n-1)x^(k+1-n+n-1) - ... - a_0x^(k+1-n) + (f(x))`</p></li>
+                <li><p>`= -a_(n-1)x^k - ... - a_0x^(k+1-n) + (f(x))`</p></li>
+                <li><p>`in span{1 + (f(x)), ..., x^(n-1) + (f(x))}` by inductive hypothesis (since `k+1-n <= k`)</p></li>
+                <li><p>`=> x^k + (f(x)) in span{1 + (f(x)), ..., x^(n-1) + (f(x))}`</p></li>
+                <li><p>Any element of `(ZZ // pZZ [x]) / (f(x))` can be written as `sum_(i = 0)^(n-1) b_ix^i + (f(x))`</p></li>
+                <li><p>Therefore, `| (ZZ // pZZ[x]) / (f(x)) | <= p^n`</p></li>
+                <li><p>There are no `ZZ // pZZ` relations among `{1 + (f(x)), ..., x^(n-1) + (f(x))}`</p></li>
+                <li><p>Suppose `sum_(i = 0)^(n-1) c_ix^i + (f(x)) = 0 + (f(x))`</p></li>
+                <li><p>`=> sum_(i = 0)^(n-1)c_ix^i in (f(x)) => f(x)|sum_(i = 0)^(n-1) c_ix^i`</p></li>
+                <li><p>But `deg(f(x)) > n-1`, so that is a contradiction</p></li>
+                <li><p>`{1 + (f(x)), ..., x^(n-1) + (f(x))}` form a basis for `(ZZ // pZZ [x]) / (f(x))` as a vector space over `ZZ // pZZ`</p></li>
+                <li><p>Since the basis has `n` elements, the vector space has cardinality `p^n`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Theorem: `ZZ[x]` is a UFD (Unique Factorization Domain). Let `f(x) in ZZ[x]` which is not a unit and not zero. Then we can always write `f(x) = prod_(i = 1)^n p_i prod_(j = 1)^m q_j (x)` where `p_i` are primes in `ZZ` (not necessarily distinct) This factorization is unique: given `f(x) = prod_(i = 1)^n p_i prod_(j =1)^m q_j (x) = prod_(k = 1)^(n') p'_k prod_(l = 1)^(m') q'_l (x)`, we must have `n = n'`, `m = m'` and possibly after renumbering, `p_i = +- p'_i`, `q_j(x) = +- q'_j(x)`</b></p></li>
               </div>
             </ul>
           </div>

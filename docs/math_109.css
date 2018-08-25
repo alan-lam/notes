@@ -18,6 +18,10 @@ body {
   padding-top: 20px;
 }
 
+#note {
+  background-color: lightgray;
+}
+
 .content {
   padding-top: 70px;
   padding-left: 50px;

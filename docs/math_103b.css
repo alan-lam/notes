@@ -34,6 +34,10 @@ body {
   padding-top: 20px;
 }
 
+#note {
+  background-color: lightgray;
+}
+
 .content {
   padding-top: 70px;
   padding-left: 50px;
@@ -51,6 +55,6 @@ body {
   list-style-type: circle;
 }
 
-#inzz, #ev_hom, #ev_ker, #prime_ideal, #gcd_lin_comb, #f_irreducible {
+#inzz, #ev_hom, #ev_ker, #prime_ideal, #gcd_lin_comb, #f_irreducible, #f_maximal {
   padding-top: 70px;
 }
