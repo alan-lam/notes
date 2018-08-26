@@ -1280,6 +1280,62 @@
           </div>
           <div class="content" id="return_to_integral_domains">
             <h3>Return to Integral Domains</h3>
+            <ul>
+              <li><p><b>Definition: Let `a` and `b` be elements of an integral domain `R`. Then `a` and `b` are <u>associates</u> if `a = br` where `r` is a unit in `R`</b></p></li>
+              <li><p>Ex: `x^2 + 1` and `x^2/3 + 1/3` are associates in `QQ[x]`</p></li>
+              <li><p><b>Let `a` be an element of an integral domain `R`. `a` is <u>irreducible</u> if whenever `b in R` `s.t.` `b|a`, `a` and `b` are associates</b></p></li>
+              <li><p><b>Definition: Let `p` be an element of an integral domain `R`. `p` is <u>prime</u> if whenever `a, b in R` `s.t.` `p|ab => p|a` or `p|b`</b></p></li>
+              <div class="proof">
+                <li><p><b>Proposition: Let `R` be an integral domain. Let `p in R` be prime. Then `p` is irreducible</b></p></li>
+                <li><p>Let `p in R` be prime. Suppose `p = ab` for some `a, b in R`</p></li>
+                <li><p>Then `p|ab`, so since `p` is prime, `p|a` or `p|b`</p></li>
+                <li><p>`p|a => EE r_1 in R` `s.t.` `pr_1 = a`</p></li>
+                <li><p>Substituting, we find `p = ab = pr_1b => r_1b = 1` (since `R` is a domain) `=> b in R^x`</p></li>
+                <li><p>`p|b => EE r_2 in R` `s.t.` `pr_2 = b`</p></li>
+                <li><p>`p = ab = apr_2 => ar_2 = 1` (since R is a domain) `=> a in R^x`</p></li>
+                <li><p>`=> p` is irreducible by definition</p></li>
+              </div>
+              <li><p>The rings which demonstrate that irreducible elements need not be prime are `ZZ[sqrt d]` where `d != 1` and `d` is not divisible by the square of a prime</p></li>
+              <li><p>`ZZ[sqrt d] = {a + b sqrt d | a, b in ZZ}`</p></li>
+              <li><p>Define a function `N: ZZ[sqrt d] -> ZZ^(>= 0)` (called the norm) by `a + b sqrt d |-> |a^2 - b^2d |`</p></li>
+              <div class="proof">
+                <li><p>We claim that `N(a + b sqrt d) = 0 <=> a, b = 0`</p></li>
+                <li><p>`(lArr)` obvious</p></li>
+                <li><p>`(=>)` Suppose `a + b sqrt d in ZZ[sqrt d] \\ {0}` such that `N(a + b sqrt d) = 0 <=> | a^2 - b^2d | = 0`</p></li>
+                <li><p>`gcd(a, b)^2 | (a/gcd(a,b))^2 - (b/gcd(a,b))^2d | = 0`</p></li>
+                <li><p>It suffices to prove this in the case that `a` and `b` are coprime</p></li>
+                <li><p>If `d = -1`, then `a^2 + b^2 = 0 <=> a = b = 0`</p></li>
+                <li><p>Suppose `d != -1`. Then some prime `p` must divide `d`</p></li>
+                <li><p>Suppose `a, b` are coprime `s.t.` `a^2-db^2 = 0 => a^2db^2`</p></li>
+                <li><p>`p|d => EE k in ZZ \\ {0}` `s.t.` `pk = d`</p></li>
+                <li><p>`a^2 = pkb^2 => p|a^2`</p></li>
+                <li><p>Since `p` is prime, `p|a => EE n in ZZ` `s.t.` `pn = a`</p></li>
+                <li><p>`a^2 = p^2n^2 = pkb^2`</p></li>
+                <li><p>We can cancel the `p`'s `=> pn^2 = kb^2`</p></li>
+                <li><p>Since `gcd(a,b) = 1`, `p|a => p cancel(|) b <=> p cancel(|) b^2`</p></li>
+                <li><p>Therefore, `p|k => EE m in ZZ \\ {0} k = mp`</p></li>
+                <li><p>But then `d = pk = mpp = p^2m => p^2|d` where `p` is prime, which is a contradiction</p></li>
+              </div>
+              <li><p>`N(a + b sqrt d)*N(c + e sqrt d) = N((a + b sqrt d)*(c + e sqrt d))`</p></li>
+              <div class="proof">
+                <li><p>We claim that `x in ZZ[sqrt d]` is a unit `<=> N(x) = 1`</p></li>
+                <li><p>`(=>)` Suppose `x in ZZ[sqrt d]` is a unit</p></li>
+                <li><p>`=> EE y in ZZ[sqrt d]` `s.t.` `xy = 1`</p></li>
+                <li><p>`N(xy) = N(1) = 1`</p></li>
+                <li><p>`N(xy) = N(x)N(y) = 1`</p></li>
+                <li><p>Since `N(x) in ZZ^(>= 0) => N(x) = 1`</p></li>
+                <li><p>`(lArr)` Suppose `a + b sqrt d = x in ZZ[sqrt d]` is `s.t.` `N(x) = |a^2 - b^2d| = 1`</p></li>
+                <li><p>`|a^2 - b^2d| = |(a + b sqrt d)(a - b sqrt d)| = 1`</p></li>
+                <li><p>`=> (a + b sqrt d)(a - b sqrt d) = 1` or `(a + b sqrt d)(a - b sqrt d) = -1`</p></li>
+                <li><p>`=> a + b sqrt d` is a unit</p></li>
+              </div>
+              <div class="proof">
+                <li><p>We claim that if `N(x)` is prime, then `x` is irreducible</p></li>
+                <li><p>Suppose `x = ab`. Then `N(x) = N(a)N(b)`</p></li>
+                <li><p>Since `N(x)` is prime and `N(a), N(b) in ZZ^(>= 0)`, either `N(a) = N(x), N(b) = 1` or `N(a) = 1, N(b) = N(x)`</p></li>
+                <li><p>From the previous proof, either `N(a) = 1` or `N(b) = 1 => a` or `b` is a unit `=> x` is irreducible</p></li>
+              </div>
+            </ul>
           </div>
         </div>
       </div>
