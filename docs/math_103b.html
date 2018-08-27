@@ -1335,6 +1335,26 @@
                 <li><p>Since `N(x)` is prime and `N(a), N(b) in ZZ^(>= 0)`, either `N(a) = N(x), N(b) = 1` or `N(a) = 1, N(b) = N(x)`</p></li>
                 <li><p>From the previous proof, either `N(a) = 1` or `N(b) = 1 => a` or `b` is a unit `=> x` is irreducible</p></li>
               </div>
+              <li><p>Norm: `N: ZZ[sqrt d] -> ZZ^(>= 0)`, `a + b sqrt d |-> | a^2 - db^2 |` where `d` is not `1` and `d` is divisible by the square of any prime number</p></li>
+              <li><p>1) `N(x) = 0 <=> x = 0`</p></li>
+              <li><p>2) `N(xy) = N(x)N(y)` `AA x, y in ZZ[sqrt d]`</p></li>
+              <li><p>3) `N(x) = 1 <=> x` is a unit in `Z[sqrt d]`</p></li>
+              <li><p>4) `N(x)` is prime `=> x` is irreducible</p></li>
+              <div class="proof">
+                <li><p>Ex: `ZZ[sqrt 5]` We claim that `2` is irreducible but `2` is not prime</p></li>
+                <li><p>`2 = (a + b sqrt 5)(c + d sqrt 5) => N(2) = N(a + b sqrt 5)N(c + d sqrt 5)`</p></li>
+                <li><p>`=> 4 = | a^2 - 5b^2 | * |c^2 - 5d^2|`</p></li>
+                <li><p>We claim that `cancel(EE)` integers `a,b` `s.t.` `a^2 - 5b^2 = 2`</p></li>
+                <li><p>`=> a^2 = 2 (mod 5)`</p></li>
+                <li><p>`a = 0, 1, 2, 3, 4 (mod 5) => a^2 = 0, 1, 4, 4, 1 (mod 5)`</p></li>
+                <li><p>`cancel(EE) a in ZZ` `s.t.` `a^2 = 2 (mod 5)`</p></li>
+                <li><p>`=> cancel(EE) a, b in ZZ` `s.t.` `a^2 - 5b^2 =2`</p></li>
+                <li><p>We also see that `cancel(EE) a, b in ZZ` `s.t.` `5b^2 - a^2 = 2`</p></li>
+                <li><p>Therefore if `|a^2 - 5b^2|*|c^2 - 5d^2| = 4`, either `|a^2-5b^2| = 4, |c^2-5d^2| = 1` or `|a^2-5b^2| = 1, |c^2-5d^2| = 4`</p></li>
+                <li><p>In either case, `a + b sqrt 5` or `c + d sqrt 5` is a unit of `ZZ[sqrt 5] => 2` is irreducible</p></li>
+                <li><p>We claim that `2` is not prime</p></li>
+                <li><p>`2|4`, yet `4 = (-1-sqrt 5)(1 - sqrt 5)` but `2 cancel(|) (-1-sqrt 5)` and `2 cancel(|) (1 - sqrt 5)`</p></li>
+              </div>
             </ul>
           </div>
         </div>
