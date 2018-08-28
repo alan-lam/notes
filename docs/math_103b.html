@@ -1402,7 +1402,45 @@
               </div>
               <div class="proof">
                 <li><p><b>Theorem: If `R` is a `PID`, then `R` is a `UFD`</b></p></li>
+                <li><p>(Existence) Let `x in R`, not a unit, nonzero. If `x` is irreducible, then `x = x` is the factorization</p></li>
+                <li><p>Suppose `x` is not irreducible. Then we can write `x = x_1y_1` where `x_1y_1 notin R^x`</p></li>
+                <li><p>If `x_1` is irreducible, then at least `1` irreducible element divides `x`</p></li>
+                <li><p>Suppose `x_1` is not irreducible, repeat the process `x_1|x, x_2|x_1, x_3|x_2, ...`</p></li>
+                <li><p>If this process never terminates, we get an ascending chain `(x) sube (x_1) sube (x_2) sube ...`</p></li>
+                <li><p>Since `R` is a `PID`, this chain must stabilize, so the process must terminate</p></li>
+                <li><p>By definition, `EE n in ZZ^+` `s.t.` `x_n = x_(n+1) => x_n | x_(n+1) => EE z in R` `s.t.` `x_nz = x_(n+1)`</p></li>
+                <li><p>Since `x_(n+1)|x_n => EE w in R` `s.t.` `x_(n+1)w = x_n`</p></li>
+                <li><p>Putting the two together, we see that `x_(n+1) = x_nz = x_(n+1)wz`</p></li>
+                <li><p>Since `x_(n+1) != 0` and `R` is a domain `=> wz = 1 => w in R^x`</p></li>
+                <li><p>Therefore, `x_n` is irreducible</p></li>
+                <li><p>We've established the existence of at least `1` irreducible factor of `x`</p></li>
+                <li><p>Thus, every nonzero, non-unit element has at least `1` irreducible factor</p></li>
+                <li><p>Let `x in R` be nonzero and not a unit. Then `EE q_1 in R` irreducible `s.t.` `x = q_1w_1`</p></li>
+                <li><p>If `w_1` is irreducible, then we're done</p></li>
+                <li><p>If not, then `w_1 = q_2w_2`</p></li>
+                <li><p>By the same argument from before, the process cannot continue indefinitely</p></li>
+                <li><p>`w_n = q_(n+1)w_(n+1)` where `w_(n+1)` or `q_(n+1)` is a unit</p></li>
+                <li><p>`x = (prod_(i = 1)^n q_i)w_n` is a product of irreducibles</p></li>
+                <li><p>(Uniqueness) We claim that the factorization of an element into a product of irreducibles is unique up to associates and reordering</p></li>
+                <li><p>Suppose `x = prod_(i = 1)^r p_i = prod_(j = 1)^s q_j`</p></li>
+                <li><p>We claim `p_i = u_iq_i` for some unit `u_i in R` after reordering for each `1 <= i <= r`</p></li>
+                <li><p>Base Case: `i = 1`. `p_1 = prod_(j = 1)^s q_j`</p></li>
+                <li><p>Since `p_1` is irreducible, `R` is a `PID => p_1` is prime</p></li>
+                <li><p>So `p_1|q_j` for some `j`. Relabel this as `q_1`</p></li>
+                <li><p>`p_1|q_1` and `q_1` is irreducible `=> p_1` is an associate of `q_1`</p></li>
+                <li><p>Since `p_1` is not a unit `=> EE v_1 in R^x` `s.t.` `p_1 = q_1v_1`</p></li>
+                <li><p>Set `v_1^-1 = u_1`, then `p_1u_1 = q_1`</p></li>
+                <li><p>Inductive Hypothesis: Suppose for some `j >= 1` `AA 1 <= i <= j` `EE u_i in R^x` `s.t.` `p_iu_i = q_i`</p></li>
+                <li><p>Now we can cancel out the common terms in `prod_(i = 1)^j p_i prod_(k = j+1)^r p_k = prod_(l = 1)^j q_l prod_(n = j+1)^s q_n` to get `prod_(k = j+1)^r p_k = prod_(i = 1)^j u_i prod_(n = j+1)^s q_n`</p></li>
+                <li><p>Repeating the argument from the base case, `EE n'` `s.t.` `p_(j+1)|q_(n')` and `EE u_(j+1) in R^x` `s.t.` `p_(j+1)*u_(j+1) = q_(n')`</p></li>
+                <li><p>Relabel `q_(n') = q_(j+1)`</p></li>
+                <li><p>The same argument from the `F[x]` case proves `r = s`</p></li>
               </div>
+              <li><p>Euclidean domains generalize `F[x]` and `ZZ` in that they have a division theorem</p></li>
+              <li><p><b>Definition: Let `R` be an integral domain. Then `R` is a <u>Euclidean domain</u> if `EE` a function `d: R\\{0} -> ZZ^(>= 0)` `s.t.`</b></p></li>
+              <li><p><b>1) `d(x) <= d(x)d(y)` `AA x, y in R\\{0}`</b></p></li>
+              <li><p><b>2) `AA x, y in R\\{0}`, `EE q, r in R` `s.t.` `x = yq + r` where either `r = 0` or `d(r) < d(y)`</b></p></li>
+              <li><p>Ex: `F[x]` and `ZZ` are Euclidean domains</p></li>
             </ul>
           </div>
         </div>
