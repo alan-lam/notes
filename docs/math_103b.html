@@ -9,12 +9,11 @@
      / ____ \ | |__  / __ \ | |\  |  | |___  / __ \ | | \/ | |
     /_/    \_\|____|/_/  \_\|_| \_|  |_____|/_/  \_\|_|    |_|
     -->
+    <title>Abstract Algebra II</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <title>Abstract Algebra II</title>
     <link href="math_103b.css" rel="stylesheet">
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
@@ -42,6 +41,7 @@
         <a class="toc_link" href="#field_of_fractions"><li>Field of Fractions</li></a>
         <a class="toc_link" href="#polynomial_rings"><li>Polynomial Rings</li></a>
         <a class="toc_link" href="#return_to_integral_domains"><li>Return to Integral Domains</li></a>
+        <a class="toc_link" href="#vector_spaces"><li>Vector Spaces</li></a>
       </ul>
     </div>
     <div class="container">
@@ -1438,9 +1438,64 @@
               </div>
               <li><p>Euclidean domains generalize `F[x]` and `ZZ` in that they have a division theorem</p></li>
               <li><p><b>Definition: Let `R` be an integral domain. Then `R` is a <u>Euclidean domain</u> if `EE` a function `d: R\\{0} -> ZZ^(>= 0)` `s.t.`</b></p></li>
-              <li><p><b>1) `d(x) <= d(x)d(y)` `AA x, y in R\\{0}`</b></p></li>
-              <li><p><b>2) `AA x, y in R\\{0}`, `EE q, r in R` `s.t.` `x = yq + r` where either `r = 0` or `d(r) < d(y)`</b></p></li>
+              <li><p><b>1) `d(a) <= d(ab)` `AA a, b in R\\{0}`</b></p></li>
+              <li><p><b>2) If `a, b in R` with `b != 0`, then `EE q, r in R` `s.t.` `a = bq + r` with `r = 0` or `d(r) < d(b)`</b></p></li>
               <li><p>Ex: `F[x]` and `ZZ` are Euclidean domains</p></li>
+              <div class="proof">
+                <li><p>`ZZ[i]` is a Euclidean domain with `d(a + bi) = a^2 + b^2`</p></li>
+                <li><p>1) Let `a + bi, c + fi in ZZ[i] \\ {0}`</p></li>
+                <li><p>`d(a + bi) = a^2 + b^2`</p></li>
+                <li><p>`d((a + bi)(c + fi)) = ||(a + bi)(c + fi)||^2 = ||a + bi||^2||c + fi||^2 = (a^2 + b^2)(c^2 + f^2)`</p></li>
+                <li><p>`a^2 + b^2 <= (a^2 + b^2)(c^2 + f^2)` since `c^2 + f^2 > 1`</p></li>
+                <li><p>So `d(a + bi) <= d((a + bi)(c + fi))`</p></li>
+                <li><p>2) Let `a + bi, c + fi in ZZ[i]` `s.t.` `c + fi != 0`</p></li>
+                <li><p>Want `q_1, q_2i, r_1, r_2i` `s.t.` `a + bi = (c + fi)(q_1 + q_2i) + (r_1 + r_2i)` where `d(r_1 + r_2i) < d(c + fi) => r_1^2 + r_2^2 < c^2 + f^2`</p></li>
+                <li><p>Notice that `(a + bi)/(c + fi) = (a + bi)/(c^2 + f)*(c - fi) = (ac + bf)/(c^2 + f^2) + (bc - af)/(c^2 + f^2)*i in CC`</p></li>
+                <li><p>Let `q_1` be the closest integer to `(ac + bf)/(c^2 + f^2)`. Let `q_2` be the closest integer to `(bc - af)/(c^2 + f^2)`</p></li>
+                <li><p>`|q_1 - (ac + bf)/(c^2 + f^2)| <= 1/2, |q_2 - (bc - af)/(c^2 + f^2)| <= 1/2`</p></li>
+                <li><p>We've defined `q_1, q_2`</p></li>
+                <li><p>Let `r_1 + r_2i = a + bi - (c + fi)(q_1 + q_2i)`</p></li>
+                <li><p>We claim that `r_1 + r_2i` is `s.t.` `||r_1 + r_2i||^2 < ||c + fi||^2`</p></li>
+                <li><p>`||r_1^2 + r_2i||^2 = ||a + bi - (c + fi)(q_1 + q_2i)||^2`</p></li>
+                <li><p>`= ||c^2 + fi||^2*||(a + bi)/(c + fi) - (q_1 + q_2i)||^2`</p></li>
+                <li><p>`= ||c + fi||^2*||((ac + bf)/(c^2 + f^2) - q_1) + ((bc - af)/(c^2 + f^2) - q_2)i||^2`</p></li>
+                <li><p>`||c + fi||^2*((ac + bf)/(c^2 + f^2) - q_1)^2 + ((bc - af)/(c^2 + f^2) - q_2)^2 <= 1/4||c + fi||^2 + 1/4||c + fi||^2 < ||c + fi||^2`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Theorem: Let `R` be a Euclidean domain. Then `R` is a `PID`</b></p></li>
+                <li><p>Let `I != (0)` be an ideal of `R`. Let `x in I` `s.t.` `d(x)` is minimal. Such an `x` exists by the well ordering of the natural numbers</p></li>
+                <li><p>We claim that `x` generates `I`, `(x) = I`</p></li>
+                <li><p>`(sube) x in I` and `I` is an ideal `=> (x) sube I`</p></li>
+                <li><p>`(supe)` Let `y in I`. Then `EE q, r in R` `s.t.` `y = xq + r` where `r = 0` or `d(r) < d(x)`</p></li>
+                <li><p>Notice that `r = y - xq`, so `r in I`</p></li>
+                <li><p>Therefore, `d(r)` cannot be less than `d(x)` by minimality of `d(x)`</p></li>
+                <li><p>Thus `r = 0 => x|y => y in (x)`</p></li>
+              </div>
+              <li><p>`R` is a Euclidean domain `=> R` is a `PID => R` is a `UFD`</p></li>
+            </ul>
+          </div>
+          <div class="content" id="vector_spaces">
+            <h3>Vector Spaces</h3>
+            <ul>
+              <li><p><b>Definition: Let `k` be a field. A <u>vector space</u> over `k` is a set `V` equipped with a binary operator `+: V xx V -> V` such that `(V, +)` is an abelian group and another operation `*: k xx V -> V` called scalar multiplication such that</b></p></li>
+              <li style="list-style-type: none";><p><b>1) `a*(x + y) = ax + ay` `AA a in k, x, y in V`</b></p></li>
+              <li style="list-style-type: none";><p><b>2) `(a + b)*x = ax + bx` `AA a, b in k, x in V`</b></p></li>
+              <li style="list-style-type: none";><p><b>3) `a*(bx) = (ab)*x` `AA a, b in k, x in V`</b></p></li>
+              <li style="list-style-type: none";><p><b>4) `1*x = x` `AA x in V, 1 in k`</b></p></li>
+              <li><p>Last time we showed that `(ZZ//pZZ [x]) / (f(x))` is a field and a vector space of dimension `= deg(f(x))` if `f(x)` is irreducible over `ZZ // pZZ`</p></li>
+              <li><p><b>Definition: Let `V` be a vector space `// k`. A subset `W sube V` is a <u>subspace</u> of `V` if `W` is a `k`-vector space with the operations of `+, *` restricted to `W`</b></p></li>
+              <li><p><b>Proposition: Let `V` be a `k`-vector space and let `W` be a subset of `V`. Then `W` is a subspace of `V` if and only if `cx + dy in W` `AA x, y in W, c, d in k`</b></p></li>
+              <li><p><b>Definition: Let `V` be a vector space `// k`. A set `S sube V` is <u>linearly dependent</u> if `EE v_1, ..., v_n in S` and a linear combination `sum_(i = 1)^n c_iv_i = 0` where at least one `c_i` is nonzero. A set `S sube V` is <u>linearly independent</u> if whenever `v_1, ..., v_m in S` `s.t.` `sum_(i = 1)^m c_iv_i = 0`, we must have `c_i = 0` `AA 1 <= i <= m`</b></p></li>
+              <li><p><b>Definition: Let `V` be a vector space `// k`. Then a set `S sube V` <u>spans</u> `V` if every element of `V` can be written as a `k`-linear combination of elements of `S`. A set `S sube V` is a <u>basis</u> for `V` if `S` spans `V` and `S` is linearly independent</b></p></li>
+              <li><p><b>Definition: A set `S` is called a <u>partially ordered set</u> if `EE` a relation `<=` `s.t.`</b></p></li>
+              <li style="list-style-type: none";><p><b>1) Reflexivity: `a <= a` `AA a in S`</b></p></li>
+              <li style="list-style-type: none";><p><b>2) Anticommutativity: `AA a, b in S` if `a <= b` and `b <= a`, then `a = b`</b></p></li>
+              <li style="list-style-type: none";><p><b>3) Transitivity: If `a <= b` and `b <= c => a <= c` `AA a, b, c in S`</b></p></li>
+              <li><p><b>A <u>chain</u> in a partially ordered set `S` is a subset `cc C sube S` `s.t.` `AA x, y in cc C`, either `x <= y` or `y <= x`. Also known as a <u>totally ordered set</u> or a <u>linearly ordered set</u>. An <u>upper bound</u> for a chain `cc C` in `S` is an element `z in S` `s.t.` `x <= z` `AA x in cc C`</b></p></li>
+              <li><p><b>Zorn's Lemma: Let `S` be a partially ordered set. If every chain in `S` has an upper bound in `S`, then `S` has at least one maximal element</b></p></li>
+              <div class="proof">
+                <li><p><b>Theorem: Let `V` be a vector space `// k`. Then `V` has a basis</b></p></li>
+              </div>
             </ul>
           </div>
         </div>
@@ -1449,5 +1504,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
   </body>
 </html>
