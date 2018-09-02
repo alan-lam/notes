@@ -1,8 +1,8 @@
 body {
-  padding-top: 60px;
   padding-bottom: 60px;
   font-family: serif;
   font-size: 18px;
+  overflow-x: hidden;
 }
 
 .toc {
@@ -46,4 +46,13 @@ body {
 td {
   padding-left: 5px;
   padding-right: 5px;
+}
+
+@media screen and (max-width: 1024px) {
+  .toc {
+    display: none;
+  }
+  .container {
+    margin-left: 0;
+  }
 }
