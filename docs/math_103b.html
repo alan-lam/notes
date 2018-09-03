@@ -1533,6 +1533,40 @@
           </div>
           <div class="content" id="extension_fields">
             <h3>Extension Fields</h3>
+            <ul>
+              <li><p>We've seen that if `k` is a field and `f(x)` is a polynomial in `k[x]` which is irreducible over `k`, then `k[x] // (f(x))` is a field</p></li>
+              <li><p>`k[x] // (f(x))` has a subfield isomorphic to `k: {a + (f(x)) | a in k}`</p></li>
+              <li><p><b>Definition: Let `k` be a field. A field `L` is an <u>extension field</u> of `k` if `EE` an injective ring homomorphism `f: k -> L`. `L // k` is a <u>field extension</u></b></p></li>
+              <li><p><b>Definition: Let `phi_1: k -> L`, `phi_2: k -> L'` be field extensions of `k`. An <u>isomorphism of field extensions</u> is an isomorphism of fields `psi: L -> L'` `s.t.` `psi @ phi_1 = phi_2 <=> bar phi_2 @ psi|_(Im(phi_1)) @ bar phi_1 = i``d_k`</b></p></li>
+              <img class="img-fluid" src="./pictures/extension_field.jpg">
+              <div class="proof">
+                <li><p><b>Theorem: Let `k` be a field. Let `f(x) in k[x]` be irreducible over `k`. Then there exists a field extension `L // k` `s.t.` `f(x)` has a root in `L`</b></p></li>
+                <li><p>We've seen that `k(x) // (f(x))` is a field when `f(x) in k[x]` is irreducible over `k`</p></li>
+                <li><p>We've also seen that `k[x] // (f(x))` contains a subfield which is isomorphic to `k`</p></li>
+                <li><p>By definition, `k[x] // (f(x))` is an extension field of `k`</p></li>
+                <li><p>Let `f(x) = sum_(i = 0)^n a_ix^i`. We claim that `f` has a root in `k[x] // (f(x))`</p></li>
+                <li><p>We claim that `f(t) in (k[x])/(f(x)) [t]` has a root in `k[x]//(f(x))`</p></li>
+                <li><p>`f(t) = sum_(i = 0)^n (a_i + (f(x))) t^i`</p></li>
+                <li><p>Observe that `f(x + (f(x))) = sum_(i = 0)^n (a_i + (f(x)))(x + (f(x)))^i`</p></li>
+                <li><p>`= sum_(i = 0)^n (a_i + (f(x)))(x^i + (f(x))) = sum_(i = 0)^n (a_ix^i + (f(x)))`</p></li>
+                <li><p>`= sum_(i = 0)^n a_ix^i + (f(x)) = 0 + (f(x))`</p></li>
+                <li><p>Therefore `L` is an extension field of `k` which has a root of `f`</p></li>
+              </div>
+              <li><p><b>Kronecker's Theorem: Let `f(x) in k[x]` be a nonconstant polynomial. Then there exists a field extension `L // k` `s.t.` `f(x)` has at least one root in `L`</b></p></li>
+              <li><p>Definition: Let `k sube L` be fields. Let `z_1, ..., z_n in L`. Then `k(z_1, ..., z_n)` is the smallest field contained in `L` containing `z_1, ..., z_n` and `k`</p></li>
+              <div class="proof">
+                <li><p>Ex: Consider `x^3 - 2 in QQ[x]`. By Eisenstein's Criterion, `x^3 - 2` is irreducible over `QQ`</p></li>
+                <li><p>Therefore, `x^3-2` has no roots in `QQ`. Consider `QQ(root(3)(2))`</p></li>
+                <li><p>`QQ(root(3)(2)) = {a + b root(3)(2) + c root(3)(4) | a,b,c in QQ}`. This does not contain all the roots of `x^3-2`</p></li>
+                <li><p>The roots of `x^3 - 2` are `root(3)(2), (e^(i*(2pi)/3))(root(3)(2)), (e^(i*(4pi)/3))(root(3)(2))`</p></li>
+                <li><p>`QQ(e^(i*(2pi)/3), root(3)(2)) = {a_1 + a_2 root(3)(2) + a_3 e^(i*(2pi)/3) + a_4 e^(i*(2pi)/3) root(3)(2) + a_5 root(3)(4) + a_6 e^(i*(2pi)/3) root(3)(4) | a_1, ..., a_6 in QQ}`</p></li>
+                <li><p>`e^(i*(4pi)/3), e^(i*(4pi)/3) root(3)(2), e^(i*(4pi)/3) root(3)(4), e^(i*(2pi)/3), 1, e^(i*(4pi)/3)` are the roots of `x^3 - 1`</p></li>
+                <li><p>`QQ(e^(i*(2pi)/3), root(3)(2))` contains all the roots of `x^3 - 2`</p></li>
+                <li><p>`x^3 - 1 = (x-1)(x-e^(i*(2pi)/3))(x-e^(i*(4pi)/3))`</p></li>
+                <li><p>Notice that the coefficient on `x^2` on both sides have to be equal</p></li>
+                <li><p>`=> 0 = -1-e^(i*(2pi)/3) - e^(i*(4pi)/3) => e^(i*(4pi)/3) = -1-e^(i*(2pi)/3)`</p></li>
+              </div>
+            </ul>
           </div>
         </div>
       </div>
