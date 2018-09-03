@@ -27,6 +27,7 @@
         <a class="toc_link" href="#polynomial_rings"><li>Polynomial Rings</li></a>
         <a class="toc_link" href="#return_to_integral_domains"><li>Return to Integral Domains</li></a>
         <a class="toc_link" href="#vector_spaces"><li>Vector Spaces</li></a>
+        <a class="toc_link" href="#extension_fields"><li>Extension Fields</li></a>
       </ul>
     </div>
     <div class="container">
@@ -1503,8 +1504,35 @@
               </div>
               <div class="proof">
                 <li><p><b>Proposition: Let `V` be a vector space `// k` that is spanned by a set `G` consisting of exactly `n` vectors and let `L` be a linearly independent subset of `V` containing exactly `m` vectors. Then `m <= n` and `EE` a subset `H sube G` containing exactly `n-m` vectors `s.t.` `L uu H` generates `V`</b></p></li>
+                <li><p>Base Case: `m = 0`. `|L| = 0 => L != O/`. Take `H = G`</p></li>
+                <li><p>Inductive Hypothesis: Suppose for some `m >= 0`, given any linearly independent subset `L sube V` of cardinality `m`, we must have `m <= n` and `EE H sube G` `s.t.` `|H| = n - m, H uu L` is a spanning set</p></li>
+                <li><p>Let `L` be a linearly independent subset of `V` `s.t.` `|L| = m + 1`</p></li>
+                <li><p>`L = {l_1, ..., l_m, l_(m+1)}`. Consider `L\\{l_(m+1)}`</p></li>
+                <li><p>This is a linearly independent set of cardinality `m`, so the inductive hypothesis applies to show that `m <= n` and `EE H_0 sube G` `s.t.` `|H_0| = n - m` and `H_0 uu L\\{l_(m+1)}` spans `V`</p></li>
+                <li><p>`H_0 = {z_1, ..., z_(n-m)}`</p></li>
+                <li><p>`l_(m+1) in span(H_0 uu L\\{l_(m+1)})`</p></li>
+                <li><p>`l_(m+1) = sum_(i = 1)^(n-m) c_i z_i + sum_(j = 1)^m d_j l_j`</p></li>
+                <li><p>Since `L` is linearly independent, we cannot have `c_1 = ... = c_(n-m) = 0`. Therefore, at least one `c_i` must be nonzero, say `c_k != 0`</p></li>
+                <li><p>Notice `l_(m+1) = sum_(i = 1)^(k-1) c_i z_i + c_k z_k + sum_(h = k + 1)^(n-m) c_h z_h + sum_(j = 1)^m d_j l_j`</p></li>
+                <li><p>`-c_k z_k = sum_(i = 1)^(k-1) c_i z_i + sum_(h = k+1)^(n-m) c_h z_h + sum_(j = 1)^m d_j l_j - l_(m+1)`</p></li>
+                <li><p>`z_k = sum_(i = 1)^(k-1) (-c_k)^-1 c_i z_i + sum_(h = k + 1)^(n+m) (-c_k)^-1 c_h z_k + sum_(j = 1)^m (-c_k)^-1 d_j l_j + (c_k)^-1 l_(m+1)`</p></li>
+                <li><p>`z_k in span(H_0\\{z_k} uu L)`</p></li>
+                <li><p>`{z_1, ..., z_(n-m)} uu {l_1, ..., l_m}` spans `V`</p></li>
+                <li><p>We claim `{z_1, ..., z_(k-1), z_(k+1), ..., z_(n-m)} uu {l_1, ..., l_(m+1)}` spans `V`</p></li>
+                <li><p>Since `z_k in span({z_1, ..., z_(k-1), z_(k+1), ..., z_(n-m)} uu {l_1, ..., l_(m+1)})`</p></li>
+                <li><p>`=> span({z_1, ..., z_(k-1), z_(k+1), ..., z_(n-m)} uu {l_1, ..., l_(m+1)})` `>= span({z_1, ..., z_(k-1), z_k, z_(k+1), ..., z_(n-m)} uu {l_1, ..., l_(m+1)}) = V`</p></li>
+                <li><p>We proved that `(L uu H_0\\{z_k})` spans `V`</p></li>
+                <li><p>This set has cardinality `n` and the cardinality of `L` is `m + 1 => m + 1 <= n`</p></li>
               </div>
+              <li><p>Suppose `beta_1, beta_2` are finite bases for `V`</p></li>
+              <li style="list-style-type: none";><p>Let `G = beta_1, L = beta_2`. Then `|beta_2| <= |beta_1|`</p></li>
+              <li style="list-style-type: none";><p>Let `G = beta_2, L = beta_1`. Then `|beta_1| <= |beta_2|`</p></li>
+              <li><p>Thus, any two finite bases for `V` have the same cardinality</p></li>
+              <li><p>The dimension of a vector space is the cardinality of a basis</p></li>
             </ul>
+          </div>
+          <div class="content" id="extension_fields">
+            <h3>Extension Fields</h3>
           </div>
         </div>
       </div>
