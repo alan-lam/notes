@@ -1593,6 +1593,38 @@
               </div>
               <div class="proof">
                 <li><p><b>Let `f(x) in k[x]`. Suppose that `f` is irreducible over `k` and has a root in some field extension `L // k`, call the root `alpha in L`. Then there exists an isomorphism `k[x] // (f(x)) ~= phi(k)(alpha)` where `phi: k -> L` is injective</b></p></li>
+                <li><p>We define `psi: k[x] -> phi(k)(alpha), g(x) |-> phi(g)(alpha)`. `psi` is surjective</p></li>
+                <li><p>We claim that `ker(psi) = (f(x))`</p></li>
+                <li><p>`(supe)` Notice that if `q(x) in (f(x))`, then `q(x) = h(x)f(x)` for some `h(x) in k[x]`</p></li>
+                <li><p>`psi(q(x)) = psi(h(x))psi(f(x)) = phi(h)(alpha)phi(f)(alpha) = 0 => q(x) in ker(psi)`</p></li>
+                <li><p>Method 1: Notice that there is a well-defined ring homomorphism `bar psi: k[x] // (f(x)) -> phi(k)(alpha), g(x) + (f(x)) |-> phi(g)(x) = psi(g(x))`</p></li>
+                <li><p>This is well-defined since `(f(x)) in ker(psi)`. `bar psi` is surjective since `psi` is surjective</p></li>
+                <li><p>Notice that since `bar psi` is not the zero map, it must be injective, for `ker(bar psi)` is either `0` or `k[x] // (f(x))` and it is not the latter</p></li>
+                <li><p>Therefore `bar psi` is an isomorphism</p></li>
+                <li><p>If `gamma: F -> G` is a map of fields, it is either the zero map or it is injective</p></li>
+                <li><p>Method 2: `(sube)` Let `g(x) in ker(psi)`. We claim that `g(x) in (f(x))`</p></li>
+                <li><p>It suffices to show that `(g(x), f(x)) = (f(x))`</p></li>
+                <li><p>Since `k` is a field, `k[x]` is a `PID` `=> (g(x), f(x)) = (h(x))` for some `h(x) in k[x]`</p></li>
+                <li><p>This implies that `g(x), f(x)` are divisible by `h(x)`</p></li>
+                <li><p>Suppose for a contradiction `f(x) cancel(|) g(x)`</p></li>
+                <li><p>Since `f(x)` is irreducible, `h(x)` must be an associate of `f(x)`, or `h(x)` must be a unit in `k[x]`</p></li>
+                <li><p>Since `h(x)|g(x)`, then `h(x)` cannot be an associate of `f(x)`, otherwise `h(x)|g(x) => f(x)|g(x)`, which is a contradiction</p></li>
+                <li><p>Thus, `h(x) in k^x`. Therefore `(g(x), f(x)) = (1)`</p></li>
+                <li><p>Then `EE q_1(x), q_2(x) in k[x]` `s.t.` `g(x)q_1(x) + f(x)q_2(x) = 1`</p></li>
+                <li><p>`psi(g(x)q_1(x) + f(x)q_2(x)) = psi(1)`</p></li>
+                <li><p>`=> 0*psi(q_1(x)) + 0*psi(q_2(x)) = 1 => 0 = 1`, which is a contradiction</p></li>
+                <li><p>Therefore, `(g(x), f(x)) = (f(x)) => f(x)|g(x) => g(x) in (f(x))`</p></li>
+              </div>
+              <li><p>In general, we see that given `phi: k -> L`, `alpha in L` a root of `f(x)` where `f(x)` is irreducible, `EE` an isomorphism `k[x]//(f(x)) ~= phi(k)(alpha)`</p></li>
+              <div class="proof">
+                <li><p><b>Proposition: Let `f(x) in k[x]` be nonconstant. Let `phi: k -> k'` be an isomorphism of fields. Let `L, L'` be splitting fields for `f(x)`, `phi(f(x))` over `k, k'` respectively. Let `alpha in L` be a root of `f(x)`, `beta in L'` be a root of `phi(f(x))`. Let `phi_1: k -> L, phi_2: k' -> L'` be injective ring homomorphisms exhibiting `L, L'` as extensions of `k, k'` respectively. Then `EE` an isomorphism `psi: phi_1(k)(alpha) ~= phi_2(k')(beta)` `s.t.` `psi|_(phi_1(k)) @ phi_1 = phi_2 @ phi`</b></p></li>
+                <li><p>Notice that since `phi: k -> k'` is an isomorphism, there is an induced isomorphism `phi[x]: k[x] -> k'[x]`</p></li>
+                <li><p>Since `phi[x]` is an isomorphism, `phi[x]^-1((phi(f(x)))) = (f(x))`</p></li>
+                <li><p>Thus, there is an isomorphism `k[x] // (f(x)) ~= k[x] // (phi(f(x)))`</p></li>
+                <li><p>Since `alpha, beta` are roots of `f(x)`, `phi(f(x))` in `L, L'` respectively, the previous result shows that `k[x] // (f(x)) ~= phi_1(k)(alpha)`, `k[x] // (phi(f(x))) ~= phi_2(k')(beta)`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Let `f(x)` be a nonconstant polynomial in `k[x]`. Then any two splitting fields for `f(x)` are isomorphic</b></p></li>
               </div>
             </ul>
           </div>
