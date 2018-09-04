@@ -1581,6 +1581,18 @@
               </div>
               <div class="proof">
                 <li><p><b>Theorem: Let `f(x) in k[x]` be a nonconstant polynomial. Then there exists a splitting field for `f(x)`</b></p></li>
+                <li><p>We prove the result by induction on `deg(f(x))`</p></li>
+                <li><p>Base Case: `deg(f(x)) = 1`. Then `f(x)` has a single root and the root lies in `k`.</p></li>
+                <li><p>Thus, `k` itself is a splitting field for `f(x)` over `k`</p></li>
+                <li><p>Inductive Hypothesis: Suppose that for all fields `k`, for some integer `n >= 1`, for all polynomials `g(x)` `s.t.` `deg(g(x)) = n`, there exists a splitting field for `g(x)` over `k`</p></li>
+                <li><p>Let `f(x)` be a polynomial of degree `n+1` in `k[x]`</p></li>
+                <li><p>Notice that `f(x)` has a root in `k[x] // (f(x)) = L` by Kronecker's Theorem</p></li>
+                <li><p>Therefore, in `L[t]`, we can use the Division Theorem to write `f(t) = (t - (x + (f(x))))q(t)`</p></li>
+                <li><p>Notice that `deg(q(t)) = n`, so by the inductive hypothesis, there exists a splitting field for `q(t)` over `L, L'`</p></li>
+                <li><p>From the definition, `L'` is a splitting field for `f(x)` over `k`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Let `f(x) in k[x]`. Suppose that `f` is irreducible over `k` and has a root in some field extension `L // k`, call the root `alpha in L`. Then there exists an isomorphism `k[x] // (f(x)) ~= phi(k)(alpha)` where `phi: k -> L` is injective</b></p></li>
               </div>
             </ul>
           </div>
