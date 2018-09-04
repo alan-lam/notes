@@ -1,12 +1,19 @@
 body {
+  padding-top: 60px;
   padding-bottom: 60px;
   font-family: serif;
   font-size: 18px;
   overflow-x: hidden;
 }
 
+#back {
+  position: fixed;
+  top: 15px;
+  left: 50px;
+}
+
 .toc {
-  height: 600px;
+  height: 90%;
   width: 300px;
   background-color: lightgray;
   position: fixed;
@@ -48,11 +55,37 @@ td {
   padding-right: 5px;
 }
 
-@media screen and (max-width: 1024px) {
+#back2Top {
+  width: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  z-index: 99;
+  cursor: pointer;
+  -moz-transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: #DDD;
+  color: #555;
+  text-align: center;
+  font-size: 30px;
+  text-decoration: none;
+}
+
+#back2Top:hover {
+  background-color: #DDF;
+  color: #000;
+}
+
+/* @media screen and (max-width: 1024px) {
   .toc {
     display: none;
   }
   .container {
     margin-left: 0;
   }
-}
+} */
