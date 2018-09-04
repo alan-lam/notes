@@ -1625,6 +1625,22 @@
               </div>
               <div class="proof">
                 <li><p><b>Let `f(x)` be a nonconstant polynomial in `k[x]`. Then any two splitting fields for `f(x)` are isomorphic</b></p></li>
+                <li><p>Let `phi_1: k -> L`, `phi_2: k' -> L'` be the injective ring homomorphisms exhibiting `L // k`, `L' // k'` as field extensions</p></li>
+                <li><p>Let `H = phi_1(k)`, `H' = phi_2(k')`</p></li>
+                <li><p>Base Case: Suppose `f(x)` has degree `1`. Then `f(x)` has a single root `alpha in k`, so `f(x) = cx + d, c,d in k`</p></li>
+                <li><p>Then `0 = phi_1(0) = phi_1(f(alpha)) = phi_1(c)phi_1(alpha) + phi_1(d)` and `0 = phi_2(0) = phi_2(f(alpha)) = phi_2(c)phi_2(alpha) + phi_2(d)`</p></li>
+                <li><p>Thus, `phi_1(alpha), phi_2(alpha)` are roots of `phi_1(f), phi_2(f)` respectively</p></li>
+                <li><p>Since `phi_1(alpha) in H, phi_2(alpha) in H'`, we see that `H` and `H'` are splitting fields for `f` over `k` `=> H = L, H = L'`</p></li>
+                <li><p>Notice that `phi_2|_(H') @ (phi_1|_H)^-1: H -> H'` is an isomorphism</p></li>
+                <li><p>Inductive Hypothesis: Suppose for any field `k`, for some integer `n >= 1`, for any polynomial `f(x)` of degree `n`, any two splitting fields for `f(x)` are isomorphic</p></li>
+                <li><p>Suppose that `f(x) in k[x]` has degree `n+1`. Let `L, L'` be splitting fields for `f(x) // k`</p></li>
+                <li><p>Let `f_1(x)` be an irreducible factor of `f(x)`</p></li>
+                <li><p>Since `L, L'` are splitting fields for `f(x)` over `k`, `EE alpha in L, beta in L'` `s.t.` `alpha` is a root of `phi_1(f_1(x))` and `beta` is a root of `phi_2(f_1(x))`</p></li>
+                <li><p>By the previous result, there exists an isomorphism `psi_1: H(alpha) -> H'(beta)` which restricts to `phi_2 @ phi_1^1` on `H`</p></li>
+                <li><p>Since `alpha` is a root of `phi_1(f(x))`, `beta` is a root of `phi_2(f(x))`, we can write `phi_1(f(x)) = (x - alpha)q_1(x) in H(alpha)(x)`, `phi_2(f(x)) = (x - beta)q_2(x) in H'(beta)(x)`</p></li>
+                <li><p>Notice that `psi_1(q_1(x)) = q_2(x)`, `deg(q_1(x)) = n`</p></li>
+                <li><p>`L, L'` are splitting fields for `q_1(x)` over `H(alpha)`</p></li>
+                <li><p>By the inductive hypothesis, `L ~= L'`</p></li>
               </div>
             </ul>
           </div>
