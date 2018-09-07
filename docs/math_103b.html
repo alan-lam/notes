@@ -48,6 +48,25 @@
             <p>Subfield Test: `a, b (b != 0) in K => a-b in K, ab^(-1) in K` where `K sube F`</p>
             <p>An <b>ideal</b> of a ring `R` is a subring `I sube R` `s.t.` `rI sube I, Ir sube I` `AA r in R`</p>
             <p>Ideal Test: `a, b in A => a-b in A` and `a in A, r in R => ra in A` and `ar in A` where `A sube R`</p>
+            <p>A <b>prime ideal</b> `A` of a ring `R` is a proper ideal of `R` `s.t.` `ab in A => a in A` or `b in A` `AA a, b in R`</p>
+            <p>A <b>maximal ideal</b> of a ring `R` is a proper ideal of `R` `s.t.` whenever `B` is an ideal of `R` and `A sube B sube R`, then `B = A` or `B = R`</p>
+            <p>A polynomial `f(x)` is <b>irreducible</b> if whenever `f(x) = g(x)h(x)` for some `g(x), h(x) in R[x]`, either `g(x)` or `h(x)` is a unit</p>
+            <p>Elements `a, b` in an integral domain `D` are <b>associates</b> if `a = ub` where `u` is a unit in `D`</p>
+            <p>A nonzero element `a` is <b>irreducible</b> if `a` is not a unit and whenever `a = bc`, then `b` or `c` is a unit</p>
+            <p>A nonzero element `a` is <b>prime</b> if `a` is not a unit and `a|bc` `=>` `a|b` or `a|c`</p>
+          </div>
+          <div class="proof">
+            <p>the kernel of a ring homomorphism is an ideal</p>
+            <p>First Isomorphism Theorem: Let `phi: R -> S` be a ring homomorphism. Then `R//ker(phi) ~= phi(R)`. If `phi` is surjective, then `R//ker(phi) ~= S`
+            </p>
+            <p>`p` prime ideal `<=>` `R//p` is an integral domain</p>
+            <p>`m` maximal ideal `<=> R//m` is a field</p>
+            <p>degree is additive when taking products of polynomials in `K[x]` where `K` is a field</p>
+            <p>`K[x]` is a `PID` when `K` is a field</p>
+            <p>`(f(x))` is maximal in `K[x]` if and only if `f(x)` is irreducible</p>
+            <p>Gauss's Lemma: If `f(x) in ZZ[x]` is irreducible over `QQ`, then `f(x)` is irreducible over `ZZ`</p>
+            <p>Eisenstein's Criterion: Let `f(x) = a_nx^n + a_(n-1)x^(n-1) + ... + a_0`. `f(x)` is irreducible over `QQ` if there exists a prime `p` such that `p cancel(|) a_n`, `p | a_(n-1), ..., p|a_0`, and `p^2 cancel(|) a_0`</p>
+            <p>prime implies irreducible in an integral domain</p>
           </div>
           <div class="content" id="rings">
             <h3>Rings</h3>
@@ -1539,6 +1558,7 @@
               <li><p>We've seen that if `k` is a field and `f(x)` is a polynomial in `k[x]` which is irreducible over `k`, then `k[x] // (f(x))` is a field</p></li>
               <li><p>`k[x] // (f(x))` has a subfield isomorphic to `k: {a + (f(x)) | a in k}`</p></li>
               <li><p><b>Definition: Let `k` be a field. A field `L` is an <u>extension field</u> of `k` if `EE` an injective ring homomorphism `f: k -> L`. `L // k` is a <u>field extension</u></b></p></li>
+              <li><p>`L // k` does not mean we are taking a quotient</p></li>
               <li><p><b>Definition: Let `phi_1: k -> L`, `phi_2: k -> L'` be field extensions of `k`. An <u>isomorphism of field extensions</u> is an isomorphism of fields `psi: L -> L'` `s.t.` `psi @ phi_1 = phi_2 <=> bar phi_2 @ psi|_(Im(phi_1)) @ bar phi_1 = i``d_k`</b></p></li>
               <img class="img-fluid" src="./pictures/extension_field.jpg">
               <div class="proof">
