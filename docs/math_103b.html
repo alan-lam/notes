@@ -1670,6 +1670,30 @@
               <li><p>This satisfies the same properties as it does in calculus</p></li>
               <div class="proof">
                 <li><p><b>Proposition: Let `f(x) in k[x]`. Then `f(x)` has a root of multiplicity `> 1` if and only if `f(x)` and `f'(x)` have a nonconstant greatest common divisor in `k[x]`</b></p></li>
+                <li><p>`(=>)` Let `L` be a splitting field for `f(x)` over `k`</p></li>
+                <li><p>Let `alpha` be a root of multiplicity `> 1`, call the multiplicity `m`</p></li>
+                <li><p>By definition, in `L[x]`, `f(x) = (x - alpha)^m q(x)` where `(x - alpha) cancel(|) q(x)`</p></li>
+                <li><p>`f'(x) = m(x-alpha)^(m-1) q(x) + (x - alpha)^m q'(x)`</p></li>
+                <li><p>`f'(alpha) = m(alpha-alpha)^(m-1) q(alpha) + (alpha-alpha)^m q(alpha)`</p></li>
+                <li><p>`= 0*q(alpha) + 0*q'(alpha) = 0`</p></li>
+                <li><p>Thus, `f(x)` and `f'(x)` have a common zero, `alpha`</p></li>
+                <li><p>Suppose for a contradiction that `gcd(f(x), f'(x)) = 1 in k[x]`</p></li>
+                <li><p>This implies that `EE q_1(x), q_2(x) in k[x]` `s.t.` `f(x)q_1(x) + f'(x)q_2(x) = 1` in `k[x]`</p></li>
+                <li><p>This same formula holds in `L[x]`, so `f(x)q_1(x) + f'(x)q_2(x) = 1 in L[x]`</p></li>
+                <li><p>Consider evaluating at `alpha`</p></li>
+                <li><p>`ev_alpha: L[x] -> L`, `g(x) |-> g(alpha)`</p></li>
+                <li><p>`ev_alpha(f(x)q_1(x) + f'(x)q_2(x)) = ev_alpha(1) = 1`</p></li>
+                <li><p>`= f(alpha)q_1(alpha) + f'(alpha)q(alpha) = 1 = 0*q_1(x) + 0*q_2(x) = 0`, which is a contradiction</p></li>
+                <li><p>`(&lArr;)` Suppose `EE g(x) in k[x]` which is a nonconstant such that `(g(x)) = (f(x), f'(x))`</p></li>
+                <li><p>Let `alpha` be a root of `g(x)` in `L`. Then `x-alpha` divides `g(x)` in `L[x]`, so it divides both `f(x)` and `f'(x)` in `L[x]`</p></li>
+                <li><p>Using the Division Theorem, we can write `f(x) = (x-alpha)q(x)`</p></li>
+                <li><p>Using the properties of the formal derivative, `f'(x) = q(x) + (x-alpha)q'(x)`</p></li>
+                <li><p>Since `alpha` is a root of `f'(x) => f'(alpha) = 0 = q(alpha) + (alpha-alpha)q'(alpha) => q(alpha) = 0 <=> (x-alpha)|q(x)`</p></li>
+                <li><p>Since `(x-alpha)|q(x) => EE q_1(x) in L[x]` `s.t.` `(x-alpha)q_1(x) = q(x)`</p></li>
+                <li><p>Plugging this back in to `f(x)`, we see that `f(x) = (x- alpha)^2q_1(x) => alpha` is a root of multiplicity `>= 2`</p></li>
+              </div>
+              <div class="proof">
+                <li><p><b>Corollary: Let `f(x) in k[x]` be irreducible. If `char(k) = 0`, then `f(x)` cannot have multiple roots. If `char(k) = p`, then `f(x)` has a multiple root in a splitting field `L` if and only if `EE g(x) in k[x]` `s.t.` `f(x) = g(x^p)`</b></p></li>
               </div>
             </ul>
           </div>
