@@ -38,6 +38,7 @@ body {
 .container {
   margin-left: 300px;
   padding-top: 20px;
+  width: 70%;
 }
 
 .content {
