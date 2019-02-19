@@ -23,6 +23,10 @@
         <a class="toc_link" href="#measures_of_variation"><li>Measures of Variation</li></a>
         <a class="toc_link" href="#relative_standing"><li>Relative Standing</li></a>
         <a class="toc_link" href="#changes_in_scale"><li>Changes in Scale</li></a>
+        <a class="toc_link" href="#correlation"><li>Correlation</li></a>
+        <a class="toc_link" href="#linear_regression"><li>Linear Regression</li></a>
+        <a class="toc_link" href="#assessing_the_appropriateness_of_regression"><li>Assessing the Appropriateness of Regression</a></li>
+        <a class="toc_link" href="#assessing_the_quality_of_fit"><li>Assessing the Quality of Fit</li></a>
       </ul>
     </div>
     <div class="container">
@@ -131,6 +135,82 @@
               <li style="list-style-type: none";><p>- Finding the mean of the changed values is the same as applying the changes to the mean of the old values</p></li>
               <li style="list-style-type: none";><p>- The standard deviation is unaffected by addition, but finding the standard deviation of the changed values is the same as multiplying the old standard by the amount multiplied to each `y_i`</p></li>
               <li style="list-style-type: none";><p>- The z-score is unaffected by changes in scale</p></li>
+            </ul>
+          </div>
+          <div class="content" id="correlation">
+            <h3>Correlation</h3>
+            <ul>
+              <li><p>A measure of linear association between two quantitative variables</p></li>
+              <li><p>Suppose we have two variables `x` and `y` whose values for `n` cases are `(x_1, y_1), ..., (x_n, y_n)`</p></li>
+              <li><p>Let `bar(x)` and `bar(y)` be means, let `s_x` and `s_y` be standard deviations</p></li>
+              <li><p>The correlation between `x` and `y` is `r = 1/(n-1) sum_(i = 1)^n ((x_i-bar(x))/(s_x))((y_i-bar(y))/(s_y))`</p></li>
+              <li><p>If `x` and `y` are positively associated (large values of `x` are paired with large values of `y`) then `r > 0`</p></li>
+              <li><p>If `x` and `y` are negatively associated (large values of `x` are paired with small values of `y`) then `r < 0`</p></li>
+              <li><p>If `x_i = y_i` for all `i`, then `r = 1/(n-1) sum_(i = 1)^n (x_i-bar(x))^2/(s_x)^2 = (s_x)^2/(s_x)^2 = 1`</p></li>
+              <li><p>If `x_i = -y_i` for all `i`, then `r = -1`</p></li>
+              <li><p>We always have `-1 <= r <= 1`</p></li>
+              <li><p>Correlation is unaffected by changes in scale</p></li>
+            </ul>
+          </div>
+          <div class="content" id="linear_regression">
+            <h3>Linear Regression</h3>
+            <ul>
+              <li><p>Goal: predict the value of a variable `y` (response variable) given the value of a variable `x` (explanatory variable)</p></li>
+              <li><p>Fit a line to the data and use the line to predict `y` from `x`</p></li>
+              <li><p>Equation of the line is `hat(y) = b_0 + b_1x` where `b_0` is the intercept and `b_1` is the slope</p></li>
+              <img class="img-fluid" src="./pictures/linear_regression.jpg">
+              <li><p>If the value of the explanatory variable is `x_0` then the prediction for the response variable is `b_0 + b_1x_0`</p></li>
+              <li><p>For each point, the vertical distance `y-hat(y)` between the point and the line is called the prediction error or residual</p></li>
+              <li><p>least squares regression line: the line that minimizes the sum of squares of residuals</p></li>
+              <li><p>Let `bar(x)` and `bar(y)` be the means of two variables</p></li>
+              <li><p>Let `s_x` and `s_y` be the standard deviations</p></li>
+              <li><p>Let `r` be the correlation</p></li>
+              <li><p>The least squares regression line is `hat(y) = b_0 + b_1x` where `b_1 = (rs_y)/s_x` and `b_0 = bar(y) - b_1bar(x)`</p></li>
+            </ul>
+            <div class="box">
+              <p>Ex: Let `x` be the father's height and `y` be the son's height</p>
+              <p>Let `bar(x) = 67.7`, `bar(y) = 68.7`, `s_x = 2.72`, `s_y = 2.82`, `r = 0.50`</p>
+              <p>Then `b_1 = (0.5)(2.82/2.72) ~~ 0.518` and `b_0 = 68.7 - (0.518)(67.7) ~~ 33.6`</p>
+              <p>So the least squares regression line is `hat(y) = 33.6 + 0.518x`</p>
+              <p>If the father's height is `74` inches (`x = 74`), then we predict the son's height is `33.6 + 0.518(74) ~~ 71.9` inches</p>
+              <p>Every additional inch of the father's height increases the predicted son's height by `0.518` inches</p>
+            </div>
+            <ul>
+              <li><p>The intercept (`b_0`) often has little statistical meaning</p></li>
+              <li><p>If the regression line goes through `(bar(x), bar(y))`, then if `x` is the average, then `y` is also the average</p></li>
+              <li><p>If `x = bar(x)+s_x`, then `hat(y) = b_0 + b_1(bar(x)+s_x) = b_0 + b_1bar(x) + b_1s_x = hat(y) + rs_y`</p></li>
+              <li style="list-style-type: none";><p>In words, if `x` is one standard deviation above the mean, we predict `y` to be `r` standard deviations above the mean</p></li>
+              <li><p>Because `-1 <= r <= 1`, this leads to the "regression effect"</p></li>
+            </ul>
+          </div>
+          <div class="content" id="assessing_the_appropriateness_of_regression">
+            <h3>Assessing the Appropriateness of Regression</h3>
+            <ul>
+              <li><p>residual plot: a plot of residuals against the explanatory variable</p></li>
+              <img class="img-fluid" src="./pictures/residual_plot.jpg">
+              <li><p>If the residual plot looks like a random scatter with no apparent pattern, then the regression line is a good representation of the relationship between the variables</p></li>
+              <li style="list-style-type: none";><p>- About 50% above and below</p></li>
+              <li><p>Things to look for:</p></li>
+              <li style="list-style-type: none";><p>- curvature</p></li>
+              <li style="list-style-type: none";><p>- outliers (large residuals or points that are extreme in the `x`-direction</p></li>
+              <li style="list-style-type: none";><p>- heteroskedasticity (uneven spread)</p></li>
+              <img class="img-fluid" src="./pictures/heteroskedasticity.jpg">
+              <li style="list-style-type: none";><p>Low values of `x` have a small spread while large values of `x` have a larger spread</p></li>
+              <li><p>If there is curvature or extreme heteroskedasticity, try a transformation</p></li>
+              <li><p>Replace `y` by `y^2` or `sqrt(y)` or `1/y` or logs of one or both variables</p></li>
+              <li><p>A point has high leverage if it is extreme in the `x`-direction</p></li>
+              <li><p>A point is influential if omitting it would greatly change the slope of the line</p></li>
+            </ul>
+          </div>
+          <div class="content" id="assessing_the_quality_of_fit">
+            <h3>Assessing the Quality of Fit</h3>
+            <ul>
+              <li><p>The fraction of the variation in `y` explained by the regression is called `R^2` and it is the square of the correlation</p></li>
+              <li><p>If `R^2` is high, regression could be inappropriate if there is a way of getting better predictions</p></li>
+              <img class="img-fluid" src="./pictures/r2_high.jpg">
+              <li style="list-style-type: none";><p>Could do better by not using a line because the points are curved</p></li>
+              <li><p>If `R^2` is low, regression could be appropriate if there is no way to do better</p></li>
+              <img class="img-fluid" src="./pictures/r2_low.jpg">
             </ul>
           </div>
         </div> <!-- col-12 -->
